@@ -1,0 +1,109 @@
+
+@media (max-width: 991px) {
+
+    .navbar-buttons {
+        margin-top: 15px;
+        padding-bottom: 10px;
+    }
+
+    .hero-text h1 {
+        font-size: 45px;
+    }
+
+    .booking-section {
+        margin-top: -40px;
+    }
+
+    .financing-card {
+        padding: 35px;
+    }
+
+    .financing-icon {
+        font-size: 90px;
+    }
+}
+
+
+@media (max-width: 767px) {
+
+    .hero-section {
+        min-height: 580px;
+    }
+
+    .hero-text {
+        padding: 65px 0 100px;
+    }
+
+    .hero-text h1 {
+        font-size: 37px;
+    }
+
+    .hero-text p {
+        font-size: 14px;
+    }
+
+    .hero-trust {
+        gap: 12px;
+        font-size: 11px;
+    }
+
+    .booking-card {
+        padding: 20px;
+    }
+
+    .section-padding {
+        padding: 60px 0;
+    }
+
+    .section-heading h2 {
+        font-size: 27px;
+    }
+
+    .destination-card {
+        height: 300px;
+    }
+
+    .financing-card {
+        padding: 30px 22px;
+    }
+
+    .financing-card h2 {
+        font-size: 27px;
+    }
+
+    .financing-icon {
+        display: none;
+    }
+
+    .footer {
+        padding-top: 45px;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .hero-text h1 {
+        font-size: 32px;
+    }
+
+    .hero-actions .btn {
+        width: 100%;
+    }
+
+    .hero-trust {
+        flex-direction: column;
+    }
+
+    .booking-tabs {
+        gap: 5px;
+    }
+
+    .booking-tab {
+        font-size: 13px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+    }
+}

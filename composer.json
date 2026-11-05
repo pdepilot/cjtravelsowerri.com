@@ -1,0 +1,21 @@
+{
+    "name": "travelbookings/travelbooking",
+    "type": "project",
+    "description": "Travelbookings — Online Travel Agency Core PHP MVC Application with Laravel Architecture",
+    "license": "proprietary",
+    "require": {
+        "php": "^8.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "files": [
+            "app/Core/helpers.php"
+        ]
+    },
+    "scripts": {
+        "serve": "php artisan serve"
+    }
+}
+

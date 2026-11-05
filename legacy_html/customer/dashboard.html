@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Overview — Customer Dashboard — Travelbookings</title>
+  <meta name="description" content="Customer dashboard overview. View upcoming trips, flight bookings, hotel reservations, and recent activity." />
+  <meta name="robots" content="noindex" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link href="css/customer.css" rel="stylesheet" />
+
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+
+<body data-page="overview">
+  <a href="#dashMain" class="skip-link">Skip to dashboard content</a>
+
+  <div class="dash-shell">
+
+    <!-- FLOATING SIDE NAV -->
+    <nav class="float-nav" id="floatNav" aria-label="Customer navigation">
+      <a class="float-brand" href="../index.html" aria-label="Travelbookings home">
+        <i class="bi bi-airplane-engines"></i>
+        <span class="float-btn-label">Travelbookings</span>
+      </a>
+      <div class="float-nav-divider" aria-hidden="true"></div>
+      <a class="float-btn active" href="dashboard.html" aria-current="page" aria-label="Overview">
+        <i class="bi bi-grid-1x2-fill"></i>
+        <span class="float-btn-label">Overview</span>
+      </a>
+      <a class="float-btn " href="flights.html"  aria-label="My flights">
+        <i class="bi bi-airplane-fill"></i>
+        <span class="float-btn-label">My Flights</span>
+        <span class="float-badge" id="navFlightCount">4</span>
+      </a>
+      <a class="float-btn " href="hotels.html"  aria-label="My hotels">
+        <i class="bi bi-building-fill"></i>
+        <span class="float-btn-label">My Hotels</span>
+        <span class="float-badge" id="navHotelCount">3</span>
+      </a>
+      <div class="float-nav-divider" aria-hidden="true"></div>
+      <a class="float-btn " href="financing.html"  aria-label="Travel financing">
+        <i class="bi bi-cash-coin"></i>
+        <span class="float-btn-label">Travel Financing</span>
+        <span class="float-badge" id="navFinancingCount">2</span>
+      </a>
+      <a class="float-btn " href="payments.html"  aria-label="Payments">
+        <i class="bi bi-credit-card-2-front-fill"></i>
+        <span class="float-btn-label">Payments</span>
+      </a>
+      <div class="float-nav-divider" aria-hidden="true"></div>
+      <a class="float-btn " href="profile.html"  aria-label="My profile">
+        <i class="bi bi-person-fill"></i>
+        <span class="float-btn-label">My Profile</span>
+      </a>
+      <a class="float-btn " href="settings.html"  aria-label="Settings">
+        <i class="bi bi-gear-fill"></i>
+        <span class="float-btn-label">Settings</span>
+      </a>
+      <button type="button" class="float-btn logout" data-bs-toggle="modal" data-bs-target="#logoutModal" aria-label="Logout">
+        <i class="bi bi-box-arrow-right"></i>
+        <span class="float-btn-label">Logout</span>
+      </button>
+    </nav>
+
+    <div class="dash-main" id="dashMain">
+
+      <header class="dash-topbar">
+        <div class="topbar-left">
+          <div class="topbar-crumb">
+            <i class="bi bi-house-door-fill"></i>
+            <a href="dashboard.html" style="color:var(--muted);text-decoration:none;">Dashboard</a>
+            <span class="sep">/</span>
+            <span class="current" id="crumbCurrent">Overview</span>
+          </div>
+        </div>
+        <div class="topbar-right">
+          <button type="button" class="icon-btn" id="notificationsBtn" aria-label="Notifications (demo)">
+            <i class="bi bi-bell-fill"></i>
+            <span class="dot" aria-hidden="true"></span>
+          </button>
+          <button type="button" class="icon-btn" id="helpBtn" aria-label="Help centre">
+            <i class="bi bi-question-lg"></i>
+          </button>
+          <div class="topbar-user">
+            <span class="avatar">AO</span>
+            <span>Adaeze</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="dash-content">
+        <section class="view active" id="view-overview" data-view="overview" aria-labelledby="overviewTitle">
+          <div class="page-head">
+            <div>
+              <h1 id="overviewTitle" class="h2 mb-1">
+                Welcome back, Adaeze <span class="demo-pill"><i class="bi bi-stars"></i> Customer Portal</span>
+              </h1>
+              <p>Review your travel itinerary, active bookings, financing status, and upcoming luxury escapes.</p>
+            </div>
+            <div class="page-head-actions">
+              <a href="profile.html" class="btn btn-ghost btn-sm">
+                <i class="bi bi-person-fill"></i> View profile
+              </a>
+              <a href="settings.html" class="btn btn-ghost btn-sm">
+                <i class="bi bi-gear-fill"></i> Settings
+              </a>
+            </div>
+          </div>
+
+          <!-- PROFILE CARD BANNER -->
+          <div class="profile-card">
+            <span class="avatar-lg">AO</span>
+            <div class="profile-meta">
+              <h2>Adaeze Okonkwo</h2>
+              <span class="email">adaeze.okonkwo@example.com</span>
+              <div class="profile-tags">
+                <span class="profile-tag gold"><i class="bi bi-award-fill"></i> Gold Member</span>
+                <span class="profile-tag"><i class="bi bi-calendar-check"></i> Member since Jan 2024</span>
+                <span class="profile-tag"><i class="bi bi-geo-alt-fill"></i> Lagos, Nigeria</span>
+              </div>
+            </div>
+            <div class="profile-actions">
+              <a href="profile.html" class="btn btn-ghost btn-sm">Edit profile</a>
+            </div>
+          </div>
+
+          <!-- STAT CARDS -->
+          <div class="stat-grid">
+            <div class="stat-card">
+              <div class="stat-top">
+                <span class="stat-icon gold"><i class="bi bi-wallet2"></i></span>
+                <span class="stat-tag">All-time</span>
+              </div>
+              <span class="stat-value">₦3,595,000</span>
+              <span class="stat-label">Total Bookings Spent</span>
+              <div class="stat-foot">
+                <i class="bi bi-check-circle-fill"></i> Fully reconciled
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-top">
+                <span class="stat-icon green"><i class="bi bi-airplane-fill"></i></span>
+                <span class="stat-tag">Active</span>
+              </div>
+              <span class="stat-value" id="statFlights">4</span>
+              <span class="stat-label">Flight Reservations</span>
+              <div class="stat-foot">
+                <i class="bi bi-arrow-up-right"></i> 1 upcoming trip
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-top">
+                <span class="stat-icon navy"><i class="bi bi-building-fill"></i></span>
+                <span class="stat-tag">Luxury</span>
+              </div>
+              <span class="stat-value" id="statHotels">3</span>
+              <span class="stat-label">Hotel Bookings</span>
+              <div class="stat-foot">
+                <i class="bi bi-calendar-check"></i> 1 upcoming stay
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-top">
+                <span class="stat-icon gold"><i class="bi bi-cash-coin"></i></span>
+                <span class="stat-tag">Financing</span>
+              </div>
+              <span class="stat-value" id="statFinancing">2</span>
+              <span class="stat-label">Travel Enquiries</span>
+              <div class="stat-foot">
+                <i class="bi bi-clock-history"></i> 1 in partner review
+              </div>
+            </div>
+          </div>
+
+          <!-- QUICK ACTIONS -->
+          <div class="quick-grid">
+            <a href="../flights.html" class="quick-card">
+              <span class="q-icon"><i class="bi bi-airplane-engines"></i></span>
+              <span class="q-text">
+                <strong>Book a flight</strong>
+                <span>Search top international & domestic routes</span>
+              </span>
+              <i class="bi bi-chevron-right"></i>
+            </a>
+
+            <a href="../hotels.html" class="quick-card">
+              <span class="q-icon"><i class="bi bi-building-check"></i></span>
+              <span class="q-text">
+                <strong>Reserve luxury hotel</strong>
+                <span>Handpicked suites & boutique resorts</span>
+              </span>
+              <i class="bi bi-chevron-right"></i>
+            </a>
+
+            <a href="financing.html" class="quick-card">
+              <span class="q-icon"><i class="bi bi-cash-stack"></i></span>
+              <span class="q-text">
+                <strong>Apply for financing</strong>
+                <span>Flexible installment plans via licensed partners</span>
+              </span>
+              <i class="bi bi-chevron-right"></i>
+            </a>
+          </div>
+
+          <!-- SPLIT LAYOUT: TRIPS & RECENT BOOKINGS + ACTIVITY & CONCIERGE -->
+          <div class="row g-4">
+            <div class="col-lg-7">
+              <!-- UPCOMING TRIPS -->
+              <div class="card-box mb-4">
+                <div class="card-box-head">
+                  <h2><i class="bi bi-calendar2-range"></i> Upcoming trips</h2>
+                  <a href="flights.html" class="btn-link-soft">
+                    View all <i class="bi bi-arrow-right"></i>
+                  </a>
+                </div>
+                <div class="card-box-body p-0">
+                  <div class="trip-list" id="upcomingTrips"></div>
+                </div>
+              </div>
+
+              <!-- RECENT BOOKINGS TABLE -->
+              <div class="card-box">
+                <div class="card-box-head">
+                  <h2><i class="bi bi-clock-history"></i> Recent bookings</h2>
+                  <a href="flights.html" class="btn-link-soft">
+                    All bookings <i class="bi bi-arrow-right"></i>
+                  </a>
+                </div>
+                <div class="card-box-body p-0">
+                  <div class="table-responsive">
+                    <table class="table-clean">
+                      <thead>
+                        <tr>
+                          <th>Reference</th>
+                          <th>Booking</th>
+                          <th>Travel date</th>
+                          <th>Amount</th>
+                          <th>Status</th>
+                          <th class="text-end">Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody id="recentBookingsBody"></tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-5">
+              <!-- RECENT ACTIVITY -->
+              <div class="card-box mb-4">
+                <div class="card-box-head">
+                  <h3><i class="bi bi-bell-fill"></i> Recent activity</h3>
+                </div>
+                <div class="card-box-body">
+                  <ul class="activity-list" id="activityList"></ul>
+                </div>
+              </div>
+
+              <!-- CONCIERGE SUPPORT NOTE -->
+              <div class="info-note">
+                <i class="bi bi-shield-check"></i>
+                <div>
+                  <strong>24/7 Dedicated Concierge Support</strong><br />
+                  Need assistance with seat selection, VIP airport lounge access, or special dietary requirements? Reach our travel concierge anytime via <a href="../contact.html" style="color:var(--navy);font-weight:600;">Support</a>.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <footer class="dash-footer">
+        <p class="mb-0">
+          &copy; <span id="year">2025</span> Travelbookings. Demonstration dashboard — sample data only.
+        </p>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../contact.html">Support</a></li>
+        </ul>
+      </footer>
+
+    </div>
+  </div>
+
+  <!-- BOOKING DETAIL MODAL -->
+  <div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="detailModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title h5 mb-0" id="detailModalTitle">Booking Details</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="detailModalBody"></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-ghost" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="modalDemoAction">Manage booking</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOGOUT MODAL -->
+  <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title h5 mb-0" id="logoutModalTitle">Confirm Sign Out</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p class="mb-0">Are you sure you want to sign out of your customer dashboard? You can sign back in at any time with your account credentials.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-ghost" data-bs-dismiss="modal">Cancel</button>
+          <a href="../login.html" class="btn btn-primary">Sign Out</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/customer.js"></script>
+</body>
+</html>

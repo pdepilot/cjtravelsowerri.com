@@ -1,0 +1,3038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Travel Financing — Travelbookings</title>
+  <meta name="description" content="Explore travel financing options with Travelbookings. Use our illustrative calculator and submit a financing enquiry. Subject to independent licensed lending partner eligibility assessment and approval." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+  <style>
+    /* =======================================================
+       TOKENS
+       ======================================================= */
+    :root {
+      --cream: #f5f0e6;
+      --cream-soft: #faf6ed;
+      --ivory: #fdfbf6;
+      --navy: #0b1e3d;
+      --navy-soft: #1e3657;
+      --navy-deep: #060f21;
+      --gold: #a8842c;
+      --gold-soft: #c9a55b;
+      --gold-pale: #e8d9b3;
+      --ink: #1a1a1a;
+      --ink-soft: #4a4741;
+      --muted: #8a8378;
+      --hairline: #d9d1c0;
+      --hairline-soft: #e8e1d1;
+      --green: #2e7d5b;
+      --error: #a3452e;
+    }
+
+    /* =======================================================
+       RESET / BASE
+       ======================================================= */
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      color: var(--ink);
+      background: var(--cream);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      letter-spacing: -.01em;
+      color: var(--navy);
+      margin: 0;
+      line-height: 1.15;
+    }
+    p { margin: 0; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+      outline: 1.5px solid var(--navy);
+      outline-offset: 4px;
+    }
+
+    input[type="checkbox"], input[type="radio"] { accent-color: var(--navy); }
+    input[type="range"] { accent-color: var(--navy); }
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none; margin: 0;
+    }
+    input[type="number"] { -moz-appearance: textfield; }
+
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: -60px;
+      z-index: 2000;
+      background: var(--navy);
+      color: var(--ivory);
+      padding: .7rem 1.2rem;
+      font-size: 13px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      transition: top .25s ease;
+    }
+    .skip-link:focus { top: 0; color: var(--ivory); }
+
+    /* =======================================================
+       UTILITIES
+       ======================================================= */
+    .container { max-width: 1200px; padding-left: 24px; padding-right: 24px; margin: 0 auto; }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10.5px;
+      font-weight: 500;
+      letter-spacing: .32em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+    .eyebrow::before, .eyebrow::after {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .eyebrow.no-after::after { display: none; }
+    .eyebrow.light { color: rgba(253, 251, 246, .7); }
+    .eyebrow.light::before, .eyebrow.light::after { background: var(--gold-soft); }
+
+    .section { padding: clamp(72px, 9vw, 120px) 0; }
+    .section-tight { padding: clamp(48px, 6vw, 80px) 0; }
+
+    .bg-cream { background: var(--cream); }
+    .bg-cream-soft { background: var(--cream-soft); }
+    .bg-ivory { background: var(--ivory); }
+    .bg-navy { background: var(--navy); color: var(--ivory); }
+    .bg-navy h1, .bg-navy h2, .bg-navy h3 { color: var(--ivory); }
+
+    .section-head {
+      max-width: 640px;
+      margin: 0 auto clamp(48px, 6vw, 72px);
+      text-align: center;
+    }
+    .section-head h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      margin-bottom: 20px;
+      letter-spacing: -.02em;
+    }
+    .section-head h2 em { font-style: italic; color: var(--gold); font-weight: 400; }
+    .section-head p {
+      font-size: 16px;
+      color: var(--ink-soft);
+      line-height: 1.7;
+    }
+
+    .reveal { opacity: 1; transform: none; }
+    .js .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .9s cubic-bezier(.4, 0, .2, 1), transform .9s cubic-bezier(.4, 0, .2, 1);
+    }
+    .js .reveal.is-visible { opacity: 1; transform: none; }
+
+    /* =======================================================
+       BUTTONS
+       ======================================================= */
+    .btn-lux {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 32px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: 0;
+      transition: all .3s ease;
+    }
+    .btn-lux-navy { background: var(--navy); color: var(--ivory); }
+    .btn-lux-navy:hover { background: var(--navy-soft); color: var(--ivory); }
+    .btn-lux-navy .arrow { transition: transform .3s ease; }
+    .btn-lux-navy:hover .arrow { transform: translateX(4px); }
+
+    .btn-lux-ghost {
+      background: transparent;
+      color: var(--navy);
+      border: 1px solid var(--hairline);
+    }
+    .btn-lux-ghost:hover {
+      background: var(--cream-soft);
+      border-color: var(--navy);
+      color: var(--navy);
+    }
+
+    .btn-lux-gold {
+      background: linear-gradient(135deg, var(--gold-soft) 0%, var(--gold) 100%);
+      color: var(--navy-deep);
+    }
+    .btn-lux-gold:hover {
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-soft) 100%);
+      color: var(--navy-deep);
+      transform: translateY(-1px);
+    }
+
+    .btn-lux-outline-light {
+      background: transparent;
+      color: var(--ivory);
+      border: 1px solid rgba(253, 251, 246, .25);
+    }
+    .btn-lux-outline-light:hover {
+      background: rgba(253, 251, 246, .08);
+      border-color: var(--gold-soft);
+      color: var(--ivory);
+    }
+
+    .link-arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: var(--navy);
+      border-bottom: 1px solid var(--hairline);
+      padding-bottom: 4px;
+      transition: all .25s ease;
+    }
+    .link-arrow:hover { border-bottom-color: var(--navy); }
+    .link-arrow i { transition: transform .25s ease; }
+    .link-arrow:hover i { transform: translateX(4px); }
+
+    /* =======================================================
+       TOPBAR
+       ======================================================= */
+    .topbar {
+      background: var(--navy);
+      color: rgba(253, 251, 246, .7);
+      font-size: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, .06);
+    }
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .topbar-left {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    .topbar a {
+      color: rgba(253, 251, 246, .7);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: .04em;
+      transition: color .2s ease;
+    }
+    .topbar a:hover { color: var(--gold-soft); }
+    .topbar i { color: var(--gold-soft); font-size: 12px; }
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .topbar-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border: 1px solid rgba(201, 165, 91, .4);
+      border-radius: 100px;
+      font-size: 10px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+    }
+    .topbar-badge::before {
+      content: "";
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--gold-soft);
+    }
+
+    /* =======================================================
+       NAVBAR
+       ======================================================= */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1030;
+      background: var(--cream);
+      border-bottom: 1px solid var(--hairline-soft);
+      transition: box-shadow .3s ease, background-color .3s ease;
+    }
+    .site-header.scrolled {
+      background: rgba(245, 240, 230, .97);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 var(--hairline);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      padding: 22px 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+    .brand-mark {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      border: 1px solid var(--navy);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--navy);
+      font-size: 15px;
+      flex-shrink: 0;
+      transition: all .3s ease;
+    }
+    .brand:hover .brand-mark { background: var(--navy); color: var(--ivory); }
+    .brand-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-weight: 500;
+      letter-spacing: .01em;
+      color: var(--navy);
+      line-height: 1;
+    }
+    .brand-name em { font-style: italic; color: var(--gold); font-weight: 400; }
+
+    .nav-center {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex: 1;
+      justify-content: center;
+    }
+    .nav-center a {
+      padding: 10px 16px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      border-bottom: 1px solid transparent;
+      transition: all .25s ease;
+      white-space: nowrap;
+    }
+    .nav-center a:hover { color: var(--navy); }
+    .nav-center a.active { color: var(--navy); border-bottom-color: var(--gold); }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-shrink: 0;
+    }
+    .nav-actions a.text-link {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      transition: color .2s ease;
+    }
+    .nav-actions a.text-link:hover { color: var(--navy); }
+
+    .btn-nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 22px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      background: var(--navy);
+      color: var(--ivory);
+      border: 0;
+      cursor: pointer;
+      transition: background-color .25s ease;
+    }
+    .btn-nav-cta:hover { background: var(--navy-soft); color: var(--ivory); }
+
+    .navbar-toggler {
+      display: none;
+      width: 44px; height: 44px;
+      border: 1px solid var(--hairline);
+      background: transparent;
+      color: var(--navy);
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    @media (max-width: 991.98px) {
+      .nav-center, .nav-actions { display: none; }
+      .navbar-toggler { display: inline-flex; }
+    }
+
+    /* =======================================================
+       MOBILE DRAWER
+       ======================================================= */
+    .mobile-nav-overlay {
+      position: fixed; inset: 0;
+      background: rgba(6, 15, 33, .55);
+      backdrop-filter: blur(3px);
+      z-index: 1049;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s ease;
+    }
+    .mobile-nav-overlay.show { opacity: 1; pointer-events: auto; }
+
+    .mobile-nav {
+      position: fixed;
+      top: 0; right: 0; bottom: 0;
+      width: min(360px, 88vw);
+      background: var(--cream);
+      z-index: 1050;
+      transform: translateX(100%);
+      transition: transform .4s cubic-bezier(.4, 0, .2, 1);
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+    .mobile-nav.open { transform: translateX(0); }
+
+    .mobile-nav-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 24px;
+      border-bottom: 1px solid var(--hairline-soft);
+    }
+    .mobile-nav-close {
+      width: 40px; height: 40px;
+      border: 1px solid var(--hairline);
+      background: transparent;
+      color: var(--navy);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .mobile-nav-body { padding: 24px; flex: 1; }
+    .mobile-nav .nav-list { list-style: none; padding: 0; margin: 0; }
+    .mobile-nav .nav-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-weight: 400;
+      color: var(--navy);
+      border-bottom: 1px solid var(--hairline-soft);
+      transition: color .2s ease;
+    }
+    .mobile-nav .nav-link:hover,
+    .mobile-nav .nav-link.active { color: var(--gold); }
+    .mobile-nav .nav-link i { font-size: 14px; color: var(--hairline); }
+    .mobile-nav-cta {
+      padding: 24px;
+      border-top: 1px solid var(--hairline-soft);
+      display: grid;
+      gap: 12px;
+    }
+    .mobile-nav-cta .btn-lux { justify-content: center; }
+    .mobile-nav-footer {
+      padding: 20px 24px 28px;
+      border-top: 1px solid var(--hairline-soft);
+      background: var(--cream-soft);
+    }
+    .mobile-nav-footer p {
+      font-size: 11px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .mobile-nav-footer a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--ink-soft);
+      padding: 6px 0;
+    }
+    .mobile-nav-footer a i { color: var(--gold); }
+
+    /* =======================================================
+       HERO
+       ======================================================= */
+    .fin-hero {
+      background: var(--cream);
+      padding: clamp(64px, 9vw, 116px) 0 clamp(56px, 7vw, 96px);
+      position: relative;
+      overflow: hidden;
+    }
+    .fin-hero .hero-content {
+      max-width: 780px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 0 24px;
+    }
+    .fin-hero h1 {
+      font-size: clamp(2.6rem, 6.5vw, 5rem);
+      line-height: 1;
+      letter-spacing: -.025em;
+      margin-bottom: 28px;
+    }
+    .fin-hero h1 em { font-style: italic; color: var(--gold); font-weight: 400; }
+    .fin-hero .hero-sub {
+      font-size: clamp(15px, 1.5vw, 17px);
+      color: var(--ink-soft);
+      max-width: 56ch;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+    .fin-hero .hero-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-trust {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: clamp(56px, 7vw, 88px);
+      border-top: 1px solid var(--hairline-soft);
+      border-bottom: 1px solid var(--hairline-soft);
+    }
+    .hero-trust-item {
+      padding: 26px 20px;
+      border-right: 1px solid var(--hairline-soft);
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .hero-trust-item:last-child { border-right: 0; }
+    .hero-trust-item i {
+      color: var(--gold);
+      font-size: 18px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+    .hero-trust-item strong {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--navy);
+      margin-bottom: 2px;
+    }
+    .hero-trust-item span {
+      font-size: 12px;
+      color: var(--ink-soft);
+      line-height: 1.5;
+    }
+    @media (max-width: 767.98px) {
+      .hero-trust { grid-template-columns: repeat(2, 1fr); }
+      .hero-trust-item:nth-child(2) { border-right: 0; }
+      .hero-trust-item:nth-child(1),
+      .hero-trust-item:nth-child(2) { border-bottom: 1px solid var(--hairline-soft); }
+    }
+    @media (max-width: 575.98px) {
+      .hero-trust { grid-template-columns: 1fr; }
+      .hero-trust-item { border-right: 0; border-bottom: 1px solid var(--hairline-soft); }
+      .hero-trust-item:last-child { border-bottom: 0; }
+    }
+
+    /* =======================================================
+       SERVICES
+       ======================================================= */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--hairline-soft);
+      border: 1px solid var(--hairline-soft);
+    }
+    .service {
+      background: var(--cream);
+      padding: clamp(32px, 4vw, 48px) clamp(24px, 3vw, 40px);
+      display: flex;
+      flex-direction: column;
+      transition: background-color .3s ease;
+    }
+    .service:hover { background: var(--ivory); }
+    .service-icon {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      border: 1px solid var(--gold-pale);
+      color: var(--gold);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      margin-bottom: 24px;
+      transition: all .3s ease;
+    }
+    .service:hover .service-icon {
+      background: var(--navy);
+      border-color: var(--navy);
+      color: var(--gold-soft);
+    }
+    .service h3 { font-size: 1.4rem; margin-bottom: 12px; }
+    .service p { color: var(--ink-soft); font-size: 14px; line-height: 1.7; }
+
+    @media (max-width: 767.98px) { .services-grid { grid-template-columns: 1fr; } }
+
+    /* =======================================================
+       PROCESS STEPS
+       ======================================================= */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border-top: 1px solid var(--hairline-soft);
+      border-bottom: 1px solid var(--hairline-soft);
+    }
+    .step {
+      padding: clamp(32px, 4vw, 48px) clamp(20px, 2.5vw, 32px);
+      border-right: 1px solid var(--hairline-soft);
+      position: relative;
+    }
+    .step:last-child { border-right: 0; }
+    .step-num-big {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 5vw, 4.5rem);
+      font-weight: 300;
+      color: var(--gold-pale);
+      line-height: .85;
+      margin-bottom: 24px;
+      letter-spacing: -.03em;
+    }
+    .step h3 { font-size: 1.25rem; margin-bottom: 10px; }
+    .step p { font-size: 13px; color: var(--ink-soft); line-height: 1.7; }
+
+    @media (max-width: 991.98px) {
+      .steps-grid { grid-template-columns: repeat(2, 1fr); }
+      .step:nth-child(2) { border-right: 0; }
+      .step:nth-child(1), .step:nth-child(2) { border-bottom: 1px solid var(--hairline-soft); }
+    }
+    @media (max-width: 575.98px) {
+      .steps-grid { grid-template-columns: 1fr; }
+      .step { border-right: 0; border-bottom: 1px solid var(--hairline-soft); }
+      .step:last-child { border-bottom: 0; }
+    }
+
+    /* =======================================================
+       CALCULATOR
+       ======================================================= */
+    .calc-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: var(--ivory);
+      border: 1px solid var(--hairline);
+      overflow: hidden;
+    }
+    .calc-inputs { padding: clamp(28px, 4vw, 48px); }
+    .calc-inputs h3 {
+      font-size: 1.6rem;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    .calc-inputs .hint {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+    .calc-label {
+      display: block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .budget-field {
+      position: relative;
+      margin-bottom: 8px;
+    }
+    .budget-field .currency {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--gold);
+      z-index: 2;
+      pointer-events: none;
+    }
+    .budget-field input {
+      width: 100%;
+      height: 62px;
+      background: transparent;
+      border: 1px solid var(--hairline);
+      border-radius: 0;
+      padding: 0 18px 0 48px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: var(--navy);
+      transition: border-color .25s ease, background-color .25s ease;
+    }
+    .budget-field input:focus {
+      outline: none;
+      border-color: var(--navy);
+      background: #fff;
+    }
+    .calc-range {
+      width: 100%;
+      margin: 12px 0 24px;
+      height: 4px;
+    }
+    .form-hint {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+      margin-bottom: 24px;
+      letter-spacing: .02em;
+    }
+
+    .period-buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border: 1px solid var(--hairline);
+      margin-bottom: 28px;
+    }
+    .period-btn {
+      background: transparent;
+      border: 0;
+      border-right: 1px solid var(--hairline);
+      padding: 14px 6px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all .25s ease;
+    }
+    .period-btn:last-child { border-right: 0; }
+    .period-btn:hover { color: var(--navy); background: var(--cream-soft); }
+    .period-btn.active {
+      background: var(--navy);
+      color: var(--ivory);
+    }
+
+    .rate-readout {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .rate-readout .value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--navy);
+      letter-spacing: -.01em;
+    }
+    .rate-readout .hint {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: .04em;
+      margin: 0;
+    }
+
+    .calc-result {
+      background: var(--navy-deep);
+      color: var(--ivory);
+      padding: clamp(28px, 4vw, 48px);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+    .calc-result::before {
+      content: "";
+      position: absolute;
+      width: 400px; height: 400px;
+      right: -150px; top: -150px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201, 165, 91, .15), transparent 70%);
+      pointer-events: none;
+    }
+    .calc-result > * { position: relative; z-index: 1; }
+
+    .result-eyebrow {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      margin-bottom: 14px;
+    }
+    .result-amount {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 400;
+      letter-spacing: -.02em;
+      line-height: 1;
+      color: var(--ivory);
+      margin-bottom: 10px;
+    }
+    .result-sub {
+      font-size: 13px;
+      color: rgba(253, 251, 246, .65);
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+    .result-divider {
+      height: 1px;
+      background: rgba(253, 251, 246, .12);
+      margin-bottom: 8px;
+    }
+    .result-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 13px;
+      color: rgba(253, 251, 246, .62);
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(253, 251, 246, .06);
+    }
+    .result-row:last-of-type { border-bottom: 0; }
+    .result-row strong {
+      color: var(--ivory);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .result-note {
+      margin-top: auto;
+      padding-top: 24px;
+      font-size: 11px;
+      line-height: 1.7;
+      color: rgba(253, 251, 246, .5);
+      letter-spacing: .02em;
+    }
+    .result-note i { color: var(--gold-soft); margin-right: 4px; }
+
+    /* Examples table */
+    .calc-examples {
+      background: var(--ivory);
+      border: 1px solid var(--hairline);
+      padding: clamp(28px, 4vw, 40px);
+      margin-top: 32px;
+    }
+    .examples-head h3 {
+      font-size: 1.4rem;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    .examples-head p {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+    .examples-head strong { color: var(--navy); font-weight: 500; }
+
+    .examples-table {
+      width: 100%;
+      margin: 0 0 12px;
+    }
+    .examples-table thead th {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 1px solid var(--hairline);
+      padding: 12px 16px;
+      text-align: left;
+      white-space: nowrap;
+    }
+    .examples-table tbody td {
+      font-size: 13px;
+      color: var(--ink-soft);
+      padding: 16px;
+      border-bottom: 1px solid var(--hairline-soft);
+      white-space: nowrap;
+    }
+    .examples-table tbody tr:last-child td { border-bottom: 0; }
+    .examples-table tbody td:first-child {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--navy);
+    }
+    .examples-table tbody td:not(:first-child) {
+      font-weight: 500;
+      color: var(--navy);
+    }
+    .examples-note {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin: 12px 0 0;
+    }
+    .examples-note i { color: var(--gold); margin-right: 4px; }
+
+    @media (max-width: 767.98px) {
+      .calc-card { grid-template-columns: 1fr; }
+    }
+
+    /* =======================================================
+       APPLICATION FORM
+       ======================================================= */
+    .apply-card {
+      background: var(--ivory);
+      border: 1px solid var(--hairline);
+      padding: clamp(28px, 4vw, 48px);
+    }
+    .apply-card h2 {
+      font-size: clamp(1.75rem, 3vw, 2.4rem);
+      margin-bottom: 14px;
+      letter-spacing: -.02em;
+    }
+    .apply-card > p {
+      color: var(--ink-soft);
+      font-size: 15px;
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    .form-label {
+      display: block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .form-control,
+    .form-select {
+      width: 100%;
+      height: 52px;
+      background: transparent;
+      border: 1px solid var(--hairline);
+      border-radius: 0;
+      padding: 0 16px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--navy);
+      transition: border-color .25s ease, background-color .25s ease;
+    }
+    .form-control::placeholder { color: var(--muted); font-weight: 400; }
+    .form-select {
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238a8378' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      background-size: 12px;
+      padding-right: 40px;
+    }
+    .form-control:hover,
+    .form-select:hover { border-color: var(--gold-pale); }
+    .form-control:focus,
+    .form-select:focus {
+      outline: none;
+      border-color: var(--navy);
+      background-color: #fff;
+      box-shadow: none;
+    }
+
+    .form-control.is-invalid,
+    .form-select.is-invalid {
+      border-color: var(--error);
+      background-color: rgba(163, 69, 46, .03);
+      background-image: none;
+    }
+    .form-select.is-invalid {
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a3452e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      background-size: 12px;
+    }
+    .form-check-input.is-invalid { border-color: var(--error); }
+    .invalid-feedback {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--error);
+      margin-top: 8px;
+    }
+
+    .consent-block {
+      background: var(--cream-soft);
+      border: 1px solid var(--hairline-soft);
+      padding: 20px 24px;
+      margin-top: 28px;
+    }
+    .consent-block .form-check { margin-bottom: 16px; }
+    .consent-block .form-check:last-child { margin-bottom: 0; }
+    .consent-block .form-check-label {
+      font-size: 13px;
+      color: var(--ink-soft);
+      line-height: 1.6;
+      cursor: pointer;
+      padding-left: 4px;
+    }
+    .consent-block .form-check-input {
+      margin-top: .35em;
+      width: 16px; height: 16px;
+      border-radius: 0;
+      border: 1px solid var(--hairline);
+      background-color: transparent;
+    }
+    .consent-block .form-check-input:checked {
+      background-color: var(--navy);
+      border-color: var(--navy);
+    }
+
+    .form-status {
+      display: none;
+      margin-top: 20px;
+      padding: 14px 18px;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .form-status.show { display: block; }
+    .form-status.error {
+      background: rgba(163, 69, 46, .06);
+      border-left: 2px solid var(--error);
+      color: var(--error);
+    }
+    .form-status.success {
+      background: rgba(46, 125, 91, .06);
+      border-left: 2px solid var(--green);
+      color: var(--green);
+    }
+
+    .security-note {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.65;
+      margin: 24px 0 28px;
+    }
+    .security-note i { color: var(--green); font-size: 14px; margin-top: 2px; flex-shrink: 0; }
+
+    /* =======================================================
+       ASIDE (apply sidebar)
+       ======================================================= */
+    .apply-aside { display: grid; gap: 20px; }
+
+    .aside-card {
+      background: var(--navy-deep);
+      color: rgba(253, 251, 246, .75);
+      padding: clamp(28px, 3vw, 36px);
+      position: relative;
+      overflow: hidden;
+    }
+    .aside-card::before {
+      content: "";
+      position: absolute;
+      width: 300px; height: 300px;
+      right: -120px; top: -120px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201, 165, 91, .12), transparent 70%);
+      pointer-events: none;
+    }
+    .aside-card > * { position: relative; z-index: 1; }
+    .aside-card h3 {
+      color: var(--ivory);
+      font-size: 1.4rem;
+      font-weight: 500;
+      margin-bottom: 22px;
+    }
+    .aside-steps {
+      list-style: none;
+      padding: 0; margin: 0;
+      display: grid;
+      gap: 0;
+    }
+    .aside-steps li {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(253, 251, 246, .08);
+    }
+    .aside-steps li:last-child { border-bottom: 0; padding-bottom: 0; }
+    .aside-steps li:first-child { padding-top: 0; }
+    .aside-steps .num {
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      border: 1px solid rgba(201, 165, 91, .4);
+      color: var(--gold-soft);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .aside-steps div { display: flex; flex-direction: column; gap: 4px; }
+    .aside-steps strong {
+      color: var(--ivory);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: -.005em;
+    }
+    .aside-steps span {
+      color: rgba(253, 251, 246, .6);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .aside-note {
+      display: flex;
+      gap: 14px;
+      background: rgba(201, 165, 91, .08);
+      border: 1px solid rgba(201, 165, 91, .25);
+      padding: 20px 22px;
+    }
+    .aside-note i {
+      color: var(--gold-soft);
+      font-size: 20px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .aside-note strong {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--gold-soft);
+      margin-bottom: 4px;
+    }
+    .aside-note span {
+      font-size: 13px;
+      color: rgba(253, 251, 246, .7);
+      line-height: 1.65;
+    }
+
+    /* =======================================================
+       REVIEW SCREEN
+       ======================================================= */
+    .review-card {
+      background: var(--ivory);
+      border: 1px solid var(--hairline);
+      padding: clamp(28px, 4vw, 48px);
+    }
+    .review-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(201, 165, 91, .12);
+      border: 1px solid rgba(201, 165, 91, .3);
+      color: var(--gold);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      margin-bottom: 20px;
+    }
+    .review-card h2 {
+      font-size: clamp(1.75rem, 3vw, 2.4rem);
+      margin-bottom: 14px;
+    }
+    .review-card > p {
+      color: var(--ink-soft);
+      font-size: 15px;
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1px;
+      background: var(--hairline-soft);
+      border: 1px solid var(--hairline-soft);
+      margin-bottom: 32px;
+    }
+    .detail-item {
+      background: var(--cream-soft);
+      padding: 18px 22px;
+    }
+    .detail-item span {
+      display: block;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .detail-item strong {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--navy);
+      word-break: break-word;
+    }
+
+    .demo-banner {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: rgba(201, 165, 91, .08);
+      border: 1px solid rgba(201, 165, 91, .3);
+      color: var(--ink-soft);
+      padding: 18px 20px;
+      font-size: 13px;
+      line-height: 1.65;
+      margin-bottom: 32px;
+    }
+    .demo-banner i { color: var(--gold); margin-top: 2px; flex-shrink: 0; }
+    .demo-banner strong { color: var(--navy); font-weight: 600; }
+
+    .next-steps {
+      border-top: 1px solid var(--hairline-soft);
+      padding-top: 28px;
+      margin-bottom: 32px;
+    }
+    .next-steps h3 {
+      font-size: 1.3rem;
+      font-weight: 500;
+      margin-bottom: 18px;
+    }
+    .next-steps ol {
+      list-style: none;
+      padding: 0; margin: 0;
+      display: grid;
+      gap: 14px;
+      counter-reset: step;
+    }
+    .next-steps li {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      font-size: 14px;
+      color: var(--ink-soft);
+      line-height: 1.65;
+    }
+    .next-steps li::before {
+      counter-increment: step;
+      content: counter(step);
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      border: 1px solid var(--gold-pale);
+      color: var(--gold);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* =======================================================
+       ELIGIBILITY
+       ======================================================= */
+    .eligibility-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--hairline-soft);
+      border: 1px solid var(--hairline-soft);
+      margin-bottom: 32px;
+    }
+    .eligibility-card {
+      background: var(--cream-soft);
+      padding: clamp(28px, 3vw, 40px) clamp(20px, 2.5vw, 32px);
+      text-align: center;
+      transition: background-color .3s ease;
+    }
+    .eligibility-card:hover { background: var(--ivory); }
+    .eligibility-card .icon {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      border: 1px solid var(--gold-pale);
+      color: var(--gold);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      margin-bottom: 20px;
+      transition: all .3s ease;
+    }
+    .eligibility-card:hover .icon {
+      background: var(--navy);
+      border-color: var(--navy);
+      color: var(--gold-soft);
+    }
+    .eligibility-card h3 { font-size: 1.2rem; margin-bottom: 8px; }
+    .eligibility-card p { font-size: 13px; color: var(--ink-soft); line-height: 1.6; }
+
+    .eligibility-note {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: var(--ivory);
+      border: 1px solid var(--hairline);
+      padding: 22px 26px;
+      font-size: 13px;
+      color: var(--ink-soft);
+      line-height: 1.7;
+    }
+    .eligibility-note i { color: var(--gold); font-size: 18px; flex-shrink: 0; margin-top: 2px; }
+
+    @media (max-width: 991.98px) {
+      .eligibility-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 575.98px) {
+      .eligibility-grid { grid-template-columns: 1fr; }
+    }
+
+    /* =======================================================
+       RESPONSIBLE BORROWING
+       ======================================================= */
+    .responsible-section {
+      background: var(--navy);
+      color: var(--ivory);
+      position: relative;
+      overflow: hidden;
+    }
+    .responsible-section::before {
+      content: "";
+      position: absolute;
+      width: 600px; height: 600px;
+      right: -200px; top: -200px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201, 165, 91, .12), transparent 70%);
+      pointer-events: none;
+    }
+    .responsible-section .container { position: relative; z-index: 1; }
+    .responsible-section h2 {
+      color: var(--ivory);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      margin-bottom: 20px;
+      letter-spacing: -.02em;
+    }
+    .responsible-section h2 em { font-style: italic; color: var(--gold-soft); font-weight: 400; }
+    .responsible-lead {
+      color: rgba(253, 251, 246, .75);
+      font-size: 16px;
+      line-height: 1.75;
+      margin-bottom: 28px;
+      max-width: 52ch;
+    }
+    .responsible-list {
+      list-style: none;
+      padding: 0; margin: 0;
+      display: grid;
+      gap: 14px;
+    }
+    .responsible-list li {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      font-size: 14px;
+      color: rgba(253, 251, 246, .82);
+      line-height: 1.65;
+    }
+    .responsible-list i { color: var(--gold-soft); margin-top: 3px; flex-shrink: 0; }
+
+    .responsible-callout {
+      background: rgba(253, 251, 246, .04);
+      border: 1px solid rgba(253, 251, 246, .12);
+      padding: clamp(28px, 3vw, 40px);
+    }
+    .responsible-callout h3 {
+      color: var(--gold-soft);
+      font-size: 1.35rem;
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+    .responsible-callout p {
+      font-size: 14px;
+      color: rgba(253, 251, 246, .75);
+      line-height: 1.75;
+    }
+    .responsible-callout p + p { margin-top: 16px; }
+
+    /* =======================================================
+       FAQ
+       ======================================================= */
+    .faq-accordion {
+      border: 1px solid var(--hairline-soft);
+      background: var(--ivory);
+    }
+    .faq-accordion .accordion-item {
+      border: 0;
+      border-bottom: 1px solid var(--hairline-soft);
+      border-radius: 0 !important;
+      background: transparent;
+    }
+    .faq-accordion .accordion-item:last-child { border-bottom: 0; }
+    .faq-accordion .accordion-button {
+      background: transparent;
+      color: var(--navy);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 500;
+      letter-spacing: -.005em;
+      padding: 22px 28px;
+      box-shadow: none;
+      border-radius: 0;
+    }
+    .faq-accordion .accordion-button:not(.collapsed) {
+      background: var(--cream-soft);
+      color: var(--navy);
+    }
+    .faq-accordion .accordion-button:focus {
+      box-shadow: none;
+      border-color: transparent;
+      outline: none;
+    }
+    .faq-accordion .accordion-button::after {
+      background-image: none;
+      content: "+";
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--gold);
+      width: auto;
+      height: auto;
+      line-height: 1;
+      transition: transform .25s ease;
+    }
+    .faq-accordion .accordion-button:not(.collapsed)::after {
+      content: "−";
+      transform: none;
+      color: var(--gold);
+    }
+    .faq-accordion .accordion-body {
+      padding: 0 28px 24px;
+      color: var(--ink-soft);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    /* =======================================================
+       CTA
+       ======================================================= */
+    .cta {
+      background: var(--navy);
+      color: var(--ivory);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta::before {
+      content: "";
+      position: absolute;
+      width: 800px; height: 800px;
+      left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201, 165, 91, .1), transparent 60%);
+      pointer-events: none;
+    }
+    .cta-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .cta h2 {
+      color: var(--ivory);
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      margin-bottom: 24px;
+      letter-spacing: -.025em;
+      line-height: 1.05;
+    }
+    .cta h2 em { font-style: italic; color: var(--gold-soft); font-weight: 400; }
+    .cta p {
+      color: rgba(253, 251, 246, .72);
+      font-size: 16px;
+      line-height: 1.7;
+      margin-bottom: 40px;
+      max-width: 52ch;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* =======================================================
+       FOOTER
+       ======================================================= */
+    .site-footer {
+      background: var(--navy-deep);
+      color: rgba(253, 251, 246, .7);
+      position: relative;
+      overflow: hidden;
+      padding: 96px 0 0;
+    }
+    .footer-watermark {
+      position: absolute;
+      left: 50%;
+      bottom: -10rem;
+      transform: translateX(-50%);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(10rem, 24vw, 28rem);
+      font-weight: 300;
+      font-style: italic;
+      letter-spacing: -.03em;
+      line-height: .8;
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+      z-index: 0;
+      background: linear-gradient(180deg,
+        rgba(201, 165, 91, .14) 0%,
+        rgba(201, 165, 91, .05) 40%,
+        rgba(201, 165, 91, 0) 85%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+    .footer-watermark::before { content: "Travelbookings"; }
+
+    .footer-inner { position: relative; z-index: 1; }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1.3fr;
+      gap: clamp(32px, 5vw, 64px);
+      padding-bottom: 72px;
+      border-bottom: 1px solid rgba(253, 251, 246, .08);
+    }
+    .footer-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .footer-brand .brand-mark {
+      width: 40px; height: 40px;
+      border-color: rgba(201, 165, 91, .4);
+      color: var(--gold-soft);
+    }
+    .footer-brand .brand-name { color: var(--ivory); font-size: 22px; }
+    .footer-brand .brand-name em { color: var(--gold-soft); }
+
+    .footer-about {
+      font-size: 13px;
+      line-height: 1.75;
+      color: rgba(253, 251, 246, .55);
+      max-width: 36ch;
+      margin-bottom: 28px;
+    }
+    .footer-social { display: flex; gap: 10px; }
+    .footer-social a {
+      width: 38px; height: 38px;
+      border: 1px solid rgba(253, 251, 246, .14);
+      color: rgba(253, 251, 246, .7);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      transition: all .25s ease;
+    }
+    .footer-social a:hover {
+      border-color: var(--gold-soft);
+      color: var(--gold-soft);
+    }
+
+    .footer-heading {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      margin-bottom: 24px;
+    }
+    .footer-links {
+      list-style: none;
+      padding: 0; margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+    .footer-links a {
+      color: rgba(253, 251, 246, .6);
+      font-size: 13px;
+      transition: color .2s ease;
+    }
+    .footer-links a:hover { color: var(--gold-soft); }
+
+    .footer-contact {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .footer-contact a {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: rgba(253, 251, 246, .6);
+      transition: color .2s ease;
+    }
+    .footer-contact a:hover { color: var(--gold-soft); }
+    .footer-contact i { color: var(--gold-soft); font-size: 12px; }
+
+    .footer-newsletter {
+      margin-top: 24px;
+    }
+    .footer-newsletter p {
+      font-size: 12px;
+      color: rgba(253, 251, 246, .5);
+      margin-bottom: 12px;
+      letter-spacing: .02em;
+    }
+    .footer-newsletter-form {
+      display: flex;
+      border-bottom: 1px solid rgba(253, 251, 246, .15);
+      transition: border-color .25s ease;
+    }
+    .footer-newsletter-form:focus-within {
+      border-bottom-color: var(--gold-soft);
+    }
+    .footer-newsletter-form input {
+      flex: 1;
+      background: transparent;
+      border: 0;
+      padding: 10px 0;
+      color: var(--ivory);
+      font-size: 13px;
+      font-family: inherit;
+      outline: none;
+      min-width: 0;
+    }
+    .footer-newsletter-form input::placeholder { color: rgba(253, 251, 246, .35); }
+    .footer-newsletter-form button {
+      background: transparent;
+      border: 0;
+      color: var(--gold-soft);
+      padding: 10px 12px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: transform .2s ease;
+    }
+    .footer-newsletter-form button:hover { transform: translateX(3px); }
+
+    .newsletter-status {
+      display: none;
+      font-size: 11px;
+      margin-top: 8px;
+      letter-spacing: .02em;
+    }
+    .newsletter-status.show { display: block; }
+    .newsletter-status.success { color: var(--gold-soft); }
+    .newsletter-status.error { color: #f0a19a; }
+
+    .footer-bottom {
+      padding: 32px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: 11px;
+      color: rgba(253, 251, 246, .4);
+      letter-spacing: .04em;
+    }
+    .footer-legal {
+      list-style: none;
+      display: flex;
+      gap: 24px;
+      margin: 0; padding: 0;
+      flex-wrap: wrap;
+    }
+    .footer-legal a {
+      color: rgba(253, 251, 246, .4);
+      transition: color .2s ease;
+    }
+    .footer-legal a:hover { color: var(--gold-soft); }
+
+    @media (max-width: 991.98px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid > :first-child { grid-column: 1 / -1; }
+    }
+    @media (max-width: 575.98px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .footer-legal { justify-content: center; }
+    }
+
+    /* =======================================================
+       REDUCED MOTION
+       ======================================================= */
+    @media (prefers-reduced-motion: reduce) {
+      * { transition-duration: .01ms !important; animation: none !important; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- =========================================================
+       TOPBAR — matched to index.html
+       ========================================================= -->
+  <div class="topbar d-none d-lg-block">
+    <div class="container">
+      <div class="topbar-inner">
+        <div class="topbar-left">
+          <a href="tel:+2348080452890"><i class="bi bi-telephone"></i> 0808 045 2890</a>
+          <a href="mailto:info@travelbookings.ng"><i class="bi bi-envelope"></i> info@travelbookings.ng</a>
+        </div>
+        <div class="topbar-right">
+          <span class="topbar-badge">Concierge · Available 24/7</span>
+          <a href="/contact">Contact</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       HEADER — matched to index.html
+       ========================================================= -->
+  <header class="site-header" id="siteHeader">
+    <div class="container">
+      <div class="nav-inner">
+
+        <a class="brand" href="/" aria-label="Travelbookings home">
+          <span class="brand-mark"><i class="bi bi-airplane-engines"></i></span>
+          <span class="brand-name">Travel<em>bookings</em></span>
+        </a>
+
+        <nav class="nav-center" aria-label="Main navigation">
+          <a href="/flights">Flights</a>
+          <a href="/hotels">Hotels</a>
+          <a href="/destinations">Destinations</a>
+          <a href="/financing" class="active" aria-current="page">Financing</a>
+          <a href="/about">About</a>
+        </nav>
+
+        <div class="nav-actions">
+          <a href="/login" class="text-link">Sign in</a>
+          <a href="/register" class="btn-nav-cta">Book now <i class="bi bi-arrow-right"></i></a>
+        </div>
+
+        <button class="navbar-toggler" type="button" id="mobileToggle"
+                aria-controls="mobileNav" aria-expanded="false" aria-label="Open menu">
+          <i class="bi bi-list"></i>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================
+       MOBILE DRAWER — matched to index.html
+       ========================================================= -->
+  <div class="mobile-nav-overlay" id="mobileOverlay"></div>
+
+  <aside class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+    <div class="mobile-nav-head">
+      <a class="brand" href="/">
+        <span class="brand-mark"><i class="bi bi-airplane-engines"></i></span>
+        <span class="brand-name">Travel<em>bookings</em></span>
+      </a>
+      <button class="mobile-nav-close" id="mobileClose" aria-label="Close menu">
+        <i class="bi bi-x-lg"></i>
+      </button>
+    </div>
+
+    <div class="mobile-nav-body">
+      <ul class="nav-list">
+        <li><a class="nav-link" href="/">Home <i class="bi bi-arrow-right"></i></a></li>
+        <li><a class="nav-link" href="/flights">Flights <i class="bi bi-arrow-right"></i></a></li>
+        <li><a class="nav-link" href="/hotels">Hotels <i class="bi bi-arrow-right"></i></a></li>
+        <li><a class="nav-link" href="/destinations">Destinations <i class="bi bi-arrow-right"></i></a></li>
+        <li><a class="nav-link active" href="/financing">Financing <i class="bi bi-arrow-right"></i></a></li>
+        <li><a class="nav-link" href="/about">About <i class="bi bi-arrow-right"></i></a></li>
+        <li><a class="nav-link" href="/contact">Contact <i class="bi bi-arrow-right"></i></a></li>
+      </ul>
+    </div>
+
+    <div class="mobile-nav-cta">
+      <a href="/login" class="btn-lux btn-lux-ghost">Sign in</a>
+      <a href="/register" class="btn-lux btn-lux-navy">Book now <i class="bi bi-arrow-right"></i></a>
+    </div>
+
+    <div class="mobile-nav-footer">
+      <p>Reach the concierge</p>
+      <a href="tel:+2348080452890"><i class="bi bi-telephone"></i> 0808 045 2890</a>
+      <a href="mailto:info@travelbookings.ng"><i class="bi bi-envelope"></i> info@travelbookings.ng</a>
+    </div>
+  </aside>
+
+  <main id="main">
+
+    <!-- =========================================================
+         HERO
+         ========================================================= -->
+    <section class="fin-hero">
+      <div class="container">
+        <div class="hero-content">
+          <span class="eyebrow">Travel financing · Subject to approval</span>
+          <h1>Make your travel plans<br />more <em>flexible</em>.</h1>
+          <p class="hero-sub">
+            Explore financing options for eligible travel expenses. Use our illustrative calculator to
+            understand how repayments could work, then submit an enquiry to be assessed by an independent
+            licensed lending partner.
+          </p>
+          <div class="hero-actions">
+            <a href="#calculator" class="btn-lux btn-lux-navy">
+              Try the calculator <i class="bi bi-arrow-right arrow"></i>
+            </a>
+            <a href="#apply" class="btn-lux btn-lux-ghost">Start an enquiry</a>
+          </div>
+        </div>
+
+        <div class="hero-trust reveal">
+          <div class="hero-trust-item">
+            <i class="bi bi-patch-check"></i>
+            <div>
+              <strong>Licensed partners</strong>
+              <span>Independent licensed lending partners</span>
+            </div>
+          </div>
+          <div class="hero-trust-item">
+            <i class="bi bi-shield-lock"></i>
+            <div>
+              <strong>Your data stays safe</strong>
+              <span>No bank passwords or card PINs required</span>
+            </div>
+          </div>
+          <div class="hero-trust-item">
+            <i class="bi bi-file-earmark-text"></i>
+            <div>
+              <strong>Transparent terms</strong>
+              <span>Every fee disclosed by the lender</span>
+            </div>
+          </div>
+          <div class="hero-trust-item">
+            <i class="bi bi-headset"></i>
+            <div>
+              <strong>Real support</strong>
+              <span>Consultants to answer your questions</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SERVICE EXPLAINER
+         ========================================================= -->
+    <section class="section bg-cream">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">What travel financing is</span>
+          <h2>Spread the cost of <em>eligible</em> travel.</h2>
+          <p>
+            Travel financing lets you pay for an eligible trip over an agreed period instead of paying
+            the full amount at once. Travelbookings does not lend money itself — we connect you with
+            independent licensed lending partners who assess your eligibility and set their own terms.
+          </p>
+        </div>
+
+        <div class="services-grid reveal">
+          <div class="service">
+            <span class="service-icon"><i class="bi bi-airplane"></i></span>
+            <h3>Eligible travel costs</h3>
+            <p>Flights, hotel stays and holiday packages booked through Travelbookings may qualify, subject to the partner's criteria.</p>
+          </div>
+          <div class="service">
+            <span class="service-icon"><i class="bi bi-calendar3"></i></span>
+            <h3>Flexible repayment periods</h3>
+            <p>Explore plans over 3, 6, 9 or 12 months. The final term is confirmed by the lending partner.</p>
+          </div>
+          <div class="service">
+            <span class="service-icon"><i class="bi bi-shield-check"></i></span>
+            <h3>Independent assessment</h3>
+            <p>Each partner carries out its own affordability and eligibility checks before deciding whether to offer terms.</p>
+          </div>
+          <div class="service">
+            <span class="service-icon"><i class="bi bi-file-earmark-lock"></i></span>
+            <h3>Your data stays safe</h3>
+            <p>We never ask for bank passwords, card PINs or online banking credentials. Ever.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         PROCESS
+         ========================================================= -->
+    <section class="section bg-cream-soft">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">How it works</span>
+          <h2>From estimate to <em>decision</em>.</h2>
+          <p>
+            A clear process with no surprises. The lending partner makes the final decision — we
+            simply help you get there.
+          </p>
+        </div>
+
+        <div class="steps-grid reveal">
+          <div class="step">
+            <span class="step-num-big">01</span>
+            <h3>Estimate your trip</h3>
+            <p>Use the calculator below to explore possible repayment scenarios for your travel budget.</p>
+          </div>
+          <div class="step">
+            <span class="step-num-big">02</span>
+            <h3>Submit an enquiry</h3>
+            <p>Share a few details about yourself, your trip and your preferred repayment period.</p>
+          </div>
+          <div class="step">
+            <span class="step-num-big">03</span>
+            <h3>Partner assessment</h3>
+            <p>An independent licensed lending partner reviews eligibility and affordability using its own criteria.</p>
+          </div>
+          <div class="step">
+            <span class="step-num-big">04</span>
+            <h3>Decision &amp; terms</h3>
+            <p>If approved, the partner sets the rate, term and repayment schedule directly with you.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         CALCULATOR
+         ========================================================= -->
+    <section class="section bg-cream" id="calculator">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Illustrative calculator</span>
+          <h2>Estimate your <em>repayments</em>.</h2>
+          <p>
+            Adjust your travel budget, repayment period and a hypothetical rate to see how equal
+            monthly instalments could look. These figures are illustrations only — not a loan offer.
+          </p>
+        </div>
+
+        <div class="calc-card reveal">
+          <div class="calc-inputs">
+            <h3>Your travel budget</h3>
+            <p class="hint">Enter the approximate total cost of your trip.</p>
+
+            <label class="calc-label" for="budgetInput">Estimated travel budget</label>
+            <div class="budget-field">
+              <span class="currency">₦</span>
+              <input type="number" id="budgetInput" min="100000" max="10000000" step="50000"
+                     value="750000" inputmode="numeric" aria-describedby="budgetHelp" />
+            </div>
+            <input type="range" class="calc-range" id="budgetRange" min="100000" max="10000000"
+                   step="50000" value="750000" aria-label="Estimated travel budget slider" />
+            <p class="form-hint" id="budgetHelp">Between ₦100,000 and ₦10,000,000.</p>
+
+            <label class="calc-label">Preferred repayment period</label>
+            <div class="period-buttons" role="group" aria-label="Repayment period">
+              <button type="button" class="period-btn" data-months="3">3 months</button>
+              <button type="button" class="period-btn active" data-months="6">6 months</button>
+              <button type="button" class="period-btn" data-months="9">9 months</button>
+              <button type="button" class="period-btn" data-months="12">12 months</button>
+            </div>
+
+            <label class="calc-label" for="rateRange">Illustrative annual rate</label>
+            <input type="range" class="calc-range" id="rateRange" min="0" max="30" step="0.5"
+                   value="15" aria-label="Illustrative annual rate" />
+            <div class="rate-readout">
+              <span class="value" id="rateValue">15%</span>
+              <p class="hint">Hypothetical — not an advertised rate</p>
+            </div>
+          </div>
+
+          <div class="calc-result">
+            <p class="result-eyebrow">Illustrative monthly instalment</p>
+            <div class="result-amount" id="resultMonthly">₦0</div>
+            <p class="result-sub" id="resultSub">Over 6 months at a hypothetical 15% annual rate</p>
+
+            <div class="result-divider"></div>
+
+            <div class="result-row">
+              <span>Amount financed</span>
+              <strong id="resultFinanced">₦0</strong>
+            </div>
+            <div class="result-row">
+              <span>Total repayable (illustration)</span>
+              <strong id="resultTotal">₦0</strong>
+            </div>
+            <div class="result-row">
+              <span>Illustrative cost of credit</span>
+              <strong id="resultCost">₦0</strong>
+            </div>
+
+            <p class="result-note">
+              <i class="bi bi-exclamation-circle"></i>
+              This is a hypothetical illustration for demonstration only. It is not a loan offer,
+              quote or approval. Travelbookings does not lend money and does not set, advertise or
+              guarantee interest rates. Actual terms are set by the independent licensed lending
+              partner after its own assessment.
+            </p>
+          </div>
+        </div>
+
+        <div class="calc-examples reveal">
+          <div class="examples-head">
+            <h3>Compare repayment periods</h3>
+            <p>
+              Illustration for a budget of <strong id="exampleBudget">₦0</strong> at a hypothetical
+              <strong id="exampleRate">15%</strong> annual rate.
+            </p>
+          </div>
+          <div class="table-responsive">
+            <table class="examples-table">
+              <thead>
+                <tr>
+                  <th scope="col">Repayment period</th>
+                  <th scope="col">Monthly instalment</th>
+                  <th scope="col">Total repayable</th>
+                  <th scope="col">Illustrative cost of credit</th>
+                </tr>
+              </thead>
+              <tbody id="examplesBody"></tbody>
+            </table>
+          </div>
+          <p class="examples-note">
+            <i class="bi bi-info-circle"></i>
+            All figures above are illustrations based on the assumptions you selected. They do not
+            represent an offer of credit and will not match the terms the lending partner may
+            ultimately provide.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         APPLICATION FORM
+         ========================================================= -->
+    <section class="section bg-cream-soft" id="apply">
+      <div class="container">
+        <div class="row g-4 g-lg-5">
+
+          <div class="col-lg-7">
+            <div class="apply-card reveal">
+              <span class="eyebrow no-after">Financing enquiry</span>
+              <h2>Start a travel financing enquiry</h2>
+              <p>
+                Tell us a little about yourself and your trip. A consultant will review your enquiry
+                and, with your consent, share it with an independent licensed lending partner for assessment.
+              </p>
+
+              <form id="applyForm" novalidate>
+
+                <div class="row g-3">
+
+                  <div class="col-md-6">
+                    <label class="form-label" for="fullName">Full name</label>
+                    <input type="text" class="form-control" id="fullName" autocomplete="name"
+                           placeholder="e.g. Adaeze Okonkwo" required />
+                    <div class="invalid-feedback">Please enter your full name.</div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="form-label" for="emailInput">Email address</label>
+                    <input type="email" class="form-control" id="emailInput" autocomplete="email"
+                           placeholder="you@example.com" required />
+                    <div class="invalid-feedback">Please enter a valid email address.</div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="form-label" for="phoneInput">Phone number</label>
+                    <input type="tel" class="form-control" id="phoneInput" autocomplete="tel"
+                           placeholder="+234 812 345 6789" required />
+                    <div class="invalid-feedback">Please enter a valid phone number (at least 7 digits).</div>
+                    <p class="form-hint">Include your country code. We use this to contact you about your enquiry.</p>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="form-label" for="countryInput">Country of residence</label>
+                    <select class="form-select" id="countryInput" required>
+                      <option value="" selected disabled>Select a country</option>
+                      <option value="Nigeria">Nigeria</option>
+                      <option value="Ghana">Ghana</option>
+                      <option value="Kenya">Kenya</option>
+                      <option value="South Africa">South Africa</option>
+                      <option value="United Kingdom">United Kingdom</option>
+                      <option value="United States">United States</option>
+                      <option value="Canada">Canada</option>
+                      <option value="United Arab Emirates">United Arab Emirates</option>
+                      <option value="Other">Other</option>
+                    </select>
+                    <div class="invalid-feedback">Please select your country of residence.</div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="form-label" for="travelCostInput">Estimated travel cost (₦)</label>
+                    <input type="number" class="form-control" id="travelCostInput"
+                           min="100000" max="10000000" step="50000" placeholder="750000" required />
+                    <div class="invalid-feedback">Please enter an estimated travel cost between ₦100,000 and ₦10,000,000.</div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="form-label" for="purposeInput">Purpose of travel</label>
+                    <select class="form-select" id="purposeInput" required>
+                      <option value="" selected disabled>Select a purpose</option>
+                      <option value="Leisure / holiday">Leisure / holiday</option>
+                      <option value="Business travel">Business travel</option>
+                      <option value="Visiting family">Visiting family</option>
+                      <option value="Education">Education</option>
+                      <option value="Medical travel">Medical travel</option>
+                      <option value="Pilgrimage">Pilgrimage</option>
+                      <option value="Other">Other</option>
+                    </select>
+                    <div class="invalid-feedback">Please select a purpose of travel.</div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="form-label" for="periodInput">Preferred repayment period</label>
+                    <select class="form-select" id="periodInput" required>
+                      <option value="" selected disabled>Select a period</option>
+                      <option value="3 months">3 months</option>
+                      <option value="6 months">6 months</option>
+                      <option value="9 months">9 months</option>
+                      <option value="12 months">12 months</option>
+                    </select>
+                    <div class="invalid-feedback">Please select a preferred repayment period.</div>
+                  </div>
+
+                </div>
+
+                <div class="consent-block">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="consentContact" />
+                    <label class="form-check-label" for="consentContact">
+                      I agree to be contacted by Travelbookings about this enquiry, and understand my
+                      enquiry may be shared with an independent licensed lending partner for assessment.
+                    </label>
+                    <div class="invalid-feedback">Please agree to be contacted about your enquiry.</div>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="consentUnderstand" />
+                    <label class="form-check-label" for="consentUnderstand">
+                      I understand this is an enquiry only — not a loan application, approval or offer
+                      of credit. Any financing is subject to the lending partner's eligibility
+                      assessment and approval.
+                    </label>
+                    <div class="invalid-feedback">Please confirm you understand this is an enquiry only.</div>
+                  </div>
+                </div>
+
+                <p class="security-note">
+                  <i class="bi bi-shield-lock"></i>
+                  Travelbookings will never ask for your bank password, card PIN, OTP or online banking
+                  login. If anyone requests these, do not share them.
+                </p>
+
+                <button type="submit" class="btn-lux btn-lux-navy" style="width:100%;justify-content:center;">
+                  Submit financing enquiry <i class="bi bi-arrow-right arrow"></i>
+                </button>
+
+                <div class="form-status" id="applyStatus" role="status" aria-live="polite"></div>
+              </form>
+            </div>
+          </div>
+
+          <div class="col-lg-5">
+            <aside class="apply-aside reveal">
+              <div class="aside-card">
+                <h3>What happens after you submit</h3>
+                <ol class="aside-steps">
+                  <li>
+                    <span class="num">1</span>
+                    <div>
+                      <strong>A consultant reviews your enquiry</strong>
+                      <span>We check that your details are complete and contact you if we need anything clarified.</span>
+                    </div>
+                  </li>
+                  <li>
+                    <span class="num">2</span>
+                    <div>
+                      <strong>Your enquiry is shared with a partner</strong>
+                      <span>With your consent, we pass your enquiry to an independent licensed lending partner.</span>
+                    </div>
+                  </li>
+                  <li>
+                    <span class="num">3</span>
+                    <div>
+                      <strong>The partner assesses eligibility</strong>
+                      <span>The partner runs its own affordability and eligibility checks using its own criteria.</span>
+                    </div>
+                  </li>
+                  <li>
+                    <span class="num">4</span>
+                    <div>
+                      <strong>You receive the partner's decision</strong>
+                      <span>If approved, the partner issues the loan terms directly to you. Travelbookings does not approve or decline applications.</span>
+                    </div>
+                  </li>
+                </ol>
+              </div>
+
+              <div class="aside-note">
+                <i class="bi bi-exclamation-triangle"></i>
+                <div>
+                  <strong>No guarantees</strong>
+                  <span>Submitting an enquiry does not guarantee approval. Eligibility, rates, fees and repayment terms are determined solely by the lending partner.</span>
+                </div>
+              </div>
+            </aside>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         REVIEW SCREEN
+         ========================================================= -->
+    <section class="section d-none" id="reviewSection">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+            <div class="review-card">
+              <span class="review-tag">
+                <i class="bi bi-eye"></i> Frontend preview — not submitted
+              </span>
+              <h2>Review your financing enquiry</h2>
+              <p>
+                Please check the details below. This is a preview of what would be sent — no enquiry
+                has been submitted and no lending partner has been contacted.
+              </p>
+
+              <div class="review-grid" id="reviewGrid"></div>
+
+              <div class="demo-banner">
+                <i class="bi bi-info-circle"></i>
+                <div>
+                  <strong>Demonstration only.</strong> Travelbookings is not a lender. This enquiry
+                  has not been sent anywhere, and no financing has been arranged or approved. Any
+                  future application would be assessed by an independent licensed lending partner.
+                </div>
+              </div>
+
+              <div class="next-steps">
+                <h3>What would happen next</h3>
+                <ol>
+                  <li>A consultant would review your enquiry and contact you if anything needs clarifying.</li>
+                  <li>With your consent, your enquiry would be shared with an independent licensed lending partner.</li>
+                  <li>The partner would assess your eligibility and affordability using its own criteria.</li>
+                  <li>If approved, the partner would issue the loan terms to you directly — Travelbookings does not approve or decline applications.</li>
+                </ol>
+              </div>
+
+              <div class="d-flex flex-wrap gap-2">
+                <button type="button" class="btn-lux btn-lux-navy" id="editBtn">
+                  Edit details <i class="bi bi-arrow-right arrow"></i>
+                </button>
+                <a href="#calculator" class="btn-lux btn-lux-ghost" id="doneBtn">
+                  Back to calculator
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         ELIGIBILITY
+         ========================================================= -->
+    <section class="section bg-cream" id="eligibility">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Eligibility</span>
+          <h2>What partners may <em>look for</em>.</h2>
+          <p>
+            Every lending partner sets its own criteria. The points below are typical considerations,
+            not guarantees of eligibility.
+          </p>
+        </div>
+
+        <div class="eligibility-grid reveal">
+          <div class="eligibility-card">
+            <span class="icon"><i class="bi bi-person-check"></i></span>
+            <h3>18 years or older</h3>
+            <p>You must be an adult in your country of residence.</p>
+          </div>
+          <div class="eligibility-card">
+            <span class="icon"><i class="bi bi-card-checklist"></i></span>
+            <h3>Valid government ID</h3>
+            <p>A national ID, passport or driving licence may be required.</p>
+          </div>
+          <div class="eligibility-card">
+            <span class="icon"><i class="bi bi-cash-stack"></i></span>
+            <h3>Verifiable income</h3>
+            <p>Proof that you can reasonably afford the repayments.</p>
+          </div>
+          <div class="eligibility-card">
+            <span class="icon"><i class="bi bi-geo-alt"></i></span>
+            <h3>Supported country</h3>
+            <p>Residency in a country where the lending partner operates.</p>
+          </div>
+        </div>
+
+        <div class="eligibility-note reveal">
+          <i class="bi bi-info-circle"></i>
+          <div>
+            Eligibility criteria, documentation requirements and affordability rules are set solely by
+            each independent licensed lending partner. Travelbookings does not decide who qualifies
+            for financing and does not guarantee that any enquiry will result in an approved loan.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         RESPONSIBLE BORROWING
+         ========================================================= -->
+    <section class="section responsible-section">
+      <div class="container">
+        <div class="row g-4 g-lg-5 align-items-center">
+
+          <div class="col-lg-6">
+            <div class="reveal">
+              <span class="eyebrow light no-after">Responsible borrowing</span>
+              <h2>Borrow only what you can <em>comfortably</em> repay.</h2>
+              <p class="responsible-lead">
+                Financing is a financial commitment. Before you consider any offer from a lending partner,
+                take time to understand the total cost and make sure the repayments fit comfortably within
+                your budget.
+              </p>
+
+              <ul class="responsible-list">
+                <li><i class="bi bi-check2"></i> Borrow only what you need for eligible travel costs.</li>
+                <li><i class="bi bi-check2"></i> Review the total amount repayable, not just the monthly instalment.</li>
+                <li><i class="bi bi-check2"></i> Make sure repayments fit your income and other commitments.</li>
+                <li><i class="bi bi-check2"></i> Missing payments can affect your credit record and may incur fees.</li>
+                <li><i class="bi bi-check2"></i> Contact the lending partner early if your circumstances change.</li>
+                <li><i class="bi bi-check2"></i> Consider saving first if you are not certain you can repay.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="responsible-callout reveal">
+              <h3>Who provides the financing?</h3>
+              <p>
+                Travelbookings is a travel agency, not a lender. Financing is provided by independent,
+                licensed lending partners who are solely responsible for assessing applications, setting
+                rates and fees, and issuing loan agreements. Your contract will be with the lending
+                partner, not with Travelbookings.
+              </p>
+              <p>
+                All financing is subject to the lending partner's eligibility assessment, affordability
+                checks and approval. Travelbookings does not approve, decline or guarantee any application
+                and does not receive or set the interest rate you are offered.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         FAQ
+         ========================================================= -->
+    <section class="section bg-cream-soft" id="faq">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Questions</span>
+          <h2>Frequently asked <em>questions</em>.</h2>
+          <p>Clear answers about how travel financing works and what to expect.</p>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+            <div class="accordion faq-accordion reveal" id="faqAccordion">
+
+              <div class="accordion-item">
+                <h3 class="accordion-header">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">
+                    Is this a loan offer?
+                  </button>
+                </h3>
+                <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    No. Nothing on this page is a loan offer, quote or promise of credit. The calculator
+                    produces hypothetical illustrations only, and submitting an enquiry does not create
+                    an application or a loan. Any actual offer would come directly from an independent
+                    licensed lending partner after its own assessment.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
+                    Who provides the financing?
+                  </button>
+                </h3>
+                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Financing is provided by independent, licensed lending partners. Travelbookings does
+                    not lend money, set interest rates or make approval decisions. Your loan agreement,
+                    if any, would be with the lending partner directly.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
+                    What travel costs can be financed?
+                  </button>
+                </h3>
+                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Eligible travel costs typically include flights, hotel stays and holiday packages
+                    booked through Travelbookings. Whether a specific expense qualifies is decided by the
+                    lending partner as part of its assessment.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">
+                    Are the rates shown on this page real?
+                  </button>
+                </h3>
+                <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    No. The rate in the calculator is a hypothetical value you can adjust to explore
+                    scenarios. It is not an advertised rate and does not represent any rate Travelbookings
+                    or its partners offer. Your actual rate, if approved, would be set by the lending
+                    partner based on its assessment.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#faq5" aria-expanded="false" aria-controls="faq5">
+                    Will submitting an enquiry affect my credit score?
+                  </button>
+                </h3>
+                <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    A Travelbookings enquiry itself does not affect your credit score. If your enquiry is
+                    shared with a lending partner, that partner will explain whether and when it performs
+                    a credit check, and what type of check it is, before proceeding.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#faq6" aria-expanded="false" aria-controls="faq6">
+                    Do you collect bank passwords or card PINs?
+                  </button>
+                </h3>
+                <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Never. Travelbookings will never ask for your bank password, card PIN, one-time
+                    password (OTP) or online banking login. If anyone requests these while claiming to
+                    represent Travelbookings, do not share them and contact us immediately.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#faq7" aria-expanded="false" aria-controls="faq7">
+                    What documents might I need?
+                  </button>
+                </h3>
+                <div id="faq7" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Document requirements are set by the lending partner. Typical examples include a
+                    government-issued ID and proof of income. The partner will tell you exactly what is
+                    needed if your enquiry progresses.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h3 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#faq8" aria-expanded="false" aria-controls="faq8">
+                    What happens if I miss a repayment?
+                  </button>
+                </h3>
+                <div id="faq8" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Missed repayments can lead to fees and may affect your credit record. If you think
+                    you may struggle to repay, contact the lending partner as early as possible to discuss
+                    your options. The consequences of missed payments will be set out in your loan
+                    agreement.
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         CTA
+         ========================================================= -->
+    <section class="section cta">
+      <div class="cta-inner reveal">
+        <span class="eyebrow light">Begin your journey</span>
+        <h2>Ready to explore your <em>options</em>?</h2>
+        <p>
+          Use the calculator to see how repayments could look, then submit an enquiry to be assessed
+          by an independent licensed lending partner.
+        </p>
+        <div class="cta-actions">
+          <a href="#calculator" class="btn-lux btn-lux-gold">
+            Try the calculator <i class="bi bi-arrow-right arrow"></i>
+          </a>
+          <a href="#apply" class="btn-lux btn-lux-outline-light">Start an enquiry</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================
+       FOOTER — matched to index.html
+       ========================================================= -->
+  <footer class="site-footer">
+    <div class="footer-watermark" aria-hidden="true"></div>
+
+    <div class="container footer-inner">
+      <div class="footer-grid">
+
+        <div>
+          <a class="footer-brand" href="/">
+            <span class="brand-mark"><i class="bi bi-airplane-engines"></i></span>
+            <span class="brand-name">Travel<em>bookings</em></span>
+          </a>
+          <p class="footer-about">
+            An online travel agency serving customers in Nigeria and internationally.
+            Flights, hotels, destination guides and travel financing — all in one place.
+          </p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" aria-label="X"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Travel</h4>
+          <ul class="footer-links">
+            <li><a href="/flights">Flights</a></li>
+            <li><a href="/hotels">Hotels</a></li>
+            <li><a href="/destinations">Destinations</a></li>
+            <li><a href="/financing">Travel financing</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Company</h4>
+          <ul class="footer-links">
+            <li><a href="/about">About us</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="manage-booking.html">Manage booking</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Get in touch</h4>
+          <div class="footer-contact">
+            <a href="tel:+2348080452890"><i class="bi bi-telephone"></i> 0808 045 2890</a>
+            <a href="mailto:info@travelbookings.ng"><i class="bi bi-envelope"></i> info@travelbookings.ng</a>
+          </div>
+
+          <div class="footer-newsletter">
+            <p>Join the letter — fare updates and travel notes.</p>
+            <form class="footer-newsletter-form" id="newsletterForm" novalidate>
+              <label class="visually-hidden" for="newsletterEmail">Email address</label>
+              <input type="email" id="newsletterEmail" placeholder="Your email address" required />
+              <button type="submit" aria-label="Subscribe">
+                <i class="bi bi-arrow-right"></i>
+              </button>
+            </form>
+            <div class="newsletter-status" id="newsletterStatus" role="status" aria-live="polite"></div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; <span data-year>2025</span> Travelbookings. All rights reserved.</p>
+        <ul class="footer-legal">
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="terms.html">Terms</a></li>
+          <li><a href="faq.html">Help</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    (function () {
+      'use strict';
+
+      /* =====================================================
+         1. HELPERS
+         ===================================================== */
+      function formatMoney(value) {
+        if (!isFinite(value)) { value = 0; }
+        return new Intl.NumberFormat('en-NG', {
+          style: 'currency',
+          currency: 'NGN',
+          maximumFractionDigits: 0
+        }).format(Math.round(value));
+      }
+      function clamp(v, min, max) { return Math.min(max, Math.max(min, v)); }
+      function monthlyInstalment(principal, annualRate, months) {
+        if (months <= 0) { return principal; }
+        var r = (annualRate / 100) / 12;
+        if (r === 0) { return principal / months; }
+        var factor = Math.pow(1 + r, months);
+        return principal * r * factor / (factor - 1);
+      }
+      function escapeHTML(str) {
+        return String(str).replace(/[&<>"']/g, function (ch) {
+          return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch];
+        });
+      }
+
+      /* =====================================================
+         2. STICKY HEADER
+         ===================================================== */
+      var header = document.getElementById('siteHeader');
+      if (header) {
+        var onScroll = function () {
+          header.classList.toggle('scrolled', window.scrollY > 8);
+        };
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+      }
+
+      /* =====================================================
+         3. MOBILE DRAWER
+         ===================================================== */
+      var toggle   = document.getElementById('mobileToggle');
+      var closeBtn = document.getElementById('mobileClose');
+      var drawer   = document.getElementById('mobileNav');
+      var overlay  = document.getElementById('mobileOverlay');
+
+      function openMobile() {
+        drawer.classList.add('open');
+        overlay.classList.add('show');
+        toggle.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeMobile() {
+        drawer.classList.remove('open');
+        overlay.classList.remove('show');
+        toggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+      if (toggle) toggle.addEventListener('click', openMobile);
+      if (closeBtn) closeBtn.addEventListener('click', closeMobile);
+      if (overlay) overlay.addEventListener('click', closeMobile);
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && drawer && drawer.classList.contains('open')) {
+          closeMobile();
+          toggle.focus();
+        }
+      });
+      document.querySelectorAll('#mobileNav .nav-link').forEach(function (link) {
+        link.addEventListener('click', closeMobile);
+      });
+
+      /* =====================================================
+         4. YEAR
+         ===================================================== */
+      document.querySelectorAll('[data-year]').forEach(function (node) {
+        node.textContent = new Date().getFullYear();
+      });
+
+      /* =====================================================
+         5. SCROLL REVEAL
+         ===================================================== */
+      var revealEls = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window && revealEls.length) {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+        revealEls.forEach(function (el) { observer.observe(el); });
+      } else {
+        revealEls.forEach(function (el) { el.classList.add('is-visible'); });
+      }
+
+      /* =====================================================
+         6. CALCULATOR
+         ===================================================== */
+      var calcState = { budget: 750000, months: 6, rate: 15 };
+
+      var els = {
+        budgetInput: document.getElementById('budgetInput'),
+        budgetRange: document.getElementById('budgetRange'),
+        rateRange:   document.getElementById('rateRange'),
+        rateValue:   document.getElementById('rateValue'),
+        periodButtons: Array.prototype.slice.call(document.querySelectorAll('.period-btn')),
+
+        resultMonthly:  document.getElementById('resultMonthly'),
+        resultSub:      document.getElementById('resultSub'),
+        resultFinanced: document.getElementById('resultFinanced'),
+        resultTotal:    document.getElementById('resultTotal'),
+        resultCost:     document.getElementById('resultCost'),
+
+        exampleBudget: document.getElementById('exampleBudget'),
+        exampleRate:   document.getElementById('exampleRate'),
+        examplesBody:  document.getElementById('examplesBody')
+      };
+
+      function renderCalculator() {
+        var P = calcState.budget;
+        var n = calcState.months;
+        var rate = calcState.rate;
+
+        var monthly = monthlyInstalment(P, rate, n);
+        var total = monthly * n;
+        var cost = total - P;
+
+        els.resultMonthly.textContent = formatMoney(monthly);
+        els.resultSub.textContent = 'Over ' + n + ' months at a hypothetical ' + rate + '% annual rate';
+        els.resultFinanced.textContent = formatMoney(P);
+        els.resultTotal.textContent = formatMoney(total);
+        els.resultCost.textContent = formatMoney(cost);
+
+        els.exampleBudget.textContent = formatMoney(P);
+        els.exampleRate.textContent = rate + '%';
+
+        els.examplesBody.innerHTML = [3, 6, 9, 12].map(function (months) {
+          var inst = monthlyInstalment(P, rate, months);
+          var tot = inst * months;
+          var c = tot - P;
+          return (
+            '<tr>' +
+              '<td>' + months + ' months</td>' +
+              '<td>' + formatMoney(inst) + '</td>' +
+              '<td>' + formatMoney(tot) + '</td>' +
+              '<td>' + formatMoney(c) + '</td>' +
+            '</tr>'
+          );
+        }).join('');
+      }
+
+      function setBudget(value) {
+        var clamped = clamp(Math.round(value / 50000) * 50000, 100000, 10000000);
+        calcState.budget = clamped;
+        els.budgetInput.value = String(clamped);
+        els.budgetRange.value = String(clamped);
+        renderCalculator();
+      }
+
+      els.budgetInput.addEventListener('input', function () {
+        var value = Number(els.budgetInput.value);
+        if (!isFinite(value)) { return; }
+        var clamped = clamp(value, 100000, 10000000);
+        calcState.budget = clamped;
+        els.budgetRange.value = String(clamped);
+        renderCalculator();
+      });
+      els.budgetInput.addEventListener('blur', function () {
+        var value = Number(els.budgetInput.value);
+        if (!isFinite(value) || value < 100000) { setBudget(100000); return; }
+        setBudget(value);
+      });
+      els.budgetRange.addEventListener('input', function () {
+        setBudget(Number(els.budgetRange.value));
+      });
+
+      els.periodButtons.forEach(function (button) {
+        button.addEventListener('click', function () {
+          calcState.months = Number(button.dataset.months);
+          els.periodButtons.forEach(function (b) {
+            b.classList.toggle('active', b === button);
+          });
+          renderCalculator();
+        });
+      });
+
+      els.rateRange.addEventListener('input', function () {
+        calcState.rate = Number(els.rateRange.value);
+        els.rateValue.textContent = calcState.rate + '%';
+        renderCalculator();
+      });
+
+      renderCalculator();
+
+      /* =====================================================
+         7. FORM VALIDATION
+         ===================================================== */
+      var applyForm  = document.getElementById('applyForm');
+      var applyStatus = document.getElementById('applyStatus');
+
+      var formFields = {
+        fullName: document.getElementById('fullName'),
+        email:    document.getElementById('emailInput'),
+        phone:    document.getElementById('phoneInput'),
+        country:  document.getElementById('countryInput'),
+        travelCost: document.getElementById('travelCostInput'),
+        purpose:  document.getElementById('purposeInput'),
+        period:   document.getElementById('periodInput'),
+        consentContact:    document.getElementById('consentContact'),
+        consentUnderstand: document.getElementById('consentUnderstand')
+      };
+
+      function setInvalid(field) { field.classList.add('is-invalid'); }
+      function setValid(field)   { field.classList.remove('is-invalid'); }
+
+      function clearAllErrors() {
+        Object.keys(formFields).forEach(function (k) { setValid(formFields[k]); });
+      }
+      function validateEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v); }
+      function validatePhone(v) { return v.replace(/\D/g, '').length >= 7; }
+
+      function showStatus(message, type) {
+        applyStatus.textContent = message;
+        applyStatus.className = 'form-status show ' + type;
+      }
+      function clearStatus() {
+        applyStatus.textContent = '';
+        applyStatus.className = 'form-status';
+      }
+
+      applyForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        clearStatus();
+        clearAllErrors();
+
+        var errors = [];
+        var firstInvalid = null;
+
+        var nameValue = formFields.fullName.value.trim();
+        if (nameValue.length < 2) {
+          setInvalid(formFields.fullName);
+          errors.push('name');
+          firstInvalid = firstInvalid || formFields.fullName;
+        }
+        var emailValue = formFields.email.value.trim();
+        if (!validateEmail(emailValue)) {
+          setInvalid(formFields.email);
+          errors.push('email');
+          firstInvalid = firstInvalid || formFields.email;
+        }
+        var phoneValue = formFields.phone.value.trim();
+        if (!validatePhone(phoneValue)) {
+          setInvalid(formFields.phone);
+          errors.push('phone');
+          firstInvalid = firstInvalid || formFields.phone;
+        }
+        if (!formFields.country.value) {
+          setInvalid(formFields.country);
+          errors.push('country');
+          firstInvalid = firstInvalid || formFields.country;
+        }
+        var costValue = Number(formFields.travelCost.value);
+        if (!isFinite(costValue) || costValue < 100000 || costValue > 10000000) {
+          setInvalid(formFields.travelCost);
+          errors.push('travelCost');
+          firstInvalid = firstInvalid || formFields.travelCost;
+        }
+        if (!formFields.purpose.value) {
+          setInvalid(formFields.purpose);
+          errors.push('purpose');
+          firstInvalid = firstInvalid || formFields.purpose;
+        }
+        if (!formFields.period.value) {
+          setInvalid(formFields.period);
+          errors.push('period');
+          firstInvalid = firstInvalid || formFields.period;
+        }
+        if (!formFields.consentContact.checked) {
+          setInvalid(formFields.consentContact);
+          errors.push('consent');
+          firstInvalid = firstInvalid || formFields.consentContact;
+        }
+        if (!formFields.consentUnderstand.checked) {
+          setInvalid(formFields.consentUnderstand);
+          errors.push('consent');
+          firstInvalid = firstInvalid || formFields.consentUnderstand;
+        }
+
+        if (errors.length) {
+          showStatus(
+            'Please correct the highlighted field' + (errors.length > 1 ? 's' : '') + ' before continuing.',
+            'error'
+          );
+          if (firstInvalid) {
+            firstInvalid.focus();
+            firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+          return;
+        }
+
+        buildReview({
+          fullName: nameValue,
+          email: emailValue,
+          phone: phoneValue,
+          country: formFields.country.value,
+          travelCost: costValue,
+          purpose: formFields.purpose.value,
+          period: formFields.period.value
+        });
+      });
+
+      Object.keys(formFields).forEach(function (key) {
+        var field = formFields[key];
+        var eventName = (field.type === 'checkbox' || field.tagName === 'SELECT') ? 'change' : 'input';
+        field.addEventListener(eventName, function () { field.classList.remove('is-invalid'); });
+      });
+
+      /* =====================================================
+         8. REVIEW SCREEN
+         ===================================================== */
+      var applySection  = document.getElementById('apply');
+      var reviewSection = document.getElementById('reviewSection');
+      var reviewGrid    = document.getElementById('reviewGrid');
+      var editBtn       = document.getElementById('editBtn');
+
+      function buildReview(data) {
+        var summary = [
+          { label: 'Full name',  value: data.fullName },
+          { label: 'Email address', value: data.email },
+          { label: 'Phone number',  value: data.phone },
+          { label: 'Country of residence', value: data.country },
+          { label: 'Estimated travel cost', value: formatMoney(data.travelCost) },
+          { label: 'Purpose of travel', value: data.purpose },
+          { label: 'Preferred repayment period', value: data.period }
+        ];
+        reviewGrid.innerHTML = summary.map(function (item) {
+          return (
+            '<div class="detail-item">' +
+              '<span>' + escapeHTML(item.label) + '</span>' +
+              '<strong>' + escapeHTML(item.value) + '</strong>' +
+            '</div>'
+          );
+        }).join('');
+
+        applySection.classList.add('d-none');
+        reviewSection.classList.remove('d-none');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      function returnToForm() {
+        reviewSection.classList.add('d-none');
+        applySection.classList.remove('d-none');
+        applySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      editBtn.addEventListener('click', returnToForm);
+
+      /* =====================================================
+         9. NEWSLETTER
+         ===================================================== */
+      var newsletterForm = document.getElementById('newsletterForm');
+      var newsletterStatus = document.getElementById('newsletterStatus');
+      if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function (event) {
+          event.preventDefault();
+          var email = document.getElementById('newsletterEmail').value.trim();
+          var pattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+          if (!pattern.test(email)) {
+            newsletterStatus.textContent = 'Please enter a valid email address.';
+            newsletterStatus.className = 'newsletter-status show error';
+            return;
+          }
+          newsletterStatus.textContent = 'Thank you — please check ' + email + ' to confirm.';
+          newsletterStatus.className = 'newsletter-status show success';
+          newsletterForm.reset();
+        });
+      }
+
+    })();
+  </script>
+</body>
+</html>
