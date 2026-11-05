@@ -552,6 +552,272 @@
     }
 
     /* Floating Status Badge */
+    
+    /* =======================================================
+       HERO CINEMATIC IMAGE SLIDER & THUMBNAIL SHOWCASE
+       ======================================================= */
+    .hero-slider-stage {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 1.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 1.3s;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .hero-slide.active {
+      opacity: 1;
+      visibility: visible;
+      z-index: 2;
+    }
+
+    .hero-slide-media {
+      position: absolute;
+      inset: -4%;
+      width: 108%;
+      height: 108%;
+      object-fit: cover;
+      object-position: center;
+      transform: scale(1);
+      transition: transform 8s cubic-bezier(0.25, 1, 0.5, 1);
+      filter: brightness(0.85) contrast(1.08);
+      will-change: transform;
+    }
+
+    .hero-slide.active .hero-slide-media {
+      transform: scale(1.08);
+    }
+
+    /* Dual Scrim / Vignette on each slide for flawless text contrast */
+    .hero-slide-overlay {
+      position: absolute;
+      inset: 0;
+      background: 
+        linear-gradient(180deg, 
+          rgba(3, 8, 19, 0.78) 0%, 
+          rgba(6, 17, 38, 0.52) 32%, 
+          rgba(6, 17, 38, 0.68) 68%, 
+          rgba(3, 8, 19, 0.96) 100%),
+        radial-gradient(ellipse at 50% 35%, 
+          rgba(11, 30, 61, 0.35) 0%, 
+          rgba(3, 8, 19, 0.92) 100%);
+    }
+
+    /* Interactive Slide Navigation Chevrons */
+    .hero-slide-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(3, 8, 19, 0.55);
+      border: 1px solid rgba(201, 165, 91, 0.4);
+      color: #fdfbf6;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 6;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      transition: all .3s cubic-bezier(0.2, 0.8, 0.2, 1);
+      font-size: 18px;
+      padding: 0;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+    .hero-slide-nav:hover {
+      background: rgba(201, 165, 91, 0.35);
+      border-color: #c9a55b;
+      color: #fff;
+      box-shadow: 0 0 25px rgba(201, 165, 91, 0.45);
+      transform: translateY(-50%) scale(1.1);
+    }
+    .hero-slide-prev { left: clamp(14px, 2.5vw, 36px); }
+    .hero-slide-next { right: clamp(14px, 2.5vw, 36px); }
+
+    /* Hero Slide Thumbnail Showcase Bar */
+    .hero-slide-thumbs-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 32px;
+      position: relative;
+      z-index: 4;
+      padding: 0 16px;
+    }
+    .hero-slide-thumbs {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px;
+      background: rgba(3, 8, 19, 0.6);
+      border: 1px solid rgba(201, 165, 91, 0.32);
+      border-radius: 100px;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      max-width: 100%;
+      overflow-x: auto;
+      scrollbar-width: none;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+    .hero-slide-thumbs::-webkit-scrollbar { display: none; }
+
+    .hero-thumb-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 14px 5px 6px;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 100px;
+      color: rgba(253, 251, 246, 0.75);
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+      transition: all .3s cubic-bezier(0.2, 0.8, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .hero-thumb-btn .thumb-img {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background-size: cover;
+      background-position: center;
+      border: 1px solid rgba(201, 165, 91, 0.45);
+      flex-shrink: 0;
+    }
+    .hero-thumb-btn .thumb-meta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .08em;
+    }
+    .hero-thumb-btn .thumb-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 12px;
+      color: #c9a55b;
+      font-weight: 600;
+    }
+    .hero-thumb-btn:hover {
+      background: rgba(253, 251, 246, 0.08);
+      color: #fff;
+      border-color: rgba(201, 165, 91, 0.4);
+    }
+    .hero-thumb-btn.active {
+      background: rgba(201, 165, 91, 0.18);
+      border-color: #c9a55b;
+      color: #fdfbf6;
+      box-shadow: 0 2px 14px rgba(201, 165, 91, 0.28);
+    }
+    .hero-thumb-btn .thumb-progress {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 2px;
+      background: #c9a55b;
+      width: 0%;
+      border-radius: 2px;
+    }
+    .hero-thumb-btn.active .thumb-progress {
+      animation: thumbTimer 6s linear infinite;
+    }
+    @keyframes thumbTimer {
+      0% { width: 0%; }
+      100% { width: 100%; }
+    }
+
+    /* Floating Story Caption Badge (Interactive) */
+    .hero-story-wrap {
+      display: flex;
+      justify-content: center;
+      margin-top: 18px;
+      position: relative;
+      z-index: 4;
+      padding: 0 16px;
+    }
+    .hero-story-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      padding: 8px 20px;
+      background: rgba(3, 8, 19, 0.7);
+      border: 1px solid rgba(201, 165, 91, 0.35);
+      border-radius: 100px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      cursor: pointer;
+      transition: all .3s cubic-bezier(0.2, 0.8, 0.2, 1);
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+    }
+    .hero-story-badge:hover {
+      background: rgba(11, 30, 61, 0.9);
+      border-color: #c9a55b;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(201, 165, 91, 0.28);
+    }
+    .hero-story-pin {
+      color: #c9a55b;
+      font-size: 14px;
+    }
+    .hero-story-meta {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+    .hero-story-meta strong {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: #fdfbf6;
+      line-height: 1.2;
+      letter-spacing: .02em;
+    }
+    .hero-story-meta span {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10.5px;
+      color: #c9a55b;
+      letter-spacing: .06em;
+    }
+    .hero-story-cta {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: #e8d9b3;
+      margin-left: 6px;
+      padding: 4px 10px;
+      background: rgba(201, 165, 91, 0.16);
+      border-radius: 100px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: background-color .2s ease;
+    }
+    .hero-story-badge:hover .hero-story-cta {
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    @media (max-width: 767.98px) {
+      .hero-slide-nav { display: none; }
+      .hero-slide-thumbs { max-width: 100%; border-radius: 16px; }
+      .hero-story-badge { flex-wrap: wrap; justify-content: center; text-align: center; border-radius: 16px; padding: 10px 16px; }
+      .hero-story-meta { align-items: center; text-align: center; }
+    }
+
     .hero-orbit-badge {
       display: inline-flex;
       align-items: center;
@@ -1969,10 +2235,47 @@
 
   <main id="main">
 
-        <!-- =========================================================
-         HERO COSMOS — OUT OF THIS WORLD LUXURY
+            <!-- =========================================================
+         HERO COSMOS — OUT OF THIS WORLD LUXURY WITH IMAGE SLIDES
          ========================================================= -->
-    <section class="hero-cosmos">
+    <section class="hero-cosmos" id="heroCosmos">
+      <!-- CINEMATIC BACKGROUND SLIDER STAGE -->
+      <div class="hero-slider-stage" id="heroSliderStage" aria-hidden="true">
+        <!-- Slide 1: Maldives -->
+        <div class="hero-slide active" data-slide="0" data-city="Maldives (MLE)" data-title="Soneva Jani · Maldives" data-meta="Overwater Lagoon Sanctuary · From ₦1,850,000">
+          <img class="hero-slide-media" src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=2000&q=85" alt="Maldives Overwater Resort" loading="eager" />
+          <div class="hero-slide-overlay"></div>
+        </div>
+        <!-- Slide 2: Private Aviation -->
+        <div class="hero-slide" data-slide="1" data-city="London (LHR)" data-title="First Suites & Skyway · London" data-meta="Transcontinental Non-Stop · From ₦1,150,000">
+          <img class="hero-slide-media" src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=2000&q=85" alt="First Class Private Aviation" loading="lazy" />
+          <div class="hero-slide-overlay"></div>
+        </div>
+        <!-- Slide 3: Santorini -->
+        <div class="hero-slide" data-slide="2" data-city="Paris (CDG)" data-title="Oia Cliffside Sanctuary · Santorini" data-meta="Aegean Caldera Panoramas · From ₦980,000">
+          <img class="hero-slide-media" src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=2000&q=85" alt="Santorini Cliffside Luxury" loading="lazy" />
+          <div class="hero-slide-overlay"></div>
+        </div>
+        <!-- Slide 4: Dubai -->
+        <div class="hero-slide" data-slide="3" data-city="Dubai (DXB)" data-title="The Royal Atlantis · Dubai" data-meta="Iconic Skyline & Marina · From ₦820,000">
+          <img class="hero-slide-media" src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=2000&q=85" alt="Dubai Luxury Skyline" loading="lazy" />
+          <div class="hero-slide-overlay"></div>
+        </div>
+        <!-- Slide 5: Swiss Alps -->
+        <div class="hero-slide" data-slide="4" data-city="Cape Town (CPT)" data-title="Matterhorn Chalets · Zermatt" data-meta="Snowcapped Alpine Solitude · From ₦1,420,000">
+          <img class="hero-slide-media" src="https://images.unsplash.com/photo-1502784444187-359ac186c5bb?auto=format&fit=crop&w=2000&q=85" alt="Swiss Alps Luxury Chalet" loading="lazy" />
+          <div class="hero-slide-overlay"></div>
+        </div>
+      </div>
+
+      <!-- Slide Nav Chevrons (Desktop) -->
+      <button type="button" class="hero-slide-nav hero-slide-prev" id="heroPrevBtn" aria-label="Previous Slide">
+        <i class="bi bi-chevron-left"></i>
+      </button>
+      <button type="button" class="hero-slide-nav hero-slide-next" id="heroNextBtn" aria-label="Next Slide">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+
       <!-- Floating 3D Micro-Cards on the sides (visible on desktop) -->
       <div class="hero-floating-card left">
         <span class="card-icon"><i class="bi bi-airplane-fill"></i></span>
@@ -2019,6 +2322,65 @@
           <button type="button" class="hero-chip-btn" data-city="Cape Town (CPT)"><i class="bi bi-geo-alt"></i> Cape Town</button>
           <button type="button" class="hero-chip-btn" data-city="Zanzibar (ZNZ)"><i class="bi bi-geo-alt"></i> Zanzibar</button>
         </div>
+
+        <!-- HERO IMAGE SLIDES THUMBNAIL SHOWCASE BAR -->
+        <div class="hero-slide-thumbs-container">
+          <div class="hero-slide-thumbs" id="heroSlideThumbs" role="tablist" aria-label="Hero Image Slides">
+            <button type="button" class="hero-thumb-btn active" data-slide-target="0" role="tab" aria-selected="true">
+              <span class="thumb-img" style="background-image: url('https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=120&q=80');"></span>
+              <span class="thumb-meta">
+                <span class="thumb-num">01</span>
+                <span class="thumb-name">Maldives</span>
+              </span>
+              <span class="thumb-progress"></span>
+            </button>
+            <button type="button" class="hero-thumb-btn" data-slide-target="1" role="tab" aria-selected="false">
+              <span class="thumb-img" style="background-image: url('https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=120&q=80');"></span>
+              <span class="thumb-meta">
+                <span class="thumb-num">02</span>
+                <span class="thumb-name">Private Jet</span>
+              </span>
+              <span class="thumb-progress"></span>
+            </button>
+            <button type="button" class="hero-thumb-btn" data-slide-target="2" role="tab" aria-selected="false">
+              <span class="thumb-img" style="background-image: url('https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=120&q=80');"></span>
+              <span class="thumb-meta">
+                <span class="thumb-num">03</span>
+                <span class="thumb-name">Santorini</span>
+              </span>
+              <span class="thumb-progress"></span>
+            </button>
+            <button type="button" class="hero-thumb-btn" data-slide-target="3" role="tab" aria-selected="false">
+              <span class="thumb-img" style="background-image: url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=120&q=80');"></span>
+              <span class="thumb-meta">
+                <span class="thumb-num">04</span>
+                <span class="thumb-name">Dubai</span>
+              </span>
+              <span class="thumb-progress"></span>
+            </button>
+            <button type="button" class="hero-thumb-btn" data-slide-target="4" role="tab" aria-selected="false">
+              <span class="thumb-img" style="background-image: url('https://images.unsplash.com/photo-1502784444187-359ac186c5bb?auto=format&fit=crop&w=120&q=80');"></span>
+              <span class="thumb-meta">
+                <span class="thumb-num">05</span>
+                <span class="thumb-name">Swiss Alps</span>
+              </span>
+              <span class="thumb-progress"></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- FLOATING STORY CAPTION BADGE (Interactive & click to prefill search) -->
+        <div class="hero-story-wrap">
+          <div class="hero-story-badge" id="heroStoryBadge" title="Click to search this destination">
+            <span class="hero-story-pin"><i class="bi bi-geo-alt-fill"></i></span>
+            <div class="hero-story-meta">
+              <strong id="heroStoryTitle">Soneva Jani · Maldives</strong>
+              <span id="heroStoryMeta">Overwater Lagoon Sanctuary · From ₦1,850,000</span>
+            </div>
+            <span class="hero-story-cta"><i class="bi bi-arrow-down-short"></i> Book voyage</span>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -3057,6 +3419,152 @@
       }
 
     
+      
+      /* =====================================================
+         HERO CINEMATIC IMAGE SLIDER CONTROLLER
+         ===================================================== */
+      (function initHeroSlider() {
+        var slides = document.querySelectorAll('.hero-slide');
+        var thumbs = document.querySelectorAll('.hero-thumb-btn');
+        var prevBtn = document.getElementById('heroPrevBtn');
+        var nextBtn = document.getElementById('heroNextBtn');
+        var storyBadge = document.getElementById('heroStoryBadge');
+        var storyTitle = document.getElementById('heroStoryTitle');
+        var storyMeta = document.getElementById('heroStoryMeta');
+        var heroEl = document.getElementById('heroCosmos');
+        var currentIndex = 0;
+        var slideInterval = null;
+        var duration = 6000;
+
+        if (!slides.length) return;
+
+        function goToSlide(index) {
+          if (index < 0) index = slides.length - 1;
+          if (index >= slides.length) index = 0;
+          currentIndex = index;
+
+          slides.forEach(function (slide, idx) {
+            slide.classList.toggle('active', idx === currentIndex);
+          });
+
+          thumbs.forEach(function (thumb, idx) {
+            var isActive = idx === currentIndex;
+            thumb.classList.toggle('active', isActive);
+            thumb.setAttribute('aria-selected', isActive ? 'true' : 'false');
+            var progress = thumb.querySelector('.thumb-progress');
+            if (progress) {
+              progress.style.animation = 'none';
+              if (isActive) {
+                // force reflow to restart css animation
+                void progress.offsetWidth;
+                progress.style.animation = 'thumbTimer 6s linear infinite';
+              }
+            }
+          });
+
+          var activeSlide = slides[currentIndex];
+          if (activeSlide && storyTitle && storyMeta) {
+            var title = activeSlide.getAttribute('data-title');
+            var meta = activeSlide.getAttribute('data-meta');
+            if (title) storyTitle.textContent = title;
+            if (meta) storyMeta.textContent = meta;
+          }
+        }
+
+        function startAutoPlay() {
+          stopAutoPlay();
+          slideInterval = setInterval(function () {
+            goToSlide(currentIndex + 1);
+          }, duration);
+        }
+
+        function stopAutoPlay() {
+          if (slideInterval) {
+            clearInterval(slideInterval);
+            slideInterval = null;
+          }
+        }
+
+        // Thumbnails click
+        thumbs.forEach(function (thumb) {
+          thumb.addEventListener('click', function () {
+            var targetIdx = parseInt(thumb.getAttribute('data-slide-target'), 10);
+            if (!isNaN(targetIdx)) {
+              goToSlide(targetIdx);
+              startAutoPlay();
+            }
+          });
+        });
+
+        // Prev & Next Buttons
+        if (prevBtn) {
+          prevBtn.addEventListener('click', function () {
+            goToSlide(currentIndex - 1);
+            startAutoPlay();
+          });
+        }
+        if (nextBtn) {
+          nextBtn.addEventListener('click', function () {
+            goToSlide(currentIndex + 1);
+            startAutoPlay();
+          });
+        }
+
+        // Story Badge click -> prefill destination and scroll to search
+        if (storyBadge) {
+          storyBadge.addEventListener('click', function () {
+            var activeSlide = slides[currentIndex];
+            if (activeSlide) {
+              var city = activeSlide.getAttribute('data-city');
+              var flightTo = document.getElementById('flightTo');
+              var hotelDest = document.getElementById('hotelDestination');
+              if (city) {
+                if (flightTo) flightTo.value = city;
+                if (hotelDest) hotelDest.value = city;
+              }
+              var searchEl = document.getElementById('search');
+              if (searchEl) {
+                searchEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              }
+            }
+          });
+        }
+
+        // Pause on hover
+        if (heroEl) {
+          heroEl.addEventListener('mouseenter', stopAutoPlay);
+          heroEl.addEventListener('mouseleave', startAutoPlay);
+        }
+
+        // Touch swipe support for mobile
+        var touchStartX = 0;
+        var touchEndX = 0;
+        if (heroEl) {
+          heroEl.addEventListener('touchstart', function (e) {
+            if (e.changedTouches && e.changedTouches[0]) {
+              touchStartX = e.changedTouches[0].screenX;
+            }
+          }, { passive: true });
+          heroEl.addEventListener('touchend', function (e) {
+            if (e.changedTouches && e.changedTouches[0]) {
+              touchEndX = e.changedTouches[0].screenX;
+              if (touchStartX - touchEndX > 50) {
+                // swipe left -> next
+                goToSlide(currentIndex + 1);
+                startAutoPlay();
+              } else if (touchEndX - touchStartX > 50) {
+                // swipe right -> prev
+                goToSlide(currentIndex - 1);
+                startAutoPlay();
+              }
+            }
+          }, { passive: true });
+        }
+
+        // Start autoplay
+        startAutoPlay();
+      })();
+
       /* =====================================================
          HERO FAST DESTINATION CHIPS
          ===================================================== */
