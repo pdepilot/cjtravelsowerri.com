@@ -493,268 +493,497 @@
     }
     .mobile-nav-footer a i { color: var(--gold); }
 
+    
     /* =======================================================
-       HERO
+       OUT-OF-THIS-WORLD LUXURY HERO & SEARCH TERMINAL
        ======================================================= */
-    .hero {
-      background: var(--cream);
-      padding: clamp(64px, 9vw, 120px) 0 clamp(80px, 10vw, 120px);
+    .hero-cosmos {
       position: relative;
+      background: radial-gradient(circle at 50% -10%, #152e59 0%, #08152b 45%, #030813 100%);
+      color: #fdfbf6;
+      padding: clamp(60px, 8vw, 110px) 0 clamp(90px, 12vw, 145px);
       overflow: hidden;
-    }
-    .hero-content {
-      max-width: 780px;
-      margin: 0 auto;
-      text-align: center;
-      padding: 0 24px;
-    }
-    .hero h1 {
-      font-size: clamp(2.6rem, 7vw, 5.5rem);
-      line-height: .98;
-      letter-spacing: -.025em;
-      margin-bottom: 28px;
-      color: var(--navy);
-    }
-    .hero h1 em {
-      font-style: italic;
-      color: var(--gold);
-      font-weight: 400;
-    }
-    .hero-sub {
-      font-size: clamp(15px, 1.5vw, 17px);
-      color: var(--ink-soft);
-      max-width: 56ch;
-      margin: 0 auto 40px;
-      line-height: 1.7;
-    }
-    .hero-actions {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
+      isolation: isolate;
     }
 
-    .hero-image-wrap {
-      margin-top: clamp(48px, 6vw, 80px);
-      padding: 0 24px;
+    /* Ambient Cosmic Glows */
+    .hero-cosmos::before {
+      content: "";
+      position: absolute;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: clamp(600px, 80vw, 1200px);
+      height: 600px;
+      background: radial-gradient(ellipse, rgba(201, 165, 91, 0.22) 0%, rgba(30, 70, 130, 0.28) 40%, transparent 75%);
+      filter: blur(80px);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+      animation: pulseAura 12s ease-in-out infinite alternate;
     }
-    .hero-image-card {
-      position: relative;
-      max-width: 1200px;
-      margin: 0 auto;
-      aspect-ratio: 21 / 9;
-      border-radius: 2px;
-      overflow: hidden;
-    }
-    .hero-image-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .hero-image-card::after {
+
+    .hero-cosmos::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(11, 30, 61, .05) 0%, rgba(11, 30, 61, .25) 100%);
+      background-image: 
+        radial-gradient(1px 1px at 20px 30px, rgba(201, 165, 91, 0.65), transparent),
+        radial-gradient(1.5px 1.5px at 150px 120px, rgba(253, 251, 246, 0.85), transparent),
+        radial-gradient(1px 1px at 320px 240px, rgba(201, 165, 91, 0.55), transparent),
+        radial-gradient(1.2px 1.2px at 450px 80px, rgba(253, 251, 246, 0.75), transparent),
+        radial-gradient(1px 1px at 620px 180px, rgba(201, 165, 91, 0.55), transparent),
+        radial-gradient(1.5px 1.5px at 800px 260px, rgba(253, 251, 246, 0.8), transparent),
+        radial-gradient(1px 1px at 980px 110px, rgba(201, 165, 91, 0.65), transparent);
+      background-size: 1100px 360px;
+      opacity: 0.65;
       pointer-events: none;
-    }
-    .hero-image-badge {
-      position: absolute;
-      left: 32px;
-      bottom: 32px;
-      z-index: 2;
-      display: inline-flex;
-      align-items: center;
-      gap: 14px;
-      background: rgba(253, 251, 246, .94);
-      backdrop-filter: blur(10px);
-      padding: 14px 22px;
-      border-radius: 2px;
-    }
-    .hero-image-badge i { color: var(--gold); font-size: 18px; }
-    .hero-image-badge span {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 15px;
-      color: var(--navy);
-      letter-spacing: .01em;
-    }
-    .hero-image-badge span em { font-style: italic; color: var(--gold); }
-
-    @media (max-width: 767.98px) {
-      .hero-image-card { aspect-ratio: 4 / 3; }
-      .hero-image-badge { left: 16px; bottom: 16px; padding: 10px 16px; }
-      .hero-image-badge span { font-size: 13px; }
+      z-index: 0;
     }
 
-    /* =======================================================
-       SEARCH PANEL (floating below hero image)
-       ======================================================= */
-    .search-wrap {
-      margin-top: -60px;
+    @keyframes pulseAura {
+      0% { transform: translateX(-50%) scale(0.95); opacity: 0.75; }
+      100% { transform: translateX(-50%) scale(1.15); opacity: 1; }
+    }
+
+    .hero-cosmos .container {
       position: relative;
-      z-index: 5;
-      padding: 0 24px;
-    }
-    .search-card {
-      max-width: 1100px;
-      margin: 0 auto;
-      background: var(--ivory);
-      border: 1px solid var(--hairline);
-      border-radius: 2px;
-      padding: 40px 40px 36px;
+      z-index: 2;
     }
 
-    .search-tabs {
-      display: flex;
-      gap: 0;
-      border-bottom: 1px solid var(--hairline-soft);
-      margin-bottom: 32px;
-    }
-    .search-tabs button {
-      background: transparent;
-      border: 0;
-      border-bottom: 2px solid transparent;
-      padding: 14px 24px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: var(--muted);
-      cursor: pointer;
-      transition: all .25s ease;
-      margin-bottom: -1px;
+    /* Floating Status Badge */
+    .hero-orbit-badge {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-    }
-    .search-tabs button i { font-size: 13px; }
-    .search-tabs button:hover { color: var(--navy); }
-    .search-tabs button.active {
-      color: var(--navy);
-      border-bottom-color: var(--gold);
-    }
-
-    .search-form .form-label {
-      display: block;
+      padding: 8px 18px;
+      background: rgba(253, 251, 246, 0.08);
+      border: 1px solid rgba(201, 165, 91, 0.38);
+      border-radius: 100px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       font-family: 'DM Sans', sans-serif;
-      font-size: 10px;
+      font-size: 11px;
       font-weight: 600;
-      letter-spacing: .22em;
+      letter-spacing: .24em;
       text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 10px;
+      color: #e8d9b3;
+      margin-bottom: 26px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
     }
-    .search-form .field {
-      position: relative;
-    }
-    .search-form .field > i {
-      position: absolute;
-      left: 14px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--gold);
-      font-size: 13px;
-      pointer-events: none;
-    }
-    .search-form .form-control,
-    .search-form .form-select {
-      width: 100%;
-      height: 52px;
-      background: transparent;
-      border: 1px solid var(--hairline);
-      border-radius: 2px;
-      padding: 0 16px 0 40px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      font-weight: 400;
-      color: var(--navy);
-      transition: border-color .25s ease, background-color .25s ease;
-      appearance: none;
-      -webkit-appearance: none;
-    }
-    .search-form .form-select {
-      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238a8378' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 12px center;
-      background-size: 12px;
-      padding-right: 36px;
-    }
-    .search-form .form-control::placeholder { color: var(--muted); font-weight: 400; }
-    .search-form .form-control:hover,
-    .search-form .form-select:hover { border-color: var(--gold-pale); }
-    .search-form .form-control:focus,
-    .search-form .form-select:focus {
-      outline: none;
-      border-color: var(--navy);
-      background: #fff;
-    }
-
-    .swap-btn {
-      position: absolute;
-      right: -18px;
-      top: 42px;
-      width: 36px;
-      height: 36px;
+    .hero-orbit-badge .beacon {
+      width: 8px;
+      height: 8px;
+      background: #2e7d5b;
       border-radius: 50%;
-      background: var(--ivory);
-      border: 1px solid var(--hairline);
-      color: var(--navy);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 3;
-      transition: all .25s ease;
+      box-shadow: 0 0 0 3px rgba(46, 125, 91, 0.35);
+      animation: beaconPulse 2s infinite;
     }
-    .swap-btn:hover { background: var(--navy); color: var(--ivory); border-color: var(--navy); }
-    .swap-btn i { transition: transform .3s ease; }
-    .swap-btn.spun i { transform: rotate(180deg); }
-    @media (min-width: 992px) { .swap-btn { display: inline-flex; } }
+    @keyframes beaconPulse {
+      0% { box-shadow: 0 0 0 0 rgba(46, 125, 91, 0.7); }
+      70% { box-shadow: 0 0 0 8px rgba(46, 125, 91, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(46, 125, 91, 0); }
+    }
 
-    .search-footer {
-      margin-top: 32px;
-      padding-top: 24px;
-      border-top: 1px solid var(--hairline-soft);
+    /* Epic Hero Headline */
+    .hero-cosmos-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 7.5vw, 6.2rem);
+      line-height: .98;
+      letter-spacing: -.03em;
+      font-weight: 300;
+      color: #fdfbf6;
+      margin-bottom: 26px;
+      text-wrap: balance;
+    }
+    .hero-cosmos-title em {
+      font-style: italic;
+      font-weight: 400;
+      background: linear-gradient(135deg, #f7eccf 0%, #c9a55b 50%, #e8d9b3 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+      text-shadow: 0 0 30px rgba(201, 165, 91, 0.35);
+    }
+
+    .hero-cosmos-sub {
+      font-family: 'DM Sans', sans-serif;
+      font-size: clamp(15px, 1.4vw, 18px);
+      line-height: 1.75;
+      color: rgba(253, 251, 246, 0.78);
+      max-width: 62ch;
+      margin: 0 auto 36px;
+      font-weight: 300;
+      letter-spacing: .01em;
+    }
+
+    /* Quick Destination Fast Chips */
+    .hero-chips-wrap {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 24px;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+    .hero-chips-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: #c9a55b;
+      margin-right: 4px;
+    }
+    .hero-chip-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(253, 251, 246, 0.07);
+      border: 1px solid rgba(253, 251, 246, 0.16);
+      color: #fdfbf6;
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      cursor: pointer;
+      transition: all .25s cubic-bezier(0.2, 0.8, 0.2, 1);
+      backdrop-filter: blur(8px);
+    }
+    .hero-chip-btn:hover {
+      background: rgba(201, 165, 91, 0.22);
+      border-color: #c9a55b;
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(201, 165, 91, 0.25);
+    }
+
+    /* Floating Micro Cards */
+    .hero-floating-card {
+      position: absolute;
+      z-index: 3;
+      background: rgba(8, 21, 43, 0.85);
+      border: 1px solid rgba(201, 165, 91, 0.4);
+      padding: 14px 18px;
+      border-radius: 6px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      pointer-events: none;
+      animation: floatSlow 6s ease-in-out infinite alternate;
+    }
+    .hero-floating-card.left {
+      left: 3%;
+      top: 36%;
+      animation-delay: 0s;
+    }
+    .hero-floating-card.right {
+      right: 3%;
+      top: 40%;
+      animation-delay: -3s;
+    }
+    @keyframes floatSlow {
+      0% { transform: translateY(0px) rotate(0deg); }
+      100% { transform: translateY(-12px) rotate(0.8deg); }
+    }
+    .hero-floating-card .card-icon {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: rgba(201, 165, 91, 0.15);
+      color: #c9a55b;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      border: 1px solid rgba(201, 165, 91, 0.3);
+      flex: 0 0 auto;
+    }
+    .hero-floating-card .card-info strong {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #fdfbf6;
+      line-height: 1.2;
+    }
+    .hero-floating-card .card-info span {
+      display: block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      color: #c9a55b;
+      letter-spacing: .08em;
+      margin-top: 2px;
+    }
+
+    @media (max-width: 1199.98px) {
+      .hero-floating-card { display: none !important; }
+    }
+
+    /* =======================================================
+       NEXT-GEN GLASSMORPHIC SEARCH TERMINAL
+       ======================================================= */
+    .search-terminal-wrap {
+      position: relative;
+      margin-top: -65px;
+      z-index: 10;
+      padding: 0 24px;
+    }
+    .search-terminal-card {
+      max-width: 1180px;
+      margin: 0 auto;
+      background: #fdfbf6;
+      border: 1px solid rgba(201, 165, 91, 0.32);
+      border-radius: 4px;
+      padding: 34px 38px 30px;
+      box-shadow: 0 24px 64px rgba(6, 15, 33, 0.18), 0 4px 16px rgba(6, 15, 33, 0.08);
+      position: relative;
+    }
+    .search-terminal-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #a8842c 0%, #e8d9b3 50%, #a8842c 100%);
+      border-radius: 4px 4px 0 0;
+    }
+
+    .terminal-tabs {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid var(--hairline-soft);
+      padding-bottom: 18px;
+      margin-bottom: 28px;
       flex-wrap: wrap;
     }
-    .search-note {
+    .terminal-tab-btn {
+      background: transparent;
+      border: 1px solid var(--hairline-soft);
+      padding: 10px 22px;
+      border-radius: 100px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--navy);
+      cursor: pointer;
+      transition: all .25s ease;
       display: inline-flex;
       align-items: center;
       gap: 8px;
+    }
+    .terminal-tab-btn i { font-size: 13px; color: var(--gold); }
+    .terminal-tab-btn:hover {
+      background: var(--cream-soft);
+      border-color: var(--gold);
+    }
+    .terminal-tab-btn.active {
+      background: var(--navy);
+      border-color: var(--navy);
+      color: #fdfbf6;
+      box-shadow: 0 4px 14px rgba(11, 30, 61, 0.25);
+    }
+    .terminal-tab-btn.active i { color: #c9a55b; }
+
+    .terminal-tab-link {
+      margin-left: auto;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color .2s ease;
+    }
+    .terminal-tab-link:hover { color: var(--navy); }
+
+    /* Field Overrides */
+    .search-terminal-card .field {
+      position: relative;
+      display: flex;
+      align-items: center;
+      border: 1px solid var(--hairline);
+      background: var(--cream-soft);
+      height: 54px;
+      padding: 0 16px;
+      transition: border-color .25s ease, background-color .25s ease, box-shadow .25s ease;
+    }
+    .search-terminal-card .field:focus-within {
+      border-color: var(--navy);
+      background: #ffffff;
+      box-shadow: 0 0 0 3px rgba(11, 30, 61, 0.08);
+    }
+    .search-terminal-card .field i {
+      color: var(--gold);
+      font-size: 15px;
+      margin-right: 12px;
+      flex: 0 0 auto;
+    }
+    .search-terminal-card .field input,
+    .search-terminal-card .field select {
+      border: 0;
+      background: transparent;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--navy);
+      outline: none !important;
+      box-shadow: none !important;
+    }
+
+    .search-terminal-card .swap-btn {
+      position: absolute;
+      right: -16px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: #c9a55b;
+      border: 2px solid #fdfbf6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 4;
+      cursor: pointer;
+      transition: transform .3s ease, background-color .25s ease;
+      box-shadow: 0 4px 10px rgba(11, 30, 61, 0.25);
+    }
+    .search-terminal-card .swap-btn:hover {
+      background: var(--gold);
+      color: var(--navy);
+      transform: translateY(-50%) rotate(180deg);
+    }
+
+    /* Terminal Footer */
+    .terminal-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid var(--hairline-soft);
+      flex-wrap: wrap;
+    }
+    .terminal-filters {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .terminal-filter-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      font-family: 'DM Sans', sans-serif;
+      color: var(--ink-soft);
+      cursor: pointer;
+      user-select: none;
+    }
+    .terminal-filter-tag input[type="checkbox"] {
+      accent-color: var(--navy);
+      width: 14px; height: 14px;
+      cursor: pointer;
+    }
+
+    .btn-terminal-submit {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%);
+      color: #fdfbf6;
+      border: 1px solid var(--navy);
+      padding: 15px 36px;
+      font-family: 'DM Sans', sans-serif;
       font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all .3s cubic-bezier(0.2, 0.8, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-terminal-submit:hover {
+      background: linear-gradient(135deg, #060f21 0%, var(--navy) 100%);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(11, 30, 61, 0.25);
+    }
+    .btn-terminal-submit i { transition: transform .25s ease; color: #c9a55b; }
+    .btn-terminal-submit:hover i { transform: translateX(5px); }
+
+    /* =======================================================
+       PRESTIGE TRUST STRIP (Beneath Search Terminal)
+       ======================================================= */
+    .prestige-strip {
+      max-width: 1180px;
+      margin: 28px auto 0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--hairline-soft);
+      border: 1px solid var(--hairline-soft);
+    }
+    .prestige-item {
+      background: var(--ivory);
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      transition: background-color .2s ease;
+    }
+    .prestige-item:hover { background: var(--cream-soft); }
+    .prestige-icon {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      border: 1px solid rgba(201, 165, 91, 0.35);
+      background: rgba(201, 165, 91, 0.08);
+      color: var(--gold);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      flex: 0 0 auto;
+    }
+    .prestige-text strong {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.2;
+    }
+    .prestige-text span {
+      display: block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
       color: var(--muted);
-      letter-spacing: .02em;
-    }
-    .search-note i { color: var(--green); font-size: 13px; }
-
-    .search-status {
-      display: none;
-      margin-top: 20px;
-      padding: 16px 20px;
-      font-size: 13px;
-      line-height: 1.6;
-    }
-    .search-status.show { display: block; }
-    .search-status.success {
-      background: rgba(46, 125, 91, .06);
-      border-left: 2px solid var(--green);
-      color: var(--green);
-    }
-    .search-status.error {
-      background: rgba(163, 69, 46, .06);
-      border-left: 2px solid var(--error);
-      color: var(--error);
+      letter-spacing: .04em;
     }
 
-    @media (max-width: 767.98px) {
-      .search-wrap { margin-top: -32px; }
-      .search-card { padding: 28px 20px; }
+    @media (max-width: 991.98px) {
+      .prestige-strip { grid-template-columns: repeat(2, 1fr); }
+      .search-terminal-card { padding: 26px 22px 24px; }
+      .search-terminal-wrap { margin-top: -40px; }
+    }
+    @media (max-width: 575.98px) {
+      .prestige-strip { grid-template-columns: 1fr; }
+      .terminal-tab-link { width: 100%; margin-top: 6px; }
+      .terminal-footer { flex-direction: column; align-items: stretch; }
+      .btn-terminal-submit { width: 100%; justify-content: center; }
     }
 
     /* =======================================================
@@ -1658,7 +1887,7 @@
         </div>
         <div class="topbar-right">
           <span class="topbar-badge">Concierge · Available 24/7</span>
-          <a href="/contact">Contact</a>
+          <a href="contact.html">Contact</a>
         </div>
       </div>
     </div>
@@ -1671,22 +1900,22 @@
     <div class="container">
       <div class="nav-inner">
 
-        <a class="brand" href="/" aria-label="Travelbookings home">
+        <a class="brand" href="index.html" aria-label="Travelbookings home">
           <span class="brand-mark"><i class="bi bi-airplane-engines"></i></span>
           <span class="brand-name">Travel<em>bookings</em></span>
         </a>
 
         <nav class="nav-center" aria-label="Main navigation">
-          <a href="/flights">Flights</a>
-          <a href="/hotels">Hotels</a>
-          <a href="/destinations">Destinations</a>
-          <a href="/financing">Financing</a>
-          <a href="/about">About</a>
+          <a href="flights.html">Flights</a>
+          <a href="hotels.html">Hotels</a>
+          <a href="destinations.html">Destinations</a>
+          <a href="financing.html">Financing</a>
+          <a href="about.html">About</a>
         </nav>
 
         <div class="nav-actions">
-          <a href="/login" class="text-link">Sign in</a>
-          <a href="/register" class="btn-nav-cta">Book now <i class="bi bi-arrow-right"></i></a>
+          <a href="login.html" class="text-link">Sign in</a>
+          <a href="register.html" class="btn-nav-cta">Book now <i class="bi bi-arrow-right"></i></a>
         </div>
 
         <button class="navbar-toggler" type="button" id="mobileToggle"
@@ -1705,7 +1934,7 @@
 
   <aside class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
     <div class="mobile-nav-head">
-      <a class="brand" href="/">
+      <a class="brand" href="index.html">
         <span class="brand-mark"><i class="bi bi-airplane-engines"></i></span>
         <span class="brand-name">Travel<em>bookings</em></span>
       </a>
@@ -1716,19 +1945,19 @@
 
     <div class="mobile-nav-body">
       <ul class="nav-list">
-        <li><a class="nav-link active" href="/">Home <i class="bi bi-arrow-right"></i></a></li>
-        <li><a class="nav-link" href="/flights">Flights <i class="bi bi-arrow-right"></i></a></li>
-        <li><a class="nav-link" href="/hotels">Hotels <i class="bi bi-arrow-right"></i></a></li>
-        <li><a class="nav-link" href="/destinations">Destinations <i class="bi bi-arrow-right"></i></a></li>
-        <li><a class="nav-link" href="/financing">Financing <i class="bi bi-arrow-right"></i></a></li>
-        <li><a class="nav-link" href="/about">About <i class="bi bi-arrow-right"></i></a></li>
-        <li><a class="nav-link" href="/contact">Contact <i class="bi bi-arrow-right"></i></a></li>
+        <li><a class="nav-link active" href="index.html">Home <i class="bi bi-arrow-right"></i></a></li>
+        <li><a class="nav-link" href="flights.html">Flights <i class="bi bi-arrow-right"></i></a></li>
+        <li><a class="nav-link" href="hotels.html">Hotels <i class="bi bi-arrow-right"></i></a></li>
+        <li><a class="nav-link" href="destinations.html">Destinations <i class="bi bi-arrow-right"></i></a></li>
+        <li><a class="nav-link" href="financing.html">Financing <i class="bi bi-arrow-right"></i></a></li>
+        <li><a class="nav-link" href="about.html">About <i class="bi bi-arrow-right"></i></a></li>
+        <li><a class="nav-link" href="contact.html">Contact <i class="bi bi-arrow-right"></i></a></li>
       </ul>
     </div>
 
     <div class="mobile-nav-cta">
-      <a href="/login" class="btn-lux btn-lux-ghost">Sign in</a>
-      <a href="/register" class="btn-lux btn-lux-navy">Book now <i class="bi bi-arrow-right"></i></a>
+      <a href="login.html" class="btn-lux btn-lux-ghost">Sign in</a>
+      <a href="register.html" class="btn-lux btn-lux-navy">Book now <i class="bi bi-arrow-right"></i></a>
     </div>
 
     <div class="mobile-nav-footer">
@@ -1740,177 +1969,228 @@
 
   <main id="main">
 
-    <!-- =========================================================
-         HERO
+        <!-- =========================================================
+         HERO COSMOS — OUT OF THIS WORLD LUXURY
          ========================================================= -->
-    <section class="hero">
-      <div class="hero-content">
-        <span class="eyebrow">Est. MMXXIV · Worldwide travel</span>
-        <h1>Where the journey<br />becomes the <em>memory</em>.</h1>
-        <p class="hero-sub">
-          A quiet kind of travel agency. We compare fares, curate stays and manage the details
-          — so the only thing left for you to do is arrive.
-        </p>
-        <div class="hero-actions">
-          <a href="#search" class="btn-lux btn-lux-navy">
-            Begin your search <i class="bi bi-arrow-right arrow"></i>
-          </a>
-          <a href="/about" class="btn-lux btn-lux-ghost">Our story</a>
+    <section class="hero-cosmos">
+      <!-- Floating 3D Micro-Cards on the sides (visible on desktop) -->
+      <div class="hero-floating-card left">
+        <span class="card-icon"><i class="bi bi-airplane-fill"></i></span>
+        <div class="card-info">
+          <strong>British Airways · First Suite</strong>
+          <span>LOS → LHR · ₦1,150,000</span>
         </div>
       </div>
 
-      <div class="hero-image-wrap">
-        <div class="hero-image-card">
-          <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?auto=format&fit=crop&w=1920&q=85"
-               alt="A quiet luxury hotel terrace overlooking the sea at golden hour"
-               loading="eager" decoding="async" />
-          <span class="hero-image-badge">
-            <i class="bi bi-compass"></i>
-            <span>Curated by <em>travellers</em>, for travellers</span>
+      <div class="hero-floating-card right">
+        <span class="card-icon"><i class="bi bi-stars"></i></span>
+        <div class="card-info">
+          <strong>The Wheatbaker · Ikoyi</strong>
+          <span>5.0 ★ · Deluxe Stay</span>
+        </div>
+      </div>
+
+      <div class="container text-center">
+        <!-- Floating Orbit Beacon Pill -->
+        <div class="d-inline-block">
+          <span class="hero-orbit-badge">
+            <span class="beacon"></span>
+            Bespoke Journeys · Curated Luxury · 180+ Destinations
           </span>
+        </div>
+
+        <!-- Monumental Cormorant Garamond Title -->
+        <h1 class="hero-cosmos-title">
+          Voyages Beyond The Horizon.<br />
+          <em>Luxury Without Boundaries.</em>
+        </h1>
+
+        <p class="hero-cosmos-sub">
+          A quiet kind of travel agency. We compare global fares, curate handpicked five-star sanctuaries, and tailor every detail — so the only thing left for you to do is arrive.
+        </p>
+
+        <!-- Live Destination Fast-Chips (one-click pre-fill) -->
+        <div class="hero-chips-wrap">
+          <span class="hero-chips-label"><i class="bi bi-compass"></i> Popular:</span>
+          <button type="button" class="hero-chip-btn" data-city="London (LHR)"><i class="bi bi-geo-alt"></i> London</button>
+          <button type="button" class="hero-chip-btn" data-city="Dubai (DXB)"><i class="bi bi-geo-alt"></i> Dubai</button>
+          <button type="button" class="hero-chip-btn" data-city="Paris (CDG)"><i class="bi bi-geo-alt"></i> Paris</button>
+          <button type="button" class="hero-chip-btn" data-city="Maldives (MLE)"><i class="bi bi-geo-alt"></i> Maldives</button>
+          <button type="button" class="hero-chip-btn" data-city="Cape Town (CPT)"><i class="bi bi-geo-alt"></i> Cape Town</button>
+          <button type="button" class="hero-chip-btn" data-city="Zanzibar (ZNZ)"><i class="bi bi-geo-alt"></i> Zanzibar</button>
         </div>
       </div>
     </section>
 
     <!-- =========================================================
-         SEARCH
+         GLASSMORPHIC SEARCH TERMINAL
          ========================================================= -->
-    <section class="search-wrap" id="search">
-      <div class="search-card reveal">
+    <section class="search-terminal-wrap" id="search">
+      <div class="search-terminal-card reveal">
 
-        <div class="search-tabs" role="tablist">
-          <button type="button" class="active" id="flights-tab"
+        <!-- TERMINAL TABS -->
+        <div class="terminal-tabs" role="tablist">
+          <button type="button" class="terminal-tab-btn active" id="flights-tab"
                   data-bs-toggle="pill" data-bs-target="#flights-pane" role="tab"
                   aria-controls="flights-pane" aria-selected="true">
-            <i class="bi bi-airplane"></i> Flights
+            <i class="bi bi-airplane-engines"></i> Flights
           </button>
-          <button type="button" id="hotels-tab"
+          <button type="button" class="terminal-tab-btn" id="hotels-tab"
                   data-bs-toggle="pill" data-bs-target="#hotels-pane" role="tab"
                   aria-controls="hotels-pane" aria-selected="false">
-            <i class="bi bi-building"></i> Hotels
+            <i class="bi bi-building"></i> Luxury Hotels
           </button>
+          <a href="destinations.html" class="terminal-tab-btn d-none d-md-inline-flex" style="text-decoration:none;">
+            <i class="bi bi-compass"></i> Curated Escapes
+          </a>
+          <a href="financing.html" class="terminal-tab-btn d-none d-lg-inline-flex" style="text-decoration:none;">
+            <i class="bi bi-cash-coin"></i> Travel Financing
+          </a>
+          <a href="flights.html" class="terminal-tab-link">
+            Explore All Fares <i class="bi bi-arrow-right"></i>
+          </a>
         </div>
 
         <div class="tab-content">
 
-          <!-- Flights -->
+          <!-- FLIGHTS PANE -->
           <div class="tab-pane fade show active" id="flights-pane" role="tabpanel"
                aria-labelledby="flights-tab" tabindex="0">
             <form class="search-form" id="flightForm" novalidate>
-              <div class="row g-3">
+              <div class="row g-3 align-items-end">
                 <div class="col-lg-3 col-md-6 position-relative">
-                  <label class="form-label" for="flightFrom">From</label>
+                  <label class="form-label" for="flightFrom">Departure City</label>
                   <div class="field">
-                    <i class="bi bi-geo-alt"></i>
-                    <input type="text" class="form-control" id="flightFrom" placeholder="Lagos (LOS)" autocomplete="off" />
+                    <i class="bi bi-geo-alt-fill"></i>
+                    <input type="text" class="form-control" id="flightFrom" placeholder="Lagos (LOS)" value="Lagos (LOS)" autocomplete="off" />
                   </div>
-                  <button type="button" class="swap-btn" id="swapBtn" aria-label="Swap origin and destination">
+                  <button type="button" class="swap-btn" id="swapBtn" aria-label="Swap origin and destination" title="Swap cities">
                     <i class="bi bi-arrow-left-right"></i>
                   </button>
                 </div>
+
                 <div class="col-lg-3 col-md-6">
-                  <label class="form-label" for="flightTo">To</label>
+                  <label class="form-label" for="flightTo">Destination</label>
                   <div class="field">
                     <i class="bi bi-geo-alt"></i>
-                    <input type="text" class="form-control" id="flightTo" placeholder="London (LHR)" autocomplete="off" />
+                    <input type="text" class="form-control" id="flightTo" placeholder="London (LHR)" value="London (LHR)" autocomplete="off" />
                   </div>
                 </div>
+
                 <div class="col-lg-2 col-md-6">
-                  <label class="form-label" for="flightDepart">Departure</label>
+                  <label class="form-label" for="flightDepart">Departure Date</label>
                   <div class="field">
                     <i class="bi bi-calendar3"></i>
                     <input type="date" class="form-control" id="flightDepart" />
                   </div>
                 </div>
+
                 <div class="col-lg-2 col-md-6">
-                  <label class="form-label" for="flightReturn">Return</label>
+                  <label class="form-label" for="flightReturn">Return Date</label>
                   <div class="field">
                     <i class="bi bi-calendar3"></i>
                     <input type="date" class="form-control" id="flightReturn" />
                   </div>
                 </div>
+
                 <div class="col-lg-2 col-md-6">
-                  <label class="form-label" for="flightTravellers">Travellers</label>
+                  <label class="form-label" for="flightTravellers">Travellers & Cabin</label>
                   <div class="field">
-                    <i class="bi bi-people"></i>
+                    <i class="bi bi-people-fill"></i>
                     <select class="form-select" id="flightTravellers">
-                      <option>1 Adult</option>
-                      <option>2 Adults</option>
-                      <option>3 Adults</option>
-                      <option>4 Adults</option>
-                      <option>2 Adults, 1 Child</option>
-                      <option>2 Adults, 2 Children</option>
+                      <option selected>1 Adult, Economy</option>
+                      <option>2 Adults, Economy</option>
+                      <option>1 Adult, Premium Economy</option>
+                      <option>2 Adults, Premium Economy</option>
+                      <option>1 Adult, Business Class</option>
+                      <option>2 Adults, Business Class</option>
+                      <option>1 Adult, First Suite</option>
+                      <option>Family (2 Adults, 2 Kids)</option>
                     </select>
                   </div>
                 </div>
               </div>
 
-              <div class="search-footer">
-                <p class="search-note"><i class="bi bi-shield-check"></i> Secure payment · Transparent pricing</p>
-                <button type="submit" class="btn-lux btn-lux-navy">
-                  Search flights <i class="bi bi-arrow-right arrow"></i>
+              <div class="terminal-footer">
+                <div class="terminal-filters">
+                  <label class="terminal-filter-tag">
+                    <input type="checkbox" id="directFlightsOnly" checked /> Direct flights priority
+                  </label>
+                  <label class="terminal-filter-tag d-none d-sm-inline-flex">
+                    <input type="checkbox" id="flexibleDates" checked /> Flexible dates (±3 days)
+                  </label>
+                  <label class="terminal-filter-tag d-none d-md-inline-flex">
+                    <input type="checkbox" id="refundableOnly" /> Refundable fares only
+                  </label>
+                </div>
+                <button type="submit" class="btn-terminal-submit">
+                  Search Flights <i class="bi bi-arrow-right"></i>
                 </button>
               </div>
               <div class="search-status" id="flightStatus" role="status" aria-live="polite"></div>
             </form>
           </div>
 
-          <!-- Hotels -->
+          <!-- HOTELS PANE -->
           <div class="tab-pane fade" id="hotels-pane" role="tabpanel"
                aria-labelledby="hotels-tab" tabindex="0">
             <form class="search-form" id="hotelForm" novalidate>
-              <div class="row g-3">
+              <div class="row g-3 align-items-end">
                 <div class="col-lg-4 col-md-6">
-                  <label class="form-label" for="hotelDestination">Destination or hotel</label>
+                  <label class="form-label" for="hotelDestination">Destination / Resort</label>
                   <div class="field">
-                    <i class="bi bi-geo-alt"></i>
-                    <input type="text" class="form-control" id="hotelDestination"
-                           placeholder="City, area or hotel name" autocomplete="off" />
+                    <i class="bi bi-building"></i>
+                    <input type="text" class="form-control" id="hotelDestination" placeholder="e.g. Ikoyi, Lagos or Dubai" value="Ikoyi, Lagos" autocomplete="off" />
                   </div>
                 </div>
-                <div class="col-lg-2 col-md-6">
-                  <label class="form-label" for="hotelCheckin">Check-in</label>
+
+                <div class="col-lg-3 col-md-6">
+                  <label class="form-label" for="hotelCheckin">Check-in Date</label>
                   <div class="field">
                     <i class="bi bi-calendar3"></i>
                     <input type="date" class="form-control" id="hotelCheckin" />
                   </div>
                 </div>
-                <div class="col-lg-2 col-md-6">
-                  <label class="form-label" for="hotelCheckout">Check-out</label>
+
+                <div class="col-lg-3 col-md-6">
+                  <label class="form-label" for="hotelCheckout">Check-out Date</label>
                   <div class="field">
                     <i class="bi bi-calendar3"></i>
                     <input type="date" class="form-control" id="hotelCheckout" />
                   </div>
                 </div>
+
                 <div class="col-lg-2 col-md-6">
-                  <label class="form-label" for="hotelGuests">Guests</label>
+                  <label class="form-label" for="hotelGuests">Guests & Rooms</label>
                   <div class="field">
-                    <i class="bi bi-people"></i>
+                    <i class="bi bi-door-open-fill"></i>
                     <select class="form-select" id="hotelGuests">
-                      <option>1 Guest</option>
-                      <option selected>2 Guests</option>
-                      <option>3 Guests</option>
-                      <option>4 Guests</option>
+                      <option selected>2 Guests, 1 Room</option>
+                      <option>1 Guest, 1 Room</option>
+                      <option>3 Guests, 1 Room</option>
+                      <option>4 Guests, 2 Rooms</option>
+                      <option>Family Suite (4 Guests)</option>
                     </select>
                   </div>
-                </div>
-                <div class="col-lg-2 col-md-6">
-                  <label class="form-label" for="hotelRooms">Rooms</label>
-                  <div class="field">
-                    <i class="bi bi-door-open"></i>
-                    <select class="form-select" id="hotelRooms">
-                      <option selected>1 Room</option>
-                      <option>2 Rooms</option>
-                      <option>3 Rooms</option>
-                    </select>
-                  </div>
+                  <!-- Hidden field for hotelRooms selector compatibility -->
+                  <input type="hidden" id="hotelRooms" value="1 Room" />
                 </div>
               </div>
 
-              <div class="search-footer">
-                <p class="search-note"><i class="bi bi-shield-check"></i> Verified properties · Flexible rates</p>
-                <button type="submit" class="btn-lux btn-lux-navy">
-                  Search hotels <i class="bi bi-arrow-right arrow"></i>
+              <div class="terminal-footer">
+                <div class="terminal-filters">
+                  <label class="terminal-filter-tag">
+                    <input type="checkbox" checked /> 5-Star luxury verified
+                  </label>
+                  <label class="terminal-filter-tag d-none d-sm-inline-flex">
+                    <input type="checkbox" checked /> Breakfast & concierge included
+                  </label>
+                  <label class="terminal-filter-tag d-none d-md-inline-flex">
+                    <input type="checkbox" /> Free cancellation before 48h
+                  </label>
+                </div>
+                <button type="submit" class="btn-terminal-submit">
+                  Search Luxury Hotels <i class="bi bi-arrow-right"></i>
                 </button>
               </div>
               <div class="search-status" id="hotelStatus" role="status" aria-live="polite"></div>
@@ -1919,7 +2199,43 @@
 
         </div>
       </div>
+
+      <!-- PRESTIGE TRUST STRIP -->
+      <div class="prestige-strip reveal">
+        <div class="prestige-item">
+          <span class="prestige-icon"><i class="bi bi-award-fill"></i></span>
+          <div class="prestige-text">
+            <strong>12,000+ Journeys</strong>
+            <span>Curated for discerning travellers</span>
+          </div>
+        </div>
+
+        <div class="prestige-item">
+          <span class="prestige-icon"><i class="bi bi-shield-check"></i></span>
+          <div class="prestige-text">
+            <strong>IATA & ATOL Protected</strong>
+            <span>100% verified booking security</span>
+          </div>
+        </div>
+
+        <div class="prestige-item">
+          <span class="prestige-icon"><i class="bi bi-cash-coin"></i></span>
+          <div class="prestige-text">
+            <strong>Travel Financing</strong>
+            <span>Spread costs with partner lenders</span>
+          </div>
+        </div>
+
+        <div class="prestige-item">
+          <span class="prestige-icon"><i class="bi bi-headset"></i></span>
+          <div class="prestige-text">
+            <strong>24/7 VIP Concierge</strong>
+            <span>Real human assistance on WhatsApp</span>
+          </div>
+        </div>
+      </div>
     </section>
+
 
     <!-- =========================================================
          STATS
@@ -1985,19 +2301,19 @@
         </div>
 
         <div class="services-grid reveal">
-          <a href="/flights" class="service">
+          <a href="flights.html" class="service">
             <span class="service-icon"><i class="bi bi-airplane"></i></span>
             <h3>Flight booking</h3>
             <p>Compare fares across local and international airlines, then book one-way, return or multi-city trips in minutes.</p>
             <span class="link-arrow">Find flights <i class="bi bi-arrow-right"></i></span>
           </a>
-          <a href="/hotels" class="service">
+          <a href="hotels.html" class="service">
             <span class="service-icon"><i class="bi bi-building"></i></span>
             <h3>Hotel reservations</h3>
             <p>Browse verified hotels, apartments and resorts — from quiet boutique stays to premium international properties.</p>
             <span class="link-arrow">Find hotels <i class="bi bi-arrow-right"></i></span>
           </a>
-          <a href="/financing" class="service">
+          <a href="financing.html" class="service">
             <span class="service-icon"><i class="bi bi-wallet2"></i></span>
             <h3>Travel financing</h3>
             <p>Spread the cost of your trip through our lending partners. Subject to eligibility and approval.</p>
@@ -2020,7 +2336,7 @@
 
         <div class="dest-grid reveal">
 
-          <a href="/destinations" class="dest-card">
+          <a href="destinations.html" class="dest-card">
             <div class="dest-media">
               <span class="dest-continent">Middle East</span>
               <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=900&q=85"
@@ -2033,7 +2349,7 @@
             </div>
           </a>
 
-          <a href="/destinations" class="dest-card">
+          <a href="destinations.html" class="dest-card">
             <div class="dest-media">
               <span class="dest-continent">Europe</span>
               <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=900&q=85"
@@ -2046,7 +2362,7 @@
             </div>
           </a>
 
-          <a href="/destinations" class="dest-card">
+          <a href="destinations.html" class="dest-card">
             <div class="dest-media">
               <span class="dest-continent">Europe</span>
               <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=900&q=85"
@@ -2059,7 +2375,7 @@
             </div>
           </a>
 
-          <a href="/destinations" class="dest-card">
+          <a href="destinations.html" class="dest-card">
             <div class="dest-media">
               <span class="dest-continent">Africa</span>
               <img src="https://images.unsplash.com/photo-1580060839134-75a5edca2e99?auto=format&fit=crop&w=900&q=85"
@@ -2072,7 +2388,7 @@
             </div>
           </a>
 
-          <a href="/destinations" class="dest-card">
+          <a href="destinations.html" class="dest-card">
             <div class="dest-media">
               <span class="dest-continent">Eurasia</span>
               <img src="https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&fit=crop&w=900&q=85"
@@ -2085,7 +2401,7 @@
             </div>
           </a>
 
-          <a href="/destinations" class="dest-card">
+          <a href="destinations.html" class="dest-card">
             <div class="dest-media">
               <span class="dest-continent">Europe</span>
               <img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=900&q=85"
@@ -2101,7 +2417,7 @@
         </div>
 
         <div class="text-center" style="margin-top: 56px;">
-          <a href="/destinations" class="btn-lux btn-lux-ghost">
+          <a href="destinations.html" class="btn-lux btn-lux-ghost">
             View all destinations <i class="bi bi-arrow-right arrow"></i>
           </a>
         </div>
@@ -2158,7 +2474,7 @@
               </li>
             </ul>
 
-            <a href="/about" class="link-arrow">Our story <i class="bi bi-arrow-right"></i></a>
+            <a href="about.html" class="link-arrow">Our story <i class="bi bi-arrow-right"></i></a>
           </div>
         </div>
       </div>
@@ -2185,7 +2501,7 @@
               <li><i class="bi bi-check2"></i> Covers flights, hotels and holiday packages</li>
             </ul>
 
-            <a href="/financing" class="btn-lux btn-lux-gold">
+            <a href="financing.html" class="btn-lux btn-lux-gold">
               Explore financing <i class="bi bi-arrow-right arrow"></i>
             </a>
 
@@ -2343,10 +2659,10 @@
           travel financing when you need it.
         </p>
         <div class="cta-actions">
-          <a href="/register" class="btn-lux btn-lux-gold">
+          <a href="register.html" class="btn-lux btn-lux-gold">
             Create free account <i class="bi bi-arrow-right arrow"></i>
           </a>
-          <a href="/contact" class="btn-lux btn-lux-ghost">Talk to a consultant</a>
+          <a href="contact.html" class="btn-lux btn-lux-ghost">Talk to a consultant</a>
         </div>
       </div>
     </section>
@@ -2363,7 +2679,7 @@
       <div class="footer-grid">
 
         <div>
-          <a class="footer-brand" href="/">
+          <a class="footer-brand" href="index.html">
             <span class="brand-mark"><i class="bi bi-airplane-engines"></i></span>
             <span class="brand-name">Travel<em>bookings</em></span>
           </a>
@@ -2382,18 +2698,18 @@
         <div>
           <h4 class="footer-heading">Travel</h4>
           <ul class="footer-links">
-            <li><a href="/flights">Flights</a></li>
-            <li><a href="/hotels">Hotels</a></li>
-            <li><a href="/destinations">Destinations</a></li>
-            <li><a href="/financing">Travel financing</a></li>
+            <li><a href="flights.html">Flights</a></li>
+            <li><a href="hotels.html">Hotels</a></li>
+            <li><a href="destinations.html">Destinations</a></li>
+            <li><a href="financing.html">Travel financing</a></li>
           </ul>
         </div>
 
         <div>
           <h4 class="footer-heading">Company</h4>
           <ul class="footer-links">
-            <li><a href="/about">About us</a></li>
-            <li><a href="/contact">Contact</a></li>
+            <li><a href="about.html">About us</a></li>
+            <li><a href="contact.html">Contact</a></li>
             <li><a href="faq.html">FAQ</a></li>
             <li><a href="manage-booking.html">Manage booking</a></li>
           </ul>
@@ -2739,6 +3055,24 @@
           }
         });
       }
+
+    
+      /* =====================================================
+         HERO FAST DESTINATION CHIPS
+         ===================================================== */
+      document.querySelectorAll('.hero-chip-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var city = btn.dataset.city;
+          var flightTo = document.getElementById('flightTo');
+          var hotelDest = document.getElementById('hotelDestination');
+          if (flightTo) flightTo.value = city;
+          if (hotelDest) hotelDest.value = city;
+          var searchEl = document.getElementById('search');
+          if (searchEl) {
+            searchEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        });
+      });
 
     })();
   </script>
