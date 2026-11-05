@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flight details — Travelbookings</title>
+  <meta name="description" content="View full flight details — airline, aircraft, baggage, cabin class and pricing." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+  <style>
+    :root {
+      --cream: #f5f0e6;
+      --cream-soft: #faf6ed;
+      --ivory: #fdfbf6;
+      --navy: #0b1e3d;
+      --navy-soft: #1e3657;
+      --navy-deep: #060f21;
+      --gold: #a8842c;
+      --gold-soft: #c9a55b;
+      --gold-pale: #e8d9b3;
+      --ink: #1a1a1a;
+      --ink-soft: #4a4741;
+      --muted: #8a8378;
+      --hairline: #d9d1c0;
+      --hairline-soft: #e8e1d1;
+      --green: #2e7d5b;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--ink);
+      background: var(--cream);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 400; letter-spacing: -.01em; color: var(--navy); margin: 0; line-height: 1.15; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { max-width: 1200px; padding: 0 24px; margin: 0 auto; }
+
+    .skip-link { position: absolute; left: 1rem; top: -60px; z-index: 100; background: var(--navy); color: var(--ivory); padding: .7rem 1.2rem; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; transition: top .25s ease; }
+    .skip-link:focus { top: 0; }
+
+    /* TOPBAR */
+    .topbar { background: var(--navy); color: rgba(253,251,246,.7); font-size: 12px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.06); }
+    .topbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    .topbar-left { display: flex; align-items: center; gap: 28px; }
+    .topbar a { color: rgba(253,251,246,.7); display: inline-flex; align-items: center; gap: 8px; letter-spacing: .04em; transition: color .2s ease; }
+    .topbar a:hover { color: var(--gold-soft); }
+    .topbar i { color: var(--gold-soft); font-size: 12px; }
+    .topbar-right { display: flex; align-items: center; gap: 20px; }
+    .topbar-badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border: 1px solid rgba(201,165,91,.4); border-radius: 100px; font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--gold-soft); }
+    .topbar-badge::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--gold-soft); }
+
+    /* NAVBAR */
+    .site-header { position: sticky; top: 0; z-index: 1030; background: var(--cream); border-bottom: 1px solid var(--hairline-soft); transition: box-shadow .3s ease; }
+    .site-header.scrolled { box-shadow: 0 1px 0 var(--hairline); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 32px; padding: 22px 0; }
+    .brand { display: inline-flex; align-items: center; gap: 12px; flex-shrink: 0; }
+    .brand-mark { width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--navy); display: inline-flex; align-items: center; justify-content: center; color: var(--navy); font-size: 15px; flex-shrink: 0; transition: all .3s ease; }
+    .brand:hover .brand-mark { background: var(--navy); color: var(--ivory); }
+    .brand-name { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 500; color: var(--navy); line-height: 1; }
+    .brand-name em { font-style: italic; color: var(--gold); font-weight: 400; }
+    .nav-center { display: flex; align-items: center; gap: 4px; flex: 1; justify-content: center; }
+    .nav-center a { padding: 10px 16px; font-size: 12px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); border-bottom: 1px solid transparent; transition: all .25s ease; white-space: nowrap; }
+    .nav-center a:hover { color: var(--navy); }
+    .nav-center a.active { color: var(--navy); border-bottom-color: var(--gold); }
+    .nav-actions { display: flex; align-items: center; gap: 20px; flex-shrink: 0; }
+    .nav-actions a.text-link { font-size: 12px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); }
+    .nav-actions a.text-link:hover { color: var(--navy); }
+    .btn-nav-cta { display: inline-flex; align-items: center; gap: 10px; padding: 12px 22px; font-size: 11px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; background: var(--navy); color: var(--ivory); border: 0; cursor: pointer; transition: background-color .25s ease; }
+    .btn-nav-cta:hover { background: var(--navy-soft); }
+    .navbar-toggler { display: none; width: 44px; height: 44px; border: 1px solid var(--hairline); background: transparent; color: var(--navy); align-items: center; justify-content: center; cursor: pointer; }
+    @media (max-width: 991.98px) { .nav-center, .nav-actions { display: none; } .navbar-toggler { display: inline-flex; } }
+
+    /* MOBILE DRAWER */
+    .mobile-nav-overlay { position: fixed; inset: 0; background: rgba(6,15,33,.55); backdrop-filter: blur(3px); z-index: 1049; opacity: 0; pointer-events: none; transition: opacity .3s ease; }
+    .mobile-nav-overlay.show { opacity: 1; pointer-events: auto; }
+    .mobile-nav { position: fixed; top: 0; right: 0; bottom: 0; width: min(360px, 88vw); background: var(--cream); z-index: 1050; transform: translateX(100%); transition: transform .4s cubic-bezier(.4,0,.2,1); display: flex; flex-direction: column; overflow-y: auto; }
+    .mobile-nav.open { transform: translateX(0); }
+    .mobile-nav-head { display: flex; align-items: center; justify-content: space-between; padding: 22px 24px; border-bottom: 1px solid var(--hairline-soft); }
+    .mobile-nav-close { width: 40px; height: 40px; border: 1px solid var(--hairline); background: transparent; color: var(--navy); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; }
+    .mobile-nav-body { padding: 24px; flex: 1; }
+    .mobile-nav .nav-list { list-style: none; padding: 0; margin: 0; display: grid; }
+    .mobile-nav .nav-link { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; font-family: 'Cormorant Garamond', serif; font-size: 24px; color: var(--navy); border-bottom: 1px solid var(--hairline-soft); }
+    .mobile-nav .nav-link:hover, .mobile-nav .nav-link.active { color: var(--gold); }
+    .mobile-nav .nav-link i { font-size: 14px; color: var(--hairline); }
+    .mobile-nav-cta { padding: 24px; border-top: 1px solid var(--hairline-soft); display: grid; gap: 12px; }
+    .mobile-nav-footer { padding: 20px 24px 28px; border-top: 1px solid var(--hairline-soft); background: var(--cream-soft); }
+
+    /* BUTTONS */
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 16px 28px; font-size: 11px; font-weight: 600; letter-spacing: .28em; text-transform: uppercase; cursor: pointer; border: 0; border-radius: 0; transition: all .3s ease; }
+    .btn-block { width: 100%; }
+    .btn-navy { background: var(--navy); color: var(--ivory); }
+    .btn-navy:hover { background: var(--navy-soft); color: var(--ivory); }
+    .btn-ghost { background: transparent; color: var(--navy); border: 1px solid var(--hairline); }
+    .btn-ghost:hover { background: var(--cream-soft); border-color: var(--navy); }
+
+    /* BREADCRUMB */
+    .breadcrumb-bar { background: var(--cream); padding: 24px 0; border-bottom: 1px solid var(--hairline-soft); }
+    .breadcrumb-inner { display: flex; align-items: center; gap: 12px; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
+    .breadcrumb-inner a { color: var(--muted); transition: color .2s ease; }
+    .breadcrumb-inner a:hover { color: var(--gold); }
+    .breadcrumb-inner .sep { color: var(--hairline); }
+    .breadcrumb-inner .current { color: var(--navy); font-weight: 500; }
+
+    /* HERO */
+    .flight-hero { background: var(--cream); padding: clamp(40px, 5vw, 72px) 0 clamp(32px, 4vw, 48px); }
+    .flight-hero-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 32px; flex-wrap: wrap; margin-bottom: 40px; }
+    .flight-hero-head h1 { font-size: clamp(2rem, 4.5vw, 3.4rem); line-height: 1.05; letter-spacing: -.02em; margin-bottom: 12px; }
+    .flight-hero-head h1 em { font-style: italic; color: var(--gold); }
+    .flight-hero-meta { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+    .flight-hero-meta .airline-badge { display: inline-flex; align-items: center; gap: 10px; }
+    .flight-hero-meta .airline-badge .logo { width: 32px; height: 32px; border-radius: 0; display: inline-flex; align-items: center; justify-content: center; color: var(--ivory); font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: .85rem; }
+    .flight-hero-meta .airline-badge strong { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; text-transform: none; letter-spacing: 0; color: var(--navy); font-weight: 500; }
+
+    /* ROUTE VISUALIZATION */
+    .route-viz { background: var(--ivory); border: 1px solid var(--hairline); padding: clamp(32px, 4vw, 48px); margin-bottom: 32px; }
+    .route-viz-inner { display: grid; grid-template-columns: 1fr auto 1fr; gap: 32px; align-items: center; }
+    .route-point { text-align: center; }
+    .route-point .time { display: block; font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 5vw, 3.6rem); font-weight: 500; color: var(--navy); letter-spacing: -.02em; line-height: 1; margin-bottom: 8px; }
+    .route-point .time sup { font-size: .35em; font-weight: 500; color: var(--gold); margin-left: 2px; top: -.9em; }
+    .route-point .code { display: block; font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--navy); font-weight: 500; letter-spacing: .08em; margin-bottom: 4px; }
+    .route-point .city { display: block; font-size: 11px; color: var(--muted); letter-spacing: .14em; text-transform: uppercase; }
+    .route-point .date { display: block; font-size: 10px; color: var(--muted); letter-spacing: .16em; text-transform: uppercase; margin-top: 10px; }
+    .route-middle { text-align: center; padding: 0 20px; }
+    .route-middle .duration { display: block; font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--navy); font-weight: 500; margin-bottom: 6px; }
+    .route-middle .track { position: relative; height: 1px; background: var(--hairline); margin: 12px 0; }
+    .route-middle .track::before, .route-middle .track::after { content: ""; position: absolute; top: 50%; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); transform: translateY(-50%); }
+    .route-middle .track::before { left: 0; } .route-middle .track::after { right: 0; }
+    .route-middle .stops { font-size: 10px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--green); }
+    .route-middle .stops.has-stops { color: var(--gold); }
+    .route-middle .plane { color: var(--gold); font-size: 18px; margin-bottom: 8px; display: block; }
+    @media (max-width: 767.98px) {
+      .route-viz-inner { grid-template-columns: 1fr; gap: 20px; }
+      .route-middle .track { transform: rotate(90deg); width: 60px; margin: 20px auto; }
+    }
+
+    /* BODY */
+    .details-body { background: var(--cream); padding: clamp(40px, 5vw, 72px) 0 clamp(64px, 8vw, 112px); }
+    .details-grid { display: grid; grid-template-columns: 1fr 380px; gap: clamp(40px, 6vw, 72px); align-items: start; }
+    @media (max-width: 991.98px) { .details-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+    .content-section { padding-bottom: clamp(32px, 4vw, 48px); margin-bottom: clamp(32px, 4vw, 48px); border-bottom: 1px solid var(--hairline-soft); }
+    .content-section:last-child { border-bottom: 0; padding-bottom: 0; margin-bottom: 0; }
+    .content-section h2 { font-size: clamp(1.6rem, 2.8vw, 2.2rem); margin-bottom: 20px; letter-spacing: -.015em; }
+    .content-section h2 em { font-style: italic; color: var(--gold); }
+
+    .detail-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+    .detail-item { background: var(--ivory); border: 1px solid var(--hairline); padding: 18px 20px; }
+    .detail-item span { display: block; font-size: 9px; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+    .detail-item strong { display: block; font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--navy); font-weight: 500; letter-spacing: 0; line-height: 1.25; }
+    .detail-item small { display: block; font-family: 'DM Sans', sans-serif; font-size: 10px; color: var(--muted); letter-spacing: .04em; margin-top: 4px; }
+
+    .timeline { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; }
+    .timeline li { display: grid; grid-template-columns: 32px 1fr; gap: 20px; padding: 20px 0; border-bottom: 1px solid var(--hairline-soft); }
+    .timeline li:last-child { border-bottom: 0; }
+    .timeline .marker { width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--gold); color: var(--gold); display: inline-flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 13px; flex-shrink: 0; }
+    .timeline .marker.solid { background: var(--gold); color: var(--navy-deep); }
+    .timeline h3 { font-size: 1.1rem; margin-bottom: 4px; font-weight: 500; }
+    .timeline p { font-size: 13px; color: var(--ink-soft); margin: 0; }
+
+    /* SIDEBAR */
+    .booking-card { position: sticky; top: 100px; background: var(--ivory); border: 1px solid var(--hairline); padding: clamp(24px, 3vw, 32px); }
+    .booking-card h3 { font-size: 1.4rem; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--hairline-soft); }
+    .booking-card h3 em { font-style: italic; color: var(--gold); }
+
+    .booking-meta { display: flex; flex-direction: column; gap: 14px; padding-bottom: 20px; border-bottom: 1px solid var(--hairline-soft); margin-bottom: 20px; }
+    .booking-meta-item { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+    .booking-meta-item span { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
+    .booking-meta-item strong { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 500; color: var(--navy); }
+
+    .price-breakdown { padding-bottom: 20px; border-bottom: 1px solid var(--hairline-soft); margin-bottom: 20px; }
+    .price-breakdown .row { display: flex; justify-content: space-between; padding: 6px 0; font-size: 13px; color: var(--muted); }
+    .price-breakdown .row span:last-child { color: var(--navy); font-weight: 500; }
+    .price-total { display: flex; justify-content: space-between; align-items: baseline; padding-top: 16px; margin-top: 12px; border-top: 1px solid var(--hairline); font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 500; color: var(--navy); }
+    .price-total small { display: block; font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 400; color: var(--muted); letter-spacing: .1em; margin-top: 2px; }
+
+    .booking-note { font-size: 11px; color: var(--muted); line-height: 1.6; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--hairline-soft); }
+    .booking-note i { color: var(--gold); margin-right: 4px; }
+
+    .booking-status { display: none; margin-top: 16px; padding: 14px 16px; background: rgba(201,165,91,.08); border-left: 2px solid var(--gold); font-size: 12px; line-height: 1.6; color: var(--ink-soft); }
+    .booking-status.show { display: block; }
+
+    .not-found { text-align: center; padding: clamp(64px, 10vw, 120px) 24px; max-width: 640px; margin: 0 auto; }
+    .not-found h1 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 20px; }
+    .not-found p { font-size: 16px; color: var(--ink-soft); margin-bottom: 32px; }
+
+    /* FOOTER */
+    .site-footer { background: var(--navy-deep); color: rgba(253,251,246,.7); position: relative; overflow: hidden; padding: 96px 0 0; }
+    .footer-watermark { position: absolute; left: 50%; bottom: -10rem; transform: translateX(-50%); font-family: 'Cormorant Garamond', serif; font-size: clamp(10rem, 24vw, 28rem); font-weight: 300; font-style: italic; letter-spacing: -.03em; line-height: .8; white-space: nowrap; pointer-events: none; user-select: none; z-index: 0; background: linear-gradient(180deg, rgba(201,165,91,.14) 0%, rgba(201,165,91,.05) 40%, rgba(201,165,91,0) 85%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .footer-watermark::before { content: "Travelbookings"; }
+    .footer-inner { position: relative; z-index: 1; }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.3fr; gap: clamp(32px, 5vw, 64px); padding-bottom: 72px; border-bottom: 1px solid rgba(253,251,246,.08); }
+    .footer-brand { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+    .footer-brand .brand-mark { width: 40px; height: 40px; border-color: rgba(201,165,91,.4); color: var(--gold-soft); }
+    .footer-brand .brand-name { color: var(--ivory); font-size: 22px; }
+    .footer-brand .brand-name em { color: var(--gold-soft); }
+    .footer-about { font-size: 13px; line-height: 1.75; color: rgba(253,251,246,.55); max-width: 36ch; margin-bottom: 28px; }
+    .footer-social { display: flex; gap: 10px; }
+    .footer-social a { width: 38px; height: 38px; border: 1px solid rgba(253,251,246,.14); color: rgba(253,251,246,.7); display: inline-flex; align-items: center; justify-content: center; font-size: 14px; transition: all .25s ease; }
+    .footer-social a:hover { border-color: var(--gold-soft); color: var(--gold-soft); }
+    .footer-heading { font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: .28em; text-transform: uppercase; color: var(--gold-soft); margin-bottom: 24px; }
+    .footer-links { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+    .footer-links a { color: rgba(253,251,246,.6); font-size: 13px; transition: color .2s ease; }
+    .footer-links a:hover { color: var(--gold-soft); }
+    .footer-contact { display: grid; gap: 12px; margin-bottom: 24px; }
+    .footer-contact a { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; color: rgba(253,251,246,.6); }
+    .footer-contact a:hover { color: var(--gold-soft); }
+    .footer-contact i { color: var(--gold-soft); font-size: 12px; }
+    .footer-bottom { padding: 32px 0; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; font-size: 11px; color: rgba(253,251,246,.4); letter-spacing: .04em; }
+    .footer-legal { list-style: none; display: flex; gap: 24px; margin: 0; padding: 0; flex-wrap: wrap; }
+    .footer-legal a { color: rgba(253,251,246,.4); transition: color .2s ease; }
+    .footer-legal a:hover { color: var(--gold-soft); }
+
+    @media (max-width: 991.98px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid > :first-child { grid-column: 1 / -1; }
+    }
+    @media (max-width: 575.98px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .footer-legal { justify-content: center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition-duration: .01ms !important; animation: none !important; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- TOPBAR -->
+  <div class="topbar d-none d-lg-block">
+    <div class="container">
+      <div class="topbar-inner">
+        <div class="topbar-left">
+          <a href="tel:+2348080452890"><i class="bi bi-telephone"></i> 0808 045 2890</a>
+          <a href="mailto:info@travelbookings.ng"><i class="bi bi-envelope"></i> info@travelbookings.ng</a>
+        </div>
+        <div class="topbar-right">
+          <span class="topbar-badge">Concierge · Available 24/7</span>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <header class="site-header" id="siteHeader">
+    <div class="container">
+      <div class="nav-inner">
+        <a class="brand" href="index.html">
+          <span class="brand-mark"><i class="bi bi-airplane-engines"></i></span>
+          <span class="brand-name">Travel<em>bookings</em></span>
+        </a>
+        <nav class="nav-center" aria-label="Main navigation">
+          <a href="flights.html" class="active">Flights</a>
+          <a href="hotels.html">Hotels</a>
+          <a href="destinations.html">Destinations</a>
+          <a href="travel-loans.html">Financing</a>
+          <a href="about.html">About</a>
+        </nav>
+        <div class="nav-actions">
+          <a href="login.html" class="text-link">Sign in</a>
+          <a href="register.html" class="btn-nav-cta">Book now <i class="bi bi-arrow-right"></i></a>
+        </div>
+        <button class="navbar-toggler" type="button" id="mobileToggle"
+                aria-controls="mobileNav" aria-expanded="false" aria-label="Open menu">
+          <i class="bi bi-list"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE DRAWER -->
+  <div class="mobile-nav-overlay" id="mobileOverlay"></div>
+  <aside class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+    <div class="mobile-nav-head">
+      <a class="brand" href="index.html">
+        <span class="brand-mark"><i class="bi bi-airplane-engines"></i></span>
+        <span class="brand-name">Travel<em>bookings</em></span>
+      </a>
+      <button class="mobile-nav-close" id="mobileClose" aria-label="Close menu">
+        <i class="bi bi-x-lg"></i>
+      </button>
+    </div>
+    <div class="mobile-nav-body">
+      <ul class="nav-list">
+        <li><a class="nav-link" href="index.html">Home <i class="bi bi-arrow-right"></i></a></li>
+        <li><a class="nav-link active" href="flights.html">Flights <i class="bi bi-arrow-right"></i></a></li>
+        <li><a class="nav-link" href="hotels.html">Hotels <i class="bi bi-arrow-right"></i></a></li>
+        <li><a class="nav-link" href="destinations.html">Destinations <i class="bi bi-arrow-right"></i></a></li>
+        <li><a class="nav-link" href="travel-loans.html">Financing <i class="bi bi-arrow-right"></i></a></li>
+        <li><a class="nav-link" href="about.html">About <i class="bi bi-arrow-right"></i></a></li>
+        <li><a class="nav-link" href="contact.html">Contact <i class="bi bi-arrow-right"></i></a></li>
+      </ul>
+    </div>
+    <div class="mobile-nav-cta">
+      <a href="login.html" class="btn btn-ghost">Sign in</a>
+      <a href="register.html" class="btn btn-navy">Book now <i class="bi bi-arrow-right"></i></a>
+    </div>
+    <div class="mobile-nav-footer">
+      <p style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;">Reach the concierge</p>
+      <a href="tel:+2348080452890" style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--ink-soft);padding:6px 0;"><i class="bi bi-telephone" style="color:var(--gold);"></i> 0808 045 2890</a>
+      <a href="mailto:info@travelbookings.ng" style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--ink-soft);padding:6px 0;"><i class="bi bi-envelope" style="color:var(--gold);"></i> info@travelbookings.ng</a>
+    </div>
+  </aside>
+
+  <main id="main">
+
+    <!-- BREADCRUMB -->
+    <section class="breadcrumb-bar">
+      <div class="container">
+        <div class="breadcrumb-inner">
+          <a href="index.html">Home</a>
+          <span class="sep">/</span>
+          <a href="flights.html">Flights</a>
+          <span class="sep">/</span>
+          <span class="current" id="crumbFlight">Flight</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- DETAILS (populated by JS) -->
+    <div id="detailsRoot"></div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-watermark" aria-hidden="true"></div>
+    <div class="container footer-inner">
+      <div class="footer-grid">
+        <div>
+          <a class="footer-brand" href="index.html">
+            <span class="brand-mark"><i class="bi bi-airplane-engines"></i></span>
+            <span class="brand-name">Travel<em>bookings</em></span>
+          </a>
+          <p class="footer-about">
+            An online travel agency serving customers in Nigeria and internationally.
+            Flights, hotels, destination guides and travel financing — all in one place.
+          </p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" aria-label="X"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-heading">Travel</h4>
+          <ul class="footer-links">
+            <li><a href="flights.html">Flights</a></li>
+            <li><a href="hotels.html">Hotels</a></li>
+            <li><a href="destinations.html">Destinations</a></li>
+            <li><a href="travel-loans.html">Travel financing</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-heading">Company</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="manage-booking.html">Manage booking</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-heading">Get in touch</h4>
+          <div class="footer-contact">
+            <a href="tel:+2348080452890"><i class="bi bi-telephone"></i> 0808 045 2890</a>
+            <a href="mailto:info@travelbookings.ng"><i class="bi bi-envelope"></i> info@travelbookings.ng</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span data-year>2025</span> Travelbookings. All rights reserved.</p>
+        <ul class="footer-legal">
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="terms.html">Terms</a></li>
+          <li><a href="faq.html">Help</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Flight data (single source of truth) -->
+  <script>
+    window.FLIGHT_DATA = [
+      { id: 'f1', airline: 'Air Peace', flightNo: 'P4 7102', depTime: '08:15', duration: 390, stops: 0, price: 1150000, aircraft: 'Boeing 787-9', baggage: '1 × 23kg checked bag', fareType: 'Saver' },
+      { id: 'f2', airline: 'British Airways', flightNo: 'BA 074', depTime: '23:10', duration: 400, stops: 0, price: 1420000, aircraft: 'Airbus A350-1000', baggage: '2 × 23kg checked bags', fareType: 'Standard' },
+      { id: 'f3', airline: 'Emirates', flightNo: 'EK 782', depTime: '17:25', duration: 720, stops: 1, price: 980000, aircraft: 'Boeing 777-300ER', baggage: '1 × 30kg checked bag', fareType: 'Saver' },
+      { id: 'f4', airline: 'Qatar Airways', flightNo: 'QR 1406', depTime: '13:05', duration: 660, stops: 1, price: 1050000, aircraft: 'Airbus A330-900', baggage: '1 × 23kg checked bag', fareType: 'Standard' },
+      { id: 'f5', airline: 'Ethiopian Airlines', flightNo: 'ET 900', depTime: '11:40', duration: 865, stops: 1, price: 890000, aircraft: 'Boeing 737-800', baggage: '1 × 23kg checked bag', fareType: 'Saver' },
+      { id: 'f6', airline: 'KLM', flightNo: 'KL 588', depTime: '22:30', duration: 615, stops: 1, price: 1320000, aircraft: 'Boeing 787-10', baggage: '1 × 23kg checked bag', fareType: 'Flex' },
+      { id: 'f7', airline: 'Turkish Airlines', flightNo: 'TK 626', depTime: '19:55', duration: 1015, stops: 2, price: 940000, aircraft: 'Airbus A321neo', baggage: '1 × 20kg checked bag', fareType: 'Saver' },
+      { id: 'f8', airline: 'Kenya Airways', flightNo: 'KQ 533', depTime: '05:20', duration: 805, stops: 1, price: 875000, aircraft: 'Boeing 737 MAX 8', baggage: '1 × 23kg checked bag', fareType: 'Saver' },
+      { id: 'f9', airline: 'Air Peace', flightNo: 'P4 7204', depTime: '02:40', duration: 420, stops: 0, price: 1090000, aircraft: 'Boeing 787-9', baggage: '1 × 23kg checked bag', fareType: 'Saver' },
+      { id: 'f10', airline: 'Virgin Atlantic', flightNo: 'VS 652', depTime: '14:50', duration: 395, stops: 0, price: 1560000, aircraft: 'Airbus A350-1000', baggage: '2 × 23kg checked bags', fareType: 'Flex' }
+    ];
+    window.AIRLINE_COLORS = ['#0b1e3d', '#1e3657', '#a8842c', '#2e7d5b', '#6b4bc9', '#a3452e', '#0f6f8c'];
+  </script>
+
+  <script>
+    (function () {
+      'use strict';
+
+      function $(id) { return document.getElementById(id); }
+      function pad(n) { return String(n).padStart(2, '0'); }
+      function daysFromNow(n) { var d = new Date(); d.setDate(d.getDate() + n); return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
+      function formatDateShort(iso) { if (!iso) return ''; var d = new Date(iso + 'T00:00:00'); return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }); }
+      function formatDateLong(iso) { if (!iso) return ''; var d = new Date(iso + 'T00:00:00'); return d.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' }); }
+      function formatMinutes(total) { total = ((total % 1440) + 1440) % 1440; return pad(Math.floor(total / 60)) + ':' + pad(total % 60); }
+      function formatDuration(mins) { var h = Math.floor(mins / 60), m = mins % 60; return h + 'h ' + (m < 10 ? '0' + m : m) + 'm'; }
+      function formatMoney(v) { return new Intl.NumberFormat('en-NG', { style: 'currency', currency: 'NGN', maximumFractionDigits: 0 }).format(v); }
+      function parseTime(s) { var p = s.split(':'); return (parseInt(p[0], 10) * 60) + parseInt(p[1], 10); }
+      function airportCode(v) { var m = String(v).match(/\(([A-Za-z]{3})\)/); if (m) return m[1].toUpperCase(); var l = String(v).replace(/[^A-Za-z]/g, ''); return (l.slice(0, 3) || '---').toUpperCase(); }
+      function escapeHTML(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+      function airlineColor(name) { var t = 0; for (var i = 0; i < name.length; i++) t += name.charCodeAt(i); return window.AIRLINE_COLORS[t % window.AIRLINE_COLORS.length]; }
+      function airlineInitials(name) { return name.split(/\s+/).map(function (w) { return w.charAt(0); }).join('').slice(0, 2).toUpperCase(); }
+      function stopsLabel(s) { if (s === 0) return 'Direct'; if (s === 1) return '1 stop'; return s + ' stops'; }
+
+      /* NAVBAR */
+      var siteHeader = $('siteHeader');
+      var mobileToggle = $('mobileToggle');
+      var mobileClose = $('mobileClose');
+      var mobileNav = $('mobileNav');
+      var mobileOverlay = $('mobileOverlay');
+      function onScroll() { if (siteHeader) siteHeader.classList.toggle('scrolled', window.scrollY > 8); }
+      onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
+      function openMobile() { mobileNav.classList.add('open'); mobileOverlay.classList.add('show'); mobileToggle.setAttribute('aria-expanded', 'true'); document.body.style.overflow = 'hidden'; }
+      function closeMobile() { mobileNav.classList.remove('open'); mobileOverlay.classList.remove('show'); mobileToggle.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; }
+      if (mobileToggle) mobileToggle.addEventListener('click', openMobile);
+      if (mobileClose) mobileClose.addEventListener('click', closeMobile);
+      if (mobileOverlay) mobileOverlay.addEventListener('click', closeMobile);
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && mobileNav.classList.contains('open')) { closeMobile(); mobileToggle.focus(); } });
+      document.querySelectorAll('#mobileNav .nav-link').forEach(function (l) { l.addEventListener('click', closeMobile); });
+      document.querySelectorAll('[data-year]').forEach(function (n) { n.textContent = new Date().getFullYear(); });
+
+      /* PARAMS */
+      var params = new URLSearchParams(window.location.search);
+      var flightId = params.get('id');
+      var from = params.get('from') || 'Lagos (LOS)';
+      var to = params.get('to') || 'London (LHR)';
+      var depart = params.get('depart') || daysFromNow(14);
+      var ret = params.get('ret') || '';
+      var adults = parseInt(params.get('adults'), 10) || 1;
+      var children = parseInt(params.get('children'), 10) || 0;
+      var cabin = params.get('cabin') || 'Economy';
+
+      var flight = window.FLIGHT_DATA.filter(function (f) { return f.id === flightId; })[0];
+
+      var root = $('detailsRoot');
+
+      if (!flight) {
+        root.innerHTML =
+          '<div class="not-found">' +
+            '<span style="display:inline-block;font-size:10.5px;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:var(--muted);margin-bottom:20px;">Flight</span>' +
+            '<h1>We couldn\'t find that flight.</h1>' +
+            '<p>The flight you\'re looking for isn\'t in our demonstration catalogue. Head back to the search to browse sample fares.</p>' +
+            '<a href="flights.html" class="btn btn-navy">Back to flight search <i class="bi bi-arrow-right"></i></a>' +
+          '</div>';
+        return;
+      }
+
+      document.title = flight.airline + ' ' + flight.flightNo + ' — Travelbookings';
+      $('crumbFlight').textContent = flight.airline + ' ' + flight.flightNo;
+
+      var fromCode = airportCode(from);
+      var toCode = airportCode(to);
+      var depMins = parseTime(flight.depTime);
+      var arrivalTotal = depMins + flight.duration;
+      var dayOffset = Math.floor(arrivalTotal / 1440);
+      var arrivalTime = formatMinutes(arrivalTotal);
+
+      var isRound = !!ret;
+      var tripLabel = isRound ? 'Round-trip' : 'One-way';
+      var adultFare = flight.price;
+      var childFare = Math.round(flight.price * 0.75);
+      var adultsTotal = adultFare * adults;
+      var childrenTotal = childFare * children;
+      var subtotal = adultsTotal + childrenTotal;
+      var taxes = Math.round(subtotal * 0.12);
+      var total = subtotal + taxes;
+
+      var stopsClass = flight.stops === 0 ? '' : ' has-stops';
+
+      root.innerHTML =
+        '<section class="flight-hero">' +
+          '<div class="container">' +
+            '<div class="flight-hero-head">' +
+              '<div>' +
+                '<span style="display:inline-flex;align-items:center;gap:14px;font-size:10.5px;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:var(--muted);margin-bottom:20px;">' +
+                  '<span style="width:28px;height:1px;background:var(--gold);"></span>' +
+                  escapeHTML(tripLabel) + ' flight' +
+                '</span>' +
+                '<h1>' + escapeHTML(flight.airline) + ' <em>' + escapeHTML(flight.flightNo) + '</em></h1>' +
+                '<div class="flight-hero-meta">' +
+                  '<span class="airline-badge">' +
+                    '<span class="logo" style="background:' + airlineColor(flight.airline) + ';">' + airlineInitials(flight.airline) + '</span>' +
+                    '<strong>' + escapeHTML(flight.aircraft) + '</strong>' +
+                  '</span>' +
+                  '<span><i class="bi bi-luggage" style="color:var(--gold);margin-right:6px;"></i> ' + escapeHTML(flight.baggage) + '</span>' +
+                  '<span><i class="bi bi-tag" style="color:var(--gold);margin-right:6px;"></i> ' + escapeHTML(flight.fareType) + ' fare</span>' +
+                '</div>' +
+              '</div>' +
+              '<div style="text-align:right;">' +
+                '<div style="font-family:\'Cormorant Garamond\',serif;font-size:2rem;font-weight:500;color:var(--navy);line-height:1;">' +
+                  formatMoney(flight.price) +
+                '</div>' +
+                '<div style="font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-top:6px;">Per adult · sample</div>' +
+              '</div>' +
+            '</div>' +
+
+            /* Route visualization */
+            '<div class="route-viz">' +
+              '<div class="route-viz-inner">' +
+                '<div class="route-point">' +
+                  '<span class="time">' + flight.depTime + '</span>' +
+                  '<span class="code">' + escapeHTML(fromCode) + '</span>' +
+                  '<span class="city">' + escapeHTML(from) + '</span>' +
+                  '<span class="date">' + formatDateLong(depart) + '</span>' +
+                '</div>' +
+                '<div class="route-middle">' +
+                  '<i class="bi bi-airplane plane"></i>' +
+                  '<span class="duration">' + formatDuration(flight.duration) + '</span>' +
+                  '<div class="track"></div>' +
+                  '<span class="stops' + stopsClass + '">' + stopsLabel(flight.stops) + '</span>' +
+                '</div>' +
+                '<div class="route-point">' +
+                  '<span class="time">' + arrivalTime + (dayOffset > 0 ? '<sup>+' + dayOffset + '</sup>' : '') + '</span>' +
+                  '<span class="code">' + escapeHTML(toCode) + '</span>' +
+                  '<span class="city">' + escapeHTML(to) + '</span>' +
+                  '<span class="date">' + formatDateLong(depart) + '</span>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+        '</section>' +
+
+        '<section class="details-body">' +
+          '<div class="container">' +
+            '<div class="details-grid">' +
+
+              '<article>' +
+                '<section class="content-section">' +
+                  '<h2>Flight <em>details</em></h2>' +
+                  '<div class="detail-grid">' +
+                    '<div class="detail-item"><span>Airline</span><strong>' + escapeHTML(flight.airline) + '</strong></div>' +
+                    '<div class="detail-item"><span>Flight number</span><strong>' + escapeHTML(flight.flightNo) + '</strong></div>' +
+                    '<div class="detail-item"><span>Aircraft</span><strong>' + escapeHTML(flight.aircraft) + '</strong></div>' +
+                    '<div class="detail-item"><span>Cabin class</span><strong>' + escapeHTML(cabin) + '</strong></div>' +
+                    '<div class="detail-item"><span>Duration</span><strong>' + formatDuration(flight.duration) + '</strong></div>' +
+                    '<div class="detail-item"><span>Stops</span><strong>' + stopsLabel(flight.stops) + '</strong></div>' +
+                    '<div class="detail-item"><span>Baggage</span><strong>' + escapeHTML(flight.baggage) + '</strong></div>' +
+                    '<div class="detail-item"><span>Fare type</span><strong>' + escapeHTML(flight.fareType) + '</strong></div>' +
+                  '</div>' +
+                '</section>' +
+
+                '<section class="content-section">' +
+                  '<h2>Journey <em>timeline</em></h2>' +
+                  '<ul class="timeline">' +
+                    '<li>' +
+                      '<span class="marker solid"><i class="bi bi-airplane-fill"></i></span>' +
+                      '<div>' +
+                        '<h3>Departure</h3>' +
+                        '<p>' + formatDateLong(depart) + ' at ' + flight.depTime + ' — ' + escapeHTML(from) + '</p>' +
+                      '</div>' +
+                    '</li>' +
+                    (flight.stops > 0 ?
+                      '<li>' +
+                        '<span class="marker">1</span>' +
+                        '<div>' +
+                          '<h3>Stopover</h3>' +
+                          '<p>Intermediate stop (illustrative schedule — details will appear once connected to the airline).</p>' +
+                        '</div>' +
+                      '</li>' : '') +
+                    '<li>' +
+                      '<span class="marker solid"><i class="bi bi-geo-alt-fill"></i></span>' +
+                      '<div>' +
+                        '<h3>Arrival</h3>' +
+                        '<p>' + formatDateLong(depart) + ' at ' + arrivalTime +
+                          (dayOffset > 0 ? ' (+' + dayOffset + ' day)' : '') +
+                          ' — ' + escapeHTML(to) + '</p>' +
+                      '</div>' +
+                    '</li>' +
+                  '</ul>' +
+                '</section>' +
+
+                '<section class="content-section">' +
+                  '<h2>Fare <em>inclusions</em></h2>' +
+                  '<div class="detail-grid">' +
+                    '<div class="detail-item"><span>Cabin bag</span><strong>1 × 7kg</strong><small>Approximate allowance</small></div>' +
+                    '<div class="detail-item"><span>Checked bag</span><strong>' + escapeHTML(flight.baggage.split('×')[0].trim() || '1') + '</strong><small>Per passenger</small></div>' +
+                    '<div class="detail-item"><span>Seat selection</span><strong>' + (flight.fareType === 'Flex' ? 'Included' : 'At extra cost') + '</strong></div>' +
+                    '<div class="detail-item"><span>Change fee</span><strong>' + (flight.fareType === 'Flex' ? 'Free' : 'Applies') + '</strong><small>Varies by fare</small></div>' +
+                  '</div>' +
+                '</section>' +
+
+                '<section class="content-section">' +
+                  '<h2>Travel <em>notes</em></h2>' +
+                  '<ul style="list-style:none;padding:0;margin:0;display:grid;gap:14px;">' +
+                    '<li style="display:flex;gap:14px;font-size:14px;color:var(--ink-soft);line-height:1.6;"><i class="bi bi-check2" style="color:var(--gold);font-size:13px;margin-top:3px;flex-shrink:0;"></i><span>All times shown are local to each airport. Please confirm the check-in cut-off for your specific flight with the airline.</span></li>' +
+                    '<li style="display:flex;gap:14px;font-size:14px;color:var(--ink-soft);line-height:1.6;"><i class="bi bi-check2" style="color:var(--gold);font-size:13px;margin-top:3px;flex-shrink:0;"></i><span>Fares shown are illustrative sample data. The final fare, taxes and fees will be confirmed at the time of ticketing.</span></li>' +
+                    '<li style="display:flex;gap:14px;font-size:14px;color:var(--ink-soft);line-height:1.6;"><i class="bi bi-check2" style="color:var(--gold);font-size:13px;margin-top:3px;flex-shrink:0;"></i><span>Travelbookings has not contacted the airline and cannot reserve this flight from this page.</span></li>' +
+                  '</ul>' +
+                '</section>' +
+
+              '</article>' +
+
+              '<aside>' +
+                '<div class="booking-card">' +
+                  '<h3>Your <em>fare</em></h3>' +
+
+                  '<div class="booking-meta">' +
+                    '<div class="booking-meta-item"><span>Route</span><strong>' + escapeHTML(fromCode) + ' → ' + escapeHTML(toCode) + '</strong></div>' +
+                    '<div class="booking-meta-item"><span>Date</span><strong>' + formatDateShort(depart) + '</strong></div>' +
+                    '<div class="booking-meta-item"><span>Cabin</span><strong>' + escapeHTML(cabin) + '</strong></div>' +
+                    '<div class="booking-meta-item"><span>Travellers</span><strong>' +
+                      adults + ' adult' + (adults !== 1 ? 's' : '') +
+                      (children > 0 ? ', ' + children + ' child' + (children !== 1 ? 'ren' : '') : '') +
+                    '</strong></div>' +
+                  '</div>' +
+
+                  '<div class="price-breakdown">' +
+                    '<div class="row"><span>Adults (' + adults + ' × ' + formatMoney(adultFare) + ')</span><span>' + formatMoney(adultsTotal) + '</span></div>' +
+                    (children > 0 ? '<div class="row"><span>Children (' + children + ' × ' + formatMoney(childFare) + ')</span><span>' + formatMoney(childrenTotal) + '</span></div>' : '') +
+                    '<div class="row"><span>Taxes &amp; fees (est.)</span><span>' + formatMoney(taxes) + '</span></div>' +
+                    '<div class="price-total"><span>Total<small>Sample estimate</small></span><span>' + formatMoney(total) + '</span></div>' +
+                  '</div>' +
+
+                  '<button type="button" class="btn btn-navy btn-block" id="selectBtn">Select this flight <i class="bi bi-arrow-right"></i></button>' +
+
+                  '<div class="booking-status" id="bookingStatus"></div>' +
+
+                  '<p class="booking-note">' +
+                    '<i class="bi bi-info-circle"></i>' +
+                    'Illustrative sample data. No payment will be taken and no reservation is created.' +
+                  '</p>' +
+                '</div>' +
+              '</aside>' +
+
+            '</div>' +
+          '</div>' +
+        '</section>';
+
+      var selectBtn = $('selectBtn');
+      var statusBox = $('bookingStatus');
+      selectBtn.addEventListener('click', function () {
+        statusBox.className = 'booking-status show';
+        statusBox.innerHTML =
+          '<strong>Demonstration only.</strong> Passenger details, payment and ticketing are not available from this page yet. ' +
+          'Real bookings will be enabled when the booking engine goes live. ' +
+          '<a href="flights.html" style="color:var(--navy);font-weight:500;border-bottom:1px solid var(--hairline);">Back to search</a>';
+      });
+
+    })();
+  </script>
+</body>
+</html>

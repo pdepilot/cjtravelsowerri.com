@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Destinations — Travelbookings Admin</title>
+  <meta name="description" content="Curate featured travel destinations, travel categories and discovery blurbs." />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link href="css/admin.css" rel="stylesheet" />
+
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+
+<body data-page="destinations">
+  <a href="#adminMain" class="skip-link">Skip to dashboard content</a>
+
+  <div class="dash-shell">
+
+    <!-- FLOATING SIDE NAV -->
+    <nav class="float-nav" id="floatNav" aria-label="Admin navigation">
+      <a class="float-brand" href="../index.html" aria-label="Travelbookings home">
+        <i class="bi bi-shield-lock-fill"></i>
+        <span class="float-btn-label">Travelbookings admin</span>
+      </a>
+      <div class="float-nav-divider" aria-hidden="true"></div>
+      <a class="float-btn " href="dashboard.html"  aria-label="Dashboard">
+        <i class="bi bi-speedometer2"></i>
+        <span class="float-btn-label">Dashboard</span>
+      </a>
+      <div class="float-nav-divider" aria-hidden="true"></div>
+      <a class="float-btn " href="customers.html"  aria-label="Customers">
+        <i class="bi bi-people-fill"></i>
+        <span class="float-btn-label">Customers</span>
+        <span class="float-badge" id="badgeCustomers">0</span>
+      </a>
+      <a class="float-btn " href="flights.html"  aria-label="Flight bookings">
+        <i class="bi bi-airplane-fill"></i>
+        <span class="float-btn-label">Flight Bookings</span>
+        <span class="float-badge" id="badgeFlights">0</span>
+      </a>
+      <a class="float-btn " href="hotels.html"  aria-label="Hotel reservations">
+        <i class="bi bi-building-fill"></i>
+        <span class="float-btn-label">Hotel Reservations</span>
+        <span class="float-badge" id="badgeHotels">0</span>
+      </a>
+      <a class="float-btn " href="loans.html"  aria-label="Travel loan applications">
+        <i class="bi bi-cash-coin"></i>
+        <span class="float-btn-label">Travel Loans</span>
+        <span class="float-badge" id="badgeLoans">0</span>
+      </a>
+      <a class="float-btn active" href="destinations.html" aria-current="page" aria-label="Destinations">
+        <i class="bi bi-globe-americas"></i>
+        <span class="float-btn-label">Destinations</span>
+        <span class="float-badge" id="badgeDestinations">0</span>
+      </a>
+      <a class="float-btn " href="transactions.html"  aria-label="Transactions">
+        <i class="bi bi-credit-card-2-front-fill"></i>
+        <span class="float-btn-label">Transactions</span>
+        <span class="float-badge" id="badgeTransactions">0</span>
+      </a>
+      <div class="float-nav-divider" aria-hidden="true"></div>
+      <a class="float-btn " href="api.html"  aria-label="API integrations">
+        <i class="bi bi-plug-fill"></i>
+        <span class="float-btn-label">API Integrations</span>
+        <span class="float-badge" id="badgeApi">0</span>
+      </a>
+      <a class="float-btn " href="reports.html"  aria-label="Reports">
+        <i class="bi bi-bar-chart-line-fill"></i>
+        <span class="float-btn-label">Reports</span>
+      </a>
+      <a class="float-btn " href="settings.html"  aria-label="Website settings">
+        <i class="bi bi-gear-fill"></i>
+        <span class="float-btn-label">Website Settings</span>
+      </a>
+      <button type="button" class="float-btn logout" data-bs-toggle="modal" data-bs-target="#logoutModal" aria-label="Logout">
+        <i class="bi bi-box-arrow-right"></i>
+        <span class="float-btn-label">Logout</span>
+      </button>
+    </nav>
+
+    <div class="admin-main" id="adminMain">
+
+      <header class="dash-topbar">
+        <div class="topbar-left">
+          <div class="topbar-crumb">
+            <i class="bi bi-shield-lock-fill"></i>
+            <a href="dashboard.html" style="color:var(--muted);text-decoration:none;">Admin</a>
+            <span class="sep">/</span>
+            <span class="current" id="crumbCurrent">Destinations</span>
+          </div>
+        </div>
+        <div class="topbar-right">
+          <button type="button" class="icon-btn" id="notificationsBtn" aria-label="Notifications">
+            <i class="bi bi-bell-fill"></i>
+            <span class="dot" aria-hidden="true"></span>
+          </button>
+          <button type="button" class="icon-btn" id="helpBtn" aria-label="Help centre">
+            <i class="bi bi-question-lg"></i>
+          </button>
+          <div class="topbar-user">
+            <span class="avatar gold">TA</span>
+            <span>Admin</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="admin-content">
+        <section class="view active" id="view-destinations" data-view="destinations">
+          <div class="page-head">
+            <div>
+              <h1>Destinations</h1>
+              <p>Manage the destinations displayed on the public website.</p>
+            </div>
+            <div class="page-head-actions">
+              <button type="button" class="btn btn-gold" id="addDestinationBtn">
+                <i class="bi bi-plus-lg"></i> Add destination
+              </button>
+            </div>
+          </div>
+          <div class="card-box">
+            <div class="toolbar">
+              <div class="search-box">
+                <i class="bi bi-search"></i>
+                <label class="visually-hidden" for="destinationSearch">Search destinations</label>
+                <input type="search" id="destinationSearch" placeholder="Search city, country or continent…" />
+              </div>
+              <label class="visually-hidden" for="destinationContinentFilter">Filter by continent</label>
+              <select class="filter-select" id="destinationContinentFilter">
+                <option value="">All continents</option>
+                <option value="Africa">Africa</option>
+                <option value="Europe">Europe</option>
+                <option value="Asia">Asia</option>
+                <option value="Middle East">Middle East</option>
+                <option value="Americas">Americas</option>
+                <option value="Oceania">Oceania</option>
+              </select>
+              <span class="toolbar-count"><strong id="destinationCount">0</strong> destinations</span>
+            </div>
+            <div class="card-box-body">
+              <div class="dest-admin-grid" id="destinationsGrid"></div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <footer class="admin-footer">
+        <p class="mb-0">
+          &copy; <span id="year">2025</span> Travelbookings admin console — demonstration only.
+        </p>
+        <ul>
+          <li><a href="../index.html">Public site</a></li>
+          <li><a href="../contact.html">Support</a></li>
+          <li><a href="../privacy.html">Privacy</a></li>
+        </ul>
+      </footer>
+
+    </div>
+  </div>
+
+  <!-- MODALS -->
+  <!-- MODALS -->
+  <div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="detailModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="detailModalTitle">
+            <i class="bi bi-file-earmark-text"></i> Record details
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="detailModalBody"></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-ghost btn-sm" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editModalTitle">
+            <i class="bi bi-pencil-square"></i> Edit record
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="info-note" style="margin-bottom:1rem;">
+            <i class="bi bi-info-circle"></i>
+            <div>Changes affect the in-page sample record only. Nothing is saved to a server.</div>
+          </div>
+          <form id="editForm" novalidate>
+            <div id="editFields" class="row g-3"></div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-ghost btn-sm" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-navy btn-sm" id="saveEditBtn">
+            <i class="bi bi-check2"></i> Save changes
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModalTitle">
+            <i class="bi bi-trash3"></i> Delete record
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p style="font-size:14px;color:var(--ink-soft);margin-bottom:16px;line-height:1.7;">
+            Are you sure you want to delete <strong id="deleteRecordLabel">this record</strong>?
+          </p>
+          <p class="modal-note mb-0">
+            <i class="bi bi-exclamation-triangle"></i>
+            This removes the sample record from this page only. Nothing is deleted from a server
+            because no server is connected.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-ghost btn-sm" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-danger-soft btn-sm" id="confirmDeleteBtn">
+            <i class="bi bi-trash3"></i> Delete record
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="destinationModal" tabindex="-1" aria-labelledby="destinationModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="destinationModalTitle">
+            <i class="bi bi-globe-americas"></i> Add destination
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="info-note" style="margin-bottom:1rem;">
+            <i class="bi bi-info-circle"></i>
+            <div>The destination is added to this page only. Public site updates arrive with the backend.</div>
+          </div>
+          <form id="destinationForm" novalidate>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label" for="destCity">City</label>
+                <input type="text" class="form-control" id="destCity" placeholder="e.g. Lisbon" required />
+                <div class="invalid-feedback">Please enter a city name.</div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="destCountry">Country</label>
+                <input type="text" class="form-control" id="destCountry" placeholder="e.g. Portugal" required />
+                <div class="invalid-feedback">Please enter a country name.</div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="destContinent">Continent</label>
+                <select class="form-select" id="destContinent" required>
+                  <option value="" selected disabled>Select a continent</option>
+                  <option value="Africa">Africa</option>
+                  <option value="Europe">Europe</option>
+                  <option value="Asia">Asia</option>
+                  <option value="Middle East">Middle East</option>
+                  <option value="Americas">Americas</option>
+                  <option value="Oceania">Oceania</option>
+                </select>
+                <div class="invalid-feedback">Please select a continent.</div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="destCategories">Travel styles</label>
+                <select class="form-select" id="destCategories" multiple size="4" aria-describedby="destCategoriesHelp">
+                  <option value="Beaches">Beaches</option>
+                  <option value="Adventure">Adventure</option>
+                  <option value="Culture">Culture</option>
+                  <option value="Luxury">Luxury</option>
+                  <option value="City Breaks">City Breaks</option>
+                </select>
+                <div class="form-text" id="destCategoriesHelp" style="font-size:11px;color:var(--muted);margin-top:6px;">
+                  Hold Ctrl / Cmd to select more than one.
+                </div>
+              </div>
+              <div class="col-12">
+                <label class="form-label" for="destImage">Image URL (optional)</label>
+                <input type="url" class="form-control" id="destImage" placeholder="https://images.unsplash.com/…" />
+                <div class="form-text" style="font-size:11px;color:var(--muted);margin-top:6px;">Leave blank to use a neutral gradient placeholder.</div>
+              </div>
+              <div class="col-12">
+                <label class="form-label" for="destBlurb">Short description</label>
+                <input type="text" class="form-control" id="destBlurb" placeholder="One line that captures the destination" />
+              </div>
+            </div>
+            <div class="toast-inline mt-3" id="destinationToast"></div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-ghost btn-sm" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-gold btn-sm" id="saveDestinationBtn">
+            <i class="bi bi-plus-lg"></i> Add destination
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="apiProviderModal" tabindex="-1"
+       aria-labelledby="apiProviderModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="apiProviderModalTitle">
+            <i class="bi bi-plug-fill"></i> Add API provider
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="api-security-note" style="margin-bottom:16px;">
+            <i class="bi bi-shield-lock"></i>
+            <div>
+              <strong>Credentials are never stored in this browser.</strong> In this demonstration,
+              keys and secrets are masked immediately after saving. The PHP backend will encrypt
+              them server-side and return only masked metadata to the admin UI.
+            </div>
+          </div>
+          <form id="apiProviderForm" novalidate>
+            <div class="row g-3">
+              <div class="col-12">
+                <label class="form-label" for="apiName">Provider name</label>
+                <input type="text" class="form-control" id="apiName" placeholder="e.g. Amadeus" required />
+                <div class="invalid-feedback">Please enter a provider name.</div>
+              </div>
+              <div class="col-12">
+                <label class="form-label" for="apiBaseUrl">API base URL</label>
+                <input type="url" class="form-control" id="apiBaseUrl" placeholder="https://api.example.com/v1" required />
+                <div class="invalid-feedback">Please enter a valid HTTPS URL.</div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="apiKey">API key</label>
+                <div class="cred-row">
+                  <input type="password" class="form-control" id="apiKey" placeholder="Enter API key" autocomplete="new-password" required />
+                  <button type="button" class="cred-toggle" data-target="apiKey" aria-label="Show API key" aria-pressed="false">
+                    <i class="bi bi-eye-fill"></i>
+                  </button>
+                </div>
+                <div class="cred-hint" id="apiKeyHint" hidden>
+                  <i class="bi bi-info-circle"></i>
+                  <span>Leave blank to keep the existing key.</span>
+                </div>
+                <div class="invalid-feedback">Please enter an API key.</div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="apiSecret">API secret <span style="font-weight:500;text-transform:none;letter-spacing:0;color:var(--muted);">(where applicable)</span></label>
+                <div class="cred-row">
+                  <input type="password" class="form-control" id="apiSecret" placeholder="Enter API secret" autocomplete="new-password" />
+                  <button type="button" class="cred-toggle" data-target="apiSecret" aria-label="Show API secret" aria-pressed="false">
+                    <i class="bi bi-eye-fill"></i>
+                  </button>
+                </div>
+                <div class="cred-hint" id="apiSecretHint" hidden>
+                  <i class="bi bi-info-circle"></i>
+                  <span>Leave blank to keep the existing secret.</span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="apiEnv">Environment</label>
+                <select class="form-select" id="apiEnv" required>
+                  <option value="Sandbox" selected>Sandbox</option>
+                  <option value="Production">Production</option>
+                </select>
+              </div>
+              <div class="col-md-6 d-flex align-items-end">
+                <div class="form-check form-switch m-0 pb-2">
+                  <input class="form-check-input" type="checkbox" id="apiEnabled" checked />
+                  <label class="form-check-label" for="apiEnabled" style="font-size:12px;margin-left:8px;">Enable integration</label>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-ghost btn-sm" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-navy btn-sm" id="apiSaveBtn">
+            <i class="bi bi-check2"></i> Save provider
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="apiDeleteModal" tabindex="-1"
+       aria-labelledby="apiDeleteModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="apiDeleteModalTitle">
+            <i class="bi bi-trash3"></i> Remove API provider
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p style="font-size:14px;color:var(--ink-soft);margin-bottom:16px;line-height:1.7;">
+            Remove <strong id="apiDeleteName">this provider</strong> from the demonstration list?
+          </p>
+          <p class="modal-note mb-0">
+            <i class="bi bi-info-circle"></i>
+            This removes the sample provider from this page only. No server-side configuration is
+            changed because no backend is connected.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-ghost btn-sm" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-danger-soft btn-sm" id="apiDeleteConfirm">
+            <i class="bi bi-trash3"></i> Remove provider
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="logoutModalTitle">
+            <i class="bi bi-box-arrow-right"></i> Sign out
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p style="font-size:14px;color:var(--ink-soft);margin-bottom:16px;line-height:1.7;">
+            You are in a demonstration administration console. Signing out here will not end a real
+            session because no authentication backend is connected.
+          </p>
+          <p class="modal-note mb-0">
+            <i class="bi bi-info-circle"></i>
+            Real session management will be added with the admin authentication system.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-ghost btn-sm" data-bs-dismiss="modal">Stay here</button>
+          <a href="../login.html" class="btn btn-navy btn-sm">Go to sign in</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

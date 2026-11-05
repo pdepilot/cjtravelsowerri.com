@@ -1,0 +1,1642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Create account — Travelbookings</title>
+  <meta name="description" content="Create a free Travelbookings account to save searches, manage bookings and continue travel financing enquiries." />
+
+  <!-- Fonts: Cormorant Garamond (display) + DM Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Bootstrap (for grid/flex only) + Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+  <style>
+    /* =======================================================
+       TOKENS
+       ======================================================= */
+    :root {
+      --cream: #f5f0e6;
+      --cream-soft: #faf6ed;
+      --ivory: #fdfbf6;
+      --navy: #0b1e3d;
+      --navy-soft: #1e3657;
+      --gold: #a8842c;
+      --gold-soft: #c9a55b;
+      --ink: #1a1a1a;
+      --ink-soft: #4a4741;
+      --muted: #8a8378;
+      --hairline: #d9d1c0;
+      --hairline-soft: #e8e1d1;
+      --error: #a3452e;
+      --green: #2e7d5b;
+    }
+
+    /* =======================================================
+       RESET / BASE
+       ======================================================= */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      color: var(--ink);
+      background: var(--cream);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    input, button, select { font: inherit; }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible {
+      outline: 1.5px solid var(--navy);
+      outline-offset: 4px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: -60px;
+      z-index: 100;
+      background: var(--navy);
+      color: var(--ivory);
+      padding: .7rem 1.2rem;
+      font-size: 13px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      transition: top .25s ease;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* =======================================================
+       SHELL — GRID AREAS
+       ======================================================= */
+    .shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      grid-template-rows: auto 1fr auto;
+      grid-template-areas:
+        "brand image"
+        "form  image"
+        "foot  image";
+      min-height: 100vh;
+    }
+
+    /* =======================================================
+       BRAND AREA
+       ======================================================= */
+    .brand-area {
+      grid-area: brand;
+      padding: 44px clamp(28px, 5vw, 88px) 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--navy);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--navy);
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .brand-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: .01em;
+      color: var(--navy);
+      line-height: 1;
+    }
+
+    .brand-name em {
+      font-style: italic;
+      color: var(--gold);
+      font-weight: 400;
+    }
+
+    /* =======================================================
+       FORM AREA
+       ======================================================= */
+    .form-area {
+      grid-area: form;
+      padding: 0 clamp(28px, 5vw, 88px);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-wrap {
+      width: 100%;
+      max-width: 460px;
+      margin: auto;
+      padding: 40px 0;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 10.5px;
+      font-weight: 500;
+      letter-spacing: .32em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .eyebrow::after {
+      content: "";
+      display: inline-block;
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(38px, 4.5vw, 48px);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -.015em;
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--gold);
+      font-weight: 400;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: var(--ink-soft);
+      line-height: 1.65;
+      margin-bottom: 32px;
+      max-width: 38ch;
+    }
+
+    /* ---------- Fields ---------- */
+    .form-label {
+      display: block;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    
+    .form-label .optional {
+      font-weight: 400;
+      text-transform: none;
+      letter-spacing: 0;
+      color: var(--hairline);
+      margin-left: 4px;
+    }
+
+    .field {
+      position: relative;
+      margin-bottom: 24px;
+    }
+
+    .field > .field-icon {
+      position: absolute;
+      left: 0;
+      bottom: 12px;
+      color: var(--hairline);
+      font-size: 14px;
+      pointer-events: none;
+      z-index: 2;
+      transition: color .2s ease;
+    }
+
+    .field .form-control,
+    .field .form-select {
+      width: 100%;
+      border: 0;
+      border-bottom: 1px solid var(--hairline);
+      background: transparent;
+      padding: 4px 0 12px 24px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--navy);
+      outline: none;
+      transition: border-color .3s ease;
+      border-radius: 0;
+    }
+
+    .field .form-control::placeholder,
+    .field .form-select::placeholder {
+      color: var(--hairline);
+      font-weight: 300;
+      font-size: 14px;
+    }
+
+    .field .form-control:focus,
+    .field .form-select:focus {
+      border-bottom-color: var(--navy);
+      box-shadow: none;
+      background: transparent;
+    }
+    
+    .field:focus-within > .field-icon {
+      color: var(--gold);
+    }
+
+    .field .form-control.is-invalid,
+    .field .form-select.is-invalid {
+      border-bottom-color: var(--error);
+    }
+
+    /* Hide dropdown arrow for select fields to keep it clean */
+    .form-select {
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238a8378' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0 center;
+      background-size: 14px;
+      padding-right: 20px;
+    }
+
+    /* Phone Row */
+    .phone-row {
+      display: flex;
+      gap: 16px;
+    }
+
+    .phone-row .phone-code {
+      flex: 0 0 auto;
+      width: 100px;
+      border: 0;
+      border-bottom: 1px solid var(--hairline);
+      background: transparent;
+      padding: 4px 0 12px 24px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--navy);
+      outline: none;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238a8378' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0 center;
+      background-size: 12px;
+      transition: border-color .3s ease;
+      border-radius: 0;
+    }
+
+    .phone-row .phone-code:focus {
+      border-bottom-color: var(--navy);
+    }
+
+    .phone-row .field {
+      flex: 1;
+      min-width: 0;
+      margin-bottom: 0;
+    }
+    
+    .phone-group-wrap {
+      position: relative;
+      margin-bottom: 24px;
+    }
+    
+    .phone-group-wrap > .field-icon {
+      position: absolute;
+      left: 0;
+      bottom: 12px;
+      color: var(--hairline);
+      font-size: 14px;
+      pointer-events: none;
+      z-index: 2;
+      transition: color .2s ease;
+    }
+    
+    .phone-group-wrap:focus-within > .field-icon {
+      color: var(--gold);
+    }
+
+    /* Toggle Password */
+    .toggle-password {
+      position: absolute;
+      right: 0;
+      bottom: 10px;
+      width: 30px;
+      height: 30px;
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: color .2s ease;
+      padding: 0;
+    }
+    .toggle-password:hover { color: var(--navy); }
+    .toggle-password i { font-size: 16px; }
+
+    /* Errors */
+    .field-error {
+      display: none;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--error);
+      margin-top: 6px;
+      letter-spacing: .01em;
+    }
+    .field-error.show { display: block; }
+
+    /* ---------- Password strength ---------- */
+    .strength-wrap {
+      margin-top: 12px;
+    }
+    .strength-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4px;
+      margin-bottom: 8px;
+    }
+    .strength-bar span {
+      height: 2px;
+      background: var(--hairline);
+      transition: background-color .3s ease;
+    }
+    .strength-wrap[data-score="1"] .strength-bar span:nth-child(-n+1) { background: var(--error); }
+    .strength-wrap[data-score="2"] .strength-bar span:nth-child(-n+2) { background: var(--gold); }
+    .strength-wrap[data-score="3"] .strength-bar span:nth-child(-n+3) { background: var(--navy-soft); }
+    .strength-wrap[data-score="4"] .strength-bar span { background: var(--green); }
+
+    .strength-label {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: .02em;
+    }
+    .strength-wrap[data-score="1"] .strength-label { color: var(--error); }
+    .strength-wrap[data-score="2"] .strength-label { color: var(--gold); }
+    .strength-wrap[data-score="3"] .strength-label { color: var(--navy-soft); }
+    .strength-wrap[data-score="4"] .strength-label { color: var(--green); }
+
+    .pw-reqs {
+      list-style: none;
+      padding: 0;
+      margin: 10px 0 0;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 4px 12px;
+    }
+    .pw-reqs li {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: .01em;
+    }
+    .pw-reqs li i {
+      font-size: 10px;
+      color: var(--hairline);
+      transition: color .2s ease;
+    }
+    .pw-reqs li.met { color: var(--ink-soft); }
+    .pw-reqs li.met i { color: var(--green); }
+
+    /* ---------- Terms ---------- */
+    .terms-block {
+      border-top: 1px solid var(--hairline-soft);
+      border-bottom: 1px solid var(--hairline-soft);
+      padding: 16px 0;
+      margin-top: 8px;
+      margin-bottom: 24px;
+    }
+    .terms-block.is-invalid {
+      border-color: var(--error);
+    }
+    .terms-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin: 0;
+    }
+    .terms-check .form-check-input {
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border: 1px solid var(--hairline);
+      cursor: pointer;
+      position: relative;
+      transition: all .2s ease;
+      flex-shrink: 0;
+      margin-top: 2px;
+      border-radius: 2px;
+    }
+    .terms-check .form-check-input:checked {
+      background: var(--navy);
+      border-color: var(--navy);
+    }
+    .terms-check .form-check-input:checked::after {
+      content: "";
+      position: absolute;
+      left: 5px;
+      top: 2px;
+      width: 4px;
+      height: 8px;
+      border: solid var(--ivory);
+      border-width: 0 1.2px 1.2px 0;
+      transform: rotate(45deg);
+    }
+    .terms-check .form-check-input:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(11, 30, 61, .15);
+    }
+    .terms-check .form-check-label {
+      font-size: 12px;
+      color: var(--ink-soft);
+      line-height: 1.6;
+      cursor: pointer;
+      letter-spacing: .01em;
+    }
+    .terms-check .form-check-label a {
+      color: var(--navy);
+      font-weight: 500;
+      border-bottom: 1px solid var(--hairline);
+      transition: border-color .2s ease;
+    }
+    .terms-check .form-check-label a:hover {
+      border-bottom-color: var(--navy);
+    }
+
+    /* ---------- Submit ---------- */
+    .btn-submit {
+      width: 100%;
+      background: var(--navy);
+      color: var(--ivory);
+      border: 0;
+      padding: 20px 24px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .32em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background-color .3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+    .btn-submit:hover {
+      background: var(--navy-soft);
+    }
+    .btn-submit:disabled {
+      opacity: .65;
+      cursor: not-allowed;
+    }
+    .btn-submit .arrow {
+      font-size: 14px;
+      transition: transform .3s ease;
+    }
+    .btn-submit:hover .arrow {
+      transform: translateX(4px);
+    }
+    .btn-submit:disabled .arrow {
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ---------- Divider & Login Prompt ---------- */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 32px 0 24px;
+      font-size: 10px;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .divider::before, .divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--hairline-soft);
+    }
+    .login-prompt {
+      text-align: center;
+      font-size: 13px;
+      color: var(--ink-soft);
+      margin-bottom: 24px;
+      letter-spacing: .01em;
+    }
+    .login-prompt a {
+      color: var(--navy);
+      font-weight: 500;
+      border-bottom: 1px solid var(--hairline);
+      transition: border-color .2s ease;
+    }
+    .login-prompt a:hover {
+      border-bottom-color: var(--navy);
+    }
+
+    /* ---------- Security Note ---------- */
+    .security-note {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.6;
+      letter-spacing: .01em;
+      padding-top: 16px;
+      border-top: 1px solid var(--hairline-soft);
+    }
+    .security-note i {
+      color: var(--green);
+      font-size: 14px;
+      margin-top: 1px;
+      flex-shrink: 0;
+    }
+
+    /* ---------- Form Status ---------- */
+    .form-status {
+      display: none;
+      margin-top: 16px;
+      padding: 16px 20px;
+      font-size: 13px;
+      line-height: 1.6;
+      letter-spacing: .01em;
+    }
+    .form-status.show { display: block; }
+    .form-status.error {
+      background: rgba(163, 69, 46, .06);
+      border-left: 2px solid var(--error);
+      color: var(--error);
+    }
+
+    /* ---------- Success Panel ---------- */
+    .success-panel {
+      display: none;
+      padding: 32px;
+      background: var(--cream-soft);
+      border: 1px solid var(--hairline-soft);
+    }
+    .success-panel.show { display: block; }
+    .success-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+    .success-panel h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      color: var(--navy);
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+    .success-panel > p {
+      font-size: 14px;
+      color: var(--ink-soft);
+      margin-bottom: 24px;
+    }
+    .demo-panel {
+      border-left: 2px solid var(--gold);
+      padding-left: 16px;
+      margin-bottom: 24px;
+    }
+    .demo-panel strong {
+      display: block;
+      font-size: 13px;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .demo-panel span {
+      font-size: 12px;
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+    .summary-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 24px;
+      display: grid;
+      gap: 8px;
+    }
+    .summary-list li {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      border-bottom: 1px solid var(--hairline-soft);
+      padding-bottom: 8px;
+    }
+    .summary-list .k { color: var(--muted); }
+    .summary-list .v { color: var(--navy); font-weight: 500; }
+    
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 24px;
+      border: 1px solid var(--hairline);
+      background: transparent;
+      color: var(--ink);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      transition: border-color .2s ease;
+      cursor: pointer;
+    }
+    .btn-ghost:hover {
+      border-color: var(--navy);
+    }
+
+    /* =======================================================
+       FOOTER AREA
+       ======================================================= */
+    .foot {
+      grid-area: foot;
+      padding: 24px clamp(28px, 5vw, 88px) 40px;
+      border-top: 1px solid var(--hairline-soft);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: .04em;
+    }
+    .foot-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .foot-links a { transition: color .2s ease; }
+    .foot-links a:hover { color: var(--navy); }
+
+    /* =======================================================
+       IMAGE AREA
+       ======================================================= */
+    .right {
+      grid-area: image;
+      position: relative;
+      background-color: var(--navy);
+      background-image: url("https://images.unsplash.com/photo-1500835556837-99ac94a94552?auto=format&fit=crop&w=1600&q=85");
+      background-size: cover;
+      background-position: center;
+      overflow: hidden;
+    }
+
+    .right::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg,
+          rgba(11, 30, 61, .25) 0%,
+          rgba(11, 30, 61, .15) 40%,
+          rgba(11, 30, 61, .75) 100%);
+    }
+
+    .right::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, transparent 40%, rgba(11, 30, 61, .35) 100%);
+      pointer-events: none;
+    }
+
+    .right-inner {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      min-height: 100vh;
+      padding: clamp(36px, 5vw, 64px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: var(--ivory);
+    }
+
+    .right-top {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .location {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 10.5px;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: rgba(253, 251, 246, .95);
+      border: 1px solid rgba(253, 251, 246, .35);
+      padding: 10px 18px;
+      border-radius: 100px;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      white-space: nowrap;
+    }
+
+    .location::before {
+      content: "";
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--gold-soft);
+      flex-shrink: 0;
+    }
+
+    .quote-block {
+      max-width: 520px;
+    }
+
+    .quote-mark {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 90px;
+      line-height: .3;
+      color: var(--gold-soft);
+      display: block;
+      margin-bottom: 20px;
+      height: 30px;
+    }
+
+    .quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(26px, 2.6vw, 36px);
+      font-weight: 300;
+      line-height: 1.28;
+      letter-spacing: -.01em;
+      color: var(--ivory);
+      margin-bottom: 32px;
+    }
+
+    .quote em {
+      font-style: italic;
+      color: var(--gold-soft);
+    }
+
+    .author {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(253, 251, 246, .15);
+    }
+
+    .author-line {
+      width: 32px;
+      height: 1px;
+      background: var(--gold-soft);
+      flex-shrink: 0;
+    }
+
+    .author-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .author-name {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--ivory);
+    }
+
+    .author-role {
+      font-size: 11px;
+      color: rgba(253, 251, 246, .55);
+      letter-spacing: .04em;
+    }
+
+    .right-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: 10px;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: rgba(253, 251, 246, .55);
+    }
+
+    .right-foot .index {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .right-foot .dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--gold-soft);
+      flex-shrink: 0;
+    }
+
+    /* =======================================================
+       RESPONSIVE — MOBILE STACK
+       ======================================================= */
+    @media (max-width: 991.98px) {
+      .shell {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto 1fr auto;
+        grid-template-areas:
+          "brand"
+          "image"
+          "form"
+          "foot";
+        min-height: 100vh;
+      }
+
+      .brand-area {
+        padding: 24px 20px 0;
+      }
+
+      .right {
+        margin: 24px 20px 0;
+        min-height: 380px;
+        border-radius: 16px;
+        box-shadow: 0 16px 40px rgba(11, 30, 61, .12);
+      }
+
+      .right-inner {
+        min-height: 380px;
+        padding: 28px 24px;
+      }
+
+      .quote { font-size: 24px; margin-bottom: 20px; }
+      .quote-mark { font-size: 64px; margin-bottom: 12px; height: 22px; }
+
+      .form-area {
+        padding: 28px 20px 0;
+        display: block;
+      }
+
+      .form-wrap {
+        margin: 0 auto;
+        padding: 0;
+      }
+
+      .foot {
+        padding: 28px 20px 40px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .brand-area { padding: 20px 16px 0; }
+      .brand-name { font-size: 20px; }
+      .brand-mark { width: 36px; height: 36px; font-size: 14px; }
+
+      .right {
+        margin: 20px 16px 0;
+        min-height: 340px;
+      }
+      .right-inner {
+        min-height: 340px;
+        padding: 24px 20px;
+      }
+
+      .location { font-size: 9px; letter-spacing: .18em; padding: 8px 12px; gap: 6px; }
+      .quote { font-size: 20px; line-height: 1.32; margin-bottom: 16px; }
+      .quote-mark { font-size: 56px; margin-bottom: 10px; height: 20px; }
+      .author-name { font-size: 10.5px; }
+      .author-role { font-size: 9.5px; }
+      .right-foot { font-size: 8.5px; letter-spacing: .18em; gap: 10px; }
+
+      .form-area { padding: 24px 16px 0; }
+      h1 { font-size: 36px; }
+      .subtitle { margin-bottom: 24px; }
+      .pw-reqs { grid-template-columns: 1fr; }
+      
+      .phone-row { flex-direction: column; gap: 8px; }
+      .phone-row .phone-code { width: 100%; }
+      .phone-row .field { margin-bottom: 24px; }
+      .phone-group-wrap > .field-icon { display: none; }
+      .phone-row .phone-code,
+      .phone-row .field .form-control { padding-left: 0; }
+      .phone-row .field > .field-icon { display: none; }
+
+      .foot { padding: 24px 16px 32px; flex-direction: column; align-items: flex-start; gap: 10px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition-duration: .01ms !important; animation: none !important; }
+    }
+  </style>
+
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+
+<body>
+  <a href="#registerForm" class="skip-link">Skip to registration form</a>
+
+  <div class="shell">
+
+    <!-- =========================================================
+         BRAND AREA
+         ========================================================= -->
+    <header class="brand-area">
+      <a class="brand" href="index.html" aria-label="Travelbookings home">
+        <span class="brand-mark"><i class="bi bi-airplane-engines"></i></span>
+        <span class="brand-name">Travel<em>bookings</em></span>
+      </a>
+    </header>
+
+    <!-- =========================================================
+         FORM AREA
+         ========================================================= -->
+    <main class="form-area" id="main">
+      <div class="form-wrap">
+
+        <!-- FORM VIEW -->
+        <div id="formView">
+          <div class="eyebrow">Create account</div>
+          
+          <h1>Join Travel<em>bookings</em>.</h1>
+          <p class="subtitle">
+            Save searches, manage bookings in one place and continue travel financing enquiries without starting over.
+          </p>
+
+          <form id="registerForm" novalidate autocomplete="on">
+            <div class="row g-3">
+              
+              <!-- First name -->
+              <div class="col-sm-6">
+                <label class="form-label" for="firstName">First name</label>
+                <div class="field">
+                  <i class="bi bi-person field-icon" aria-hidden="true"></i>
+                  <input type="text" class="form-control" id="firstName" name="firstName"
+                         placeholder="Adaeze" autocomplete="given-name" required
+                         aria-describedby="firstNameError" />
+                </div>
+                <div class="field-error" id="firstNameError">Please enter your first name.</div>
+              </div>
+
+              <!-- Last name -->
+              <div class="col-sm-6">
+                <label class="form-label" for="lastName">Last name</label>
+                <div class="field">
+                  <i class="bi bi-person field-icon" aria-hidden="true"></i>
+                  <input type="text" class="form-control" id="lastName" name="lastName"
+                         placeholder="Okonkwo" autocomplete="family-name" required
+                         aria-describedby="lastNameError" />
+                </div>
+                <div class="field-error" id="lastNameError">Please enter your last name.</div>
+              </div>
+
+              <!-- Email -->
+              <div class="col-12">
+                <label class="form-label" for="regEmail">Email address</label>
+                <div class="field">
+                  <i class="bi bi-envelope field-icon" aria-hidden="true"></i>
+                  <input type="email" class="form-control" id="regEmail" name="email"
+                         placeholder="you@example.com" autocomplete="email"
+                         inputmode="email" required aria-describedby="regEmailError" />
+                </div>
+                <div class="field-error" id="regEmailError">Please enter a valid email address.</div>
+              </div>
+
+              <!-- Phone -->
+              <div class="col-12">
+                <label class="form-label" for="phoneNumber">Phone number</label>
+                <div class="phone-group-wrap">
+                  <i class="bi bi-telephone field-icon" aria-hidden="true"></i>
+                  <div class="phone-row">
+                    <select class="phone-code" id="phoneCode" aria-label="Country calling code">
+                      <option value="+234" selected>🇳🇬 +234</option>
+                      <option value="+233">🇬🇭 +233</option>
+                      <option value="+254">🇰🇪 +254</option>
+                      <option value="+27">🇿🇦 +27</option>
+                      <option value="+256">🇺🇬 +256</option>
+                      <option value="+255">🇹🇿 +255</option>
+                      <option value="+20">🇪🇬 +20</option>
+                      <option value="+212">🇲🇦 +212</option>
+                      <option value="+44">🇬🇧 +44</option>
+                      <option value="+1">🇺🇸 +1</option>
+                      <option value="+1-CA">🇨🇦 +1</option>
+                      <option value="+971">🇦🇪 +971</option>
+                      <option value="+974">🇶🇦 +974</option>
+                      <option value="+90">🇹🇷 +90</option>
+                      <option value="+33">🇫🇷 +33</option>
+                      <option value="+49">🇩🇪 +49</option>
+                      <option value="+31">🇳🇱 +31</option>
+                      <option value="+39">🇮🇹 +39</option>
+                      <option value="+34">🇪🇸 +34</option>
+                      <option value="+61">🇦🇺 +61</option>
+                      <option value="+64">🇳🇿 +64</option>
+                    </select>
+                    <div class="field">
+                      <input type="tel" class="form-control" id="phoneNumber" name="phone"
+                             placeholder="812 345 6789" autocomplete="tel-national"
+                             inputmode="tel" required aria-describedby="phoneError" />
+                    </div>
+                  </div>
+                </div>
+                <div class="field-error" id="phoneError">Please enter a valid phone number.</div>
+              </div>
+
+              <!-- Country -->
+              <div class="col-12">
+                <label class="form-label" for="countrySelect">Country of residence</label>
+                <div class="field">
+                  <i class="bi bi-geo-alt field-icon" aria-hidden="true"></i>
+                  <select class="form-select" id="countrySelect" name="country" required
+                          autocomplete="country-name" aria-describedby="countryError">
+                    <option value="" selected disabled>Select a country</option>
+                    <option value="Nigeria">Nigeria</option>
+                    <option value="Ghana">Ghana</option>
+                    <option value="Kenya">Kenya</option>
+                    <option value="South Africa">South Africa</option>
+                    <option value="Uganda">Uganda</option>
+                    <option value="Tanzania">Tanzania</option>
+                    <option value="Egypt">Egypt</option>
+                    <option value="Morocco">Morocco</option>
+                    <option value="United Kingdom">United Kingdom</option>
+                    <option value="United States">United States</option>
+                    <option value="Canada">Canada</option>
+                    <option value="United Arab Emirates">United Arab Emirates</option>
+                    <option value="Qatar">Qatar</option>
+                    <option value="Türkiye">Türkiye</option>
+                    <option value="France">France</option>
+                    <option value="Germany">Germany</option>
+                    <option value="Netherlands">Netherlands</option>
+                    <option value="Italy">Italy</option>
+                    <option value="Spain">Spain</option>
+                    <option value="Australia">Australia</option>
+                    <option value="New Zealand">New Zealand</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div class="field-error" id="countryError">Please select your country of residence.</div>
+              </div>
+
+              <!-- Password -->
+              <div class="col-12">
+                <label class="form-label" for="regPassword">Password</label>
+                <div class="field">
+                  <i class="bi bi-lock field-icon" aria-hidden="true"></i>
+                  <input type="password" class="form-control" id="regPassword" name="password"
+                         placeholder="At least 8 characters" autocomplete="new-password"
+                         required aria-describedby="regPasswordError passwordStrength"
+                         minlength="8" />
+                  <button type="button" class="toggle-password" data-target="regPassword"
+                          aria-label="Show password" aria-pressed="false">
+                    <i class="bi bi-eye" id="toggleIcon1"></i>
+                  </button>
+                </div>
+                <div class="field-error" id="regPasswordError">Please choose a password of at least 8 characters.</div>
+
+                <div class="strength-wrap" id="passwordStrength" data-score="0" aria-hidden="true">
+                  <div class="strength-bar">
+                    <span></span><span></span><span></span><span></span>
+                  </div>
+                  <div class="strength-label" id="strengthLabel">Use 8 or more characters</div>
+                </div>
+
+                <ul class="pw-reqs" id="pwReqs">
+                  <li data-req="length"><i class="bi bi-circle"></i> 8+ characters</li>
+                  <li data-req="mixed"><i class="bi bi-circle"></i> Upper &amp; lowercase</li>
+                  <li data-req="number"><i class="bi bi-circle"></i> A number</li>
+                  <li data-req="symbol"><i class="bi bi-circle"></i> A symbol</li>
+                </ul>
+              </div>
+
+              <!-- Confirm password -->
+              <div class="col-12">
+                <label class="form-label" for="confirmPassword">Confirm password</label>
+                <div class="field">
+                  <i class="bi bi-lock field-icon" aria-hidden="true"></i>
+                  <input type="password" class="form-control" id="confirmPassword"
+                         name="confirmPassword" placeholder="Re-enter your password"
+                         autocomplete="new-password" required
+                         aria-describedby="confirmError" />
+                  <button type="button" class="toggle-password" data-target="confirmPassword"
+                          aria-label="Show password" aria-pressed="false">
+                    <i class="bi bi-eye" id="toggleIcon2"></i>
+                  </button>
+                </div>
+                <div class="field-error" id="confirmError">Passwords do not match.</div>
+              </div>
+
+            </div>
+
+            <!-- Terms -->
+            <div class="terms-block" id="termsBlock">
+              <div class="terms-check">
+                <input class="form-check-input" type="checkbox" id="acceptTerms"
+                       aria-describedby="termsError" />
+                <label class="form-check-label" for="acceptTerms">
+                  I agree to the <a href="terms.html" target="_blank" rel="noopener">Terms of Service</a> and <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>, and I understand this is a demonstration site where no real account is created.
+                </label>
+              </div>
+              <div class="field-error" id="termsError">Please accept the terms to continue.</div>
+            </div>
+
+            <button type="submit" class="btn-submit" id="submitBtn">
+              <span id="submitLabel">Create account</span>
+              <i class="bi bi-arrow-right arrow" id="submitIcon"></i>
+            </button>
+
+            <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+
+            <div class="divider">Or</div>
+            <p class="login-prompt">
+              Already have a Travelbookings account? <a href="login.html">Sign in instead</a>
+            </p>
+          </form>
+
+          <div class="security-note">
+            <i class="bi bi-shield-check"></i>
+            <span>This is a frontend demonstration. Nothing you enter is stored, transmitted or sent anywhere. Travelbookings will never ask for your bank password or card PIN.</span>
+          </div>
+        </div>
+
+        <!-- SUCCESS PANEL -->
+        <div class="success-panel" id="successView" role="status" aria-live="polite">
+          <span class="success-icon"><i class="bi bi-check2"></i></span>
+          <h2>Details validated, <span id="successName">traveller</span>.</h2>
+          <p>Your form passed every check. Here is a preview of the details that would be submitted when account registration goes live.</p>
+
+          <div class="demo-panel">
+            <strong>Demonstration only — no account has been created.</strong>
+            <span>Travelbookings has not stored your details, created a profile or sent anything to a server. Your password was never saved.</span>
+          </div>
+
+          <ul class="summary-list" id="successSummary"></ul>
+
+          <div class="d-flex gap-3 mt-4">
+            <button type="button" class="btn-submit" id="backToForm" style="width: auto; padding-left: 32px; padding-right: 32px;">
+              Back to form
+            </button>
+            <a href="login.html" class="btn-ghost">
+              Go to sign in
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- =========================================================
+         IMAGE AREA
+         ========================================================= -->
+    <aside class="right" aria-label="Why create an account">
+      <div class="right-inner">
+        
+        <div class="right-top">
+          <span class="location">Est. MMXXIV · Lagos &amp; London</span>
+        </div>
+
+        <div class="quote-block">
+          <span class="quote-mark" aria-hidden="true">&ldquo;</span>
+          <p class="quote">
+            One account for every part of the trip. Keep your searches, bookings and enquiries together — whether you're flying out of Lagos or arriving from London.
+          </p>
+          <div class="author">
+            <span class="author-line"></span>
+            <div class="author-meta">
+              <span class="author-name">Travelbookings Concierge</span>
+              <span class="author-role">Membership Benefits</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="right-foot">
+          <div class="index">
+            <span>02</span>
+            <span class="dot"></span>
+            <span>Membership</span>
+          </div>
+          <span>Travelbookings · Concierge</span>
+        </div>
+
+      </div>
+    </aside>
+
+    <!-- =========================================================
+         FOOTER AREA
+         ========================================================= -->
+    <footer class="foot">
+      <span>&copy; <span data-year>2025</span> Travelbookings</span>
+      <ul class="foot-links">
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="terms.html">Terms</a></li>
+        <li><a href="contact.html">Support</a></li>
+      </ul>
+    </footer>
+
+  </div>
+
+  <!-- Bootstrap JS bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- =========================================================
+       REGISTRATION PAGE SCRIPT
+       ========================================================= -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* =====================================================
+         1. SMALL HELPERS
+         ===================================================== */
+      function $(id) { return document.getElementById(id); }
+
+      function isValidEmail(value) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value);
+      }
+
+      function digitsOnly(value) {
+        return String(value).replace(/\D/g, '');
+      }
+
+      function escapeHTML(str) {
+        return String(str).replace(/[&<>"']/g, function (ch) {
+          return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch];
+        });
+      }
+
+      /* =====================================================
+         2. CURRENT YEAR
+         ===================================================== */
+      document.querySelectorAll('[data-year]').forEach(function (node) {
+        node.textContent = new Date().getFullYear();
+      });
+
+      /* =====================================================
+         3. DOM REFERENCES
+         ===================================================== */
+      var form = $('registerForm');
+      var formView = $('formView');
+      var successView = $('successView');
+      var formStatus = $('formStatus');
+
+      var submitBtn = $('submitBtn');
+      var submitLabel = $('submitLabel');
+      var submitIcon = $('submitIcon');
+
+      var fields = {
+        firstName: $('firstName'),
+        lastName: $('lastName'),
+        email: $('regEmail'),
+        phoneCode: $('phoneCode'),
+        phone: $('phoneNumber'),
+        country: $('countrySelect'),
+        password: $('regPassword'),
+        confirm: $('confirmPassword'),
+        terms: $('acceptTerms')
+      };
+
+      var errors = {
+        firstName: $('firstNameError'),
+        lastName: $('lastNameError'),
+        email: $('regEmailError'),
+        phone: $('phoneError'),
+        country: $('countryError'),
+        password: $('regPasswordError'),
+        confirm: $('confirmError'),
+        terms: $('termsError')
+      };
+
+      var termsBlock = $('termsBlock');
+      var strengthWrap = $('passwordStrength');
+      var strengthLabel = $('strengthLabel');
+      var pwReqItems = document.querySelectorAll('#pwReqs li');
+
+      /* =====================================================
+         4. PASSWORD VISIBILITY TOGGLES
+         ===================================================== */
+      document.querySelectorAll('.toggle-password').forEach(function (button) {
+        button.addEventListener('click', function () {
+          var input = $(button.dataset.target);
+          if (!input) { return; }
+
+          var isPassword = input.type === 'password';
+          input.type = isPassword ? 'text' : 'password';
+
+          var icon = button.querySelector('i');
+          if (icon) {
+            icon.className = isPassword ? 'bi bi-eye-slash' : 'bi bi-eye';
+          }
+
+          button.setAttribute('aria-label', isPassword ? 'Hide password' : 'Show password');
+          button.setAttribute('aria-pressed', isPassword ? 'true' : 'false');
+
+          input.focus();
+        });
+      });
+
+      /* =====================================================
+         5. PASSWORD STRENGTH + REQUIREMENTS
+         ===================================================== */
+      function passwordChecks(pw) {
+        return {
+          length: pw.length >= 8,
+          mixed: /[a-z]/.test(pw) && /[A-Z]/.test(pw),
+          number: /\d/.test(pw),
+          symbol: /[^A-Za-z0-9]/.test(pw)
+        };
+      }
+
+      function scorePassword(pw) {
+        if (!pw) { return 0; }
+        var c = passwordChecks(pw);
+        var score = 0;
+        if (c.length) { score++; }
+        if (c.mixed) { score++; }
+        if (c.number) { score++; }
+        if (c.symbol) { score++; }
+        if (pw.length >= 12) { score++; }
+        return Math.min(4, score);
+      }
+
+      var STRENGTH_LABELS = [
+        'Use 8 or more characters',
+        'Weak password',
+        'Fair password',
+        'Good password',
+        'Strong password'
+      ];
+
+      function updatePasswordUI() {
+        var pw = fields.password.value;
+        var score = scorePassword(pw);
+        var checks = passwordChecks(pw);
+
+        strengthWrap.setAttribute('data-score', String(score));
+        strengthLabel.textContent = STRENGTH_LABELS[score];
+
+        pwReqItems.forEach(function (item) {
+          var key = item.dataset.req;
+          var met = Boolean(checks[key]);
+          item.classList.toggle('met', met);
+          var icon = item.querySelector('i');
+          if (icon) {
+            icon.className = met ? 'bi bi-check-circle-fill' : 'bi bi-circle';
+          }
+        });
+
+        if (fields.confirm.value) {
+          checkConfirmSilently();
+        }
+      }
+
+      fields.password.addEventListener('input', function () {
+        clearError(fields.password, errors.password);
+        updatePasswordUI();
+        clearStatus();
+      });
+
+      /* =====================================================
+         6. ERROR HELPERS
+         ===================================================== */
+      function setError(input, errorNode, message) {
+        if (input) {
+          input.classList.add('is-invalid');
+          input.setAttribute('aria-invalid', 'true');
+        }
+        if (errorNode) {
+          if (message) { errorNode.textContent = message; }
+          errorNode.classList.add('show');
+        }
+      }
+
+      function clearError(input, errorNode) {
+        if (input) {
+          input.classList.remove('is-invalid');
+          input.removeAttribute('aria-invalid');
+        }
+        if (errorNode) {
+          errorNode.classList.remove('show');
+        }
+      }
+
+      function showStatus(html) {
+        formStatus.innerHTML = html;
+        formStatus.className = 'form-status show error';
+      }
+
+      function clearStatus() {
+        formStatus.className = 'form-status';
+        formStatus.innerHTML = '';
+      }
+
+      function checkConfirmSilently() {
+        var match = fields.password.value === fields.confirm.value;
+        if (!match) {
+          setError(fields.confirm, errors.confirm, 'Passwords do not match.');
+        } else {
+          clearError(fields.confirm, errors.confirm);
+        }
+        return match;
+      }
+
+      /* =====================================================
+         7. CLEAR ERRORS AS THE USER TYPES
+         ===================================================== */
+      fields.firstName.addEventListener('input', function () { clearError(fields.firstName, errors.firstName); clearStatus(); });
+      fields.lastName.addEventListener('input', function () { clearError(fields.lastName, errors.lastName); clearStatus(); });
+      fields.email.addEventListener('input', function () { clearError(fields.email, errors.email); clearStatus(); });
+      fields.phone.addEventListener('input', function () { clearError(fields.phone, errors.phone); clearStatus(); });
+      fields.phoneCode.addEventListener('change', function () { clearError(fields.phone, errors.phone); });
+      fields.country.addEventListener('change', function () { clearError(fields.country, errors.country); clearStatus(); });
+      fields.confirm.addEventListener('input', function () { clearError(fields.confirm, errors.confirm); clearStatus(); });
+      fields.terms.addEventListener('change', function () {
+        if (fields.terms.checked) {
+          termsBlock.classList.remove('is-invalid');
+          errors.terms.classList.remove('show');
+        }
+        clearStatus();
+      });
+
+      /* =====================================================
+         8. VALIDATION
+         ===================================================== */
+      function validate() {
+        var firstInvalid = null;
+        var messages = [];
+
+        var firstName = fields.firstName.value.trim();
+        if (firstName.length < 2) {
+          setError(fields.firstName, errors.firstName, 'Please enter your first name.');
+          firstInvalid = firstInvalid || fields.firstName;
+          messages.push('first name');
+        } else { clearError(fields.firstName, errors.firstName); }
+
+        var lastName = fields.lastName.value.trim();
+        if (lastName.length < 2) {
+          setError(fields.lastName, errors.lastName, 'Please enter your last name.');
+          firstInvalid = firstInvalid || fields.lastName;
+          messages.push('last name');
+        } else { clearError(fields.lastName, errors.lastName); }
+
+        var email = fields.email.value.trim();
+        if (!email || !isValidEmail(email)) {
+          setError(fields.email, errors.email, 'Please enter a valid email address.');
+          firstInvalid = firstInvalid || fields.email;
+          messages.push('email');
+        } else { clearError(fields.email, errors.email); }
+
+        var phoneDigits = digitsOnly(fields.phone.value);
+        if (phoneDigits.length < 7 || phoneDigits.length > 15) {
+          setError(fields.phone, errors.phone, 'Please enter a valid phone number (7 to 15 digits).');
+          firstInvalid = firstInvalid || fields.phone;
+          messages.push('phone number');
+        } else { clearError(fields.phone, errors.phone); }
+
+        if (!fields.country.value) {
+          setError(fields.country, errors.country, 'Please select your country of residence.');
+          firstInvalid = firstInvalid || fields.country;
+          messages.push('country');
+        } else { clearError(fields.country, errors.country); }
+
+        var password = fields.password.value;
+        if (password.length < 8) {
+          setError(fields.password, errors.password, 'Password must be at least 8 characters.');
+          firstInvalid = firstInvalid || fields.password;
+          messages.push('password');
+        } else { clearError(fields.password, errors.password); }
+
+        var confirm = fields.confirm.value;
+        if (!confirm || confirm !== password) {
+          setError(fields.confirm, errors.confirm, 'Passwords do not match.');
+          firstInvalid = firstInvalid || fields.confirm;
+          messages.push('password confirmation');
+        } else { clearError(fields.confirm, errors.confirm); }
+
+        if (!fields.terms.checked) {
+          termsBlock.classList.add('is-invalid');
+          errors.terms.classList.add('show');
+          firstInvalid = firstInvalid || fields.terms;
+          messages.push('terms');
+        } else {
+          termsBlock.classList.remove('is-invalid');
+          errors.terms.classList.remove('show');
+        }
+
+        return {
+          valid: messages.length === 0,
+          firstInvalid: firstInvalid,
+          count: messages.length
+        };
+      }
+
+      /* =====================================================
+         9. SUBMIT HANDLER
+         ===================================================== */
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        clearStatus();
+
+        var result = validate();
+
+        if (!result.valid) {
+          showStatus(
+            '<strong>Please check the highlighted field' +
+            (result.count > 1 ? 's' : '') + '.</strong> ' +
+            'Your details have not been submitted.'
+          );
+
+          if (result.firstInvalid) {
+            result.firstInvalid.focus();
+            result.firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+          return;
+        }
+
+        submitBtn.disabled = true;
+        submitLabel.textContent = 'Creating account…';
+        submitIcon.className = 'bi bi-arrow-repeat';
+
+        window.setTimeout(function () {
+          submitBtn.disabled = false;
+          submitLabel.textContent = 'Create account';
+          submitIcon.className = 'bi bi-arrow-right';
+
+          showSuccess();
+        }, 650);
+      });
+
+      /* =====================================================
+         10. SUCCESS VIEW
+         ===================================================== */
+      function showSuccess() {
+        var firstName = fields.firstName.value.trim();
+        var lastName = fields.lastName.value.trim();
+        var email = fields.email.value.trim();
+        var code = fields.phoneCode.value.replace('-CA', '');
+        var phone = digitsOnly(fields.phone.value);
+        var country = fields.country.value;
+
+        $('successName').textContent = firstName;
+
+        var rows = [
+          { k: 'Name', v: firstName + ' ' + lastName },
+          { k: 'Email', v: email },
+          { k: 'Phone', v: code + ' ' + phone },
+          { k: 'Country', v: country },
+          { k: 'Password', v: '•••••••• (not saved)' }
+        ];
+
+        $('successSummary').innerHTML = rows.map(function (row) {
+          return '<li><span class="k">' + escapeHTML(row.k) + '</span>' +
+                 '<span class="v">' + escapeHTML(row.v) + '</span></li>';
+        }).join('');
+
+        formView.style.display = 'none';
+        successView.classList.add('show');
+        successView.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      $('backToForm').addEventListener('click', function () {
+        successView.classList.remove('show');
+        formView.style.display = '';
+        formView.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+
+      /* =====================================================
+         11. INITIAL STATE
+         ===================================================== */
+      updatePasswordUI();
+
+    })();
+  </script>
+</body>
+</html>
