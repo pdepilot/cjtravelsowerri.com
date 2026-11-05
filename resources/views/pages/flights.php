@@ -295,267 +295,526 @@
     }
     .mobile-nav-footer a i { color: var(--gold); }
 
+    
     /* =======================================================
-       HERO (Cream + Video inset)
+       CJ TRAVELS PREMIER FLIGHTS HERO & SEARCH TERMINAL
        ======================================================= */
-    .flights-hero {
-      background: var(--cream);
-      padding: clamp(56px, 8vw, 104px) 0 clamp(48px, 6vw, 80px);
-      text-align: center;
+    .flights-hero-sky {
       position: relative;
-    }
-    .flights-hero-content {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-    .flights-hero h1 {
-      font-size: clamp(2.4rem, 6vw, 4.4rem);
-      line-height: 1.05;
-      letter-spacing: -.025em;
-      margin-bottom: 24px;
-    }
-    .flights-hero h1 em { font-style: italic; color: var(--gold); font-weight: 400; }
-    .flights-hero p {
-      font-size: 16px;
-      color: var(--ink-soft);
-      max-width: 56ch;
-      margin: 0 auto;
-      line-height: 1.7;
+      background: radial-gradient(circle at 50% -10%, #0d274c 0%, #08152c 45%, #020712 100%);
+      color: #fdfbf6;
+      padding: clamp(64px, 8vw, 115px) 0 clamp(90px, 11vw, 140px);
+      overflow: hidden;
+      isolation: isolate;
     }
 
-    .flights-hero-media {
-      max-width: 1200px;
-      margin: clamp(40px, 5vw, 64px) auto 0;
-      padding: 0 24px;
-      position: relative;
+    /* Ambient Aviation Sky Lighting & Jet Trails */
+    .flights-hero-sky::before {
+      content: "";
+      position: absolute;
+      top: -150px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: clamp(600px, 80vw, 1200px);
+      height: 550px;
+      background: radial-gradient(ellipse, rgba(201, 165, 91, 0.22) 0%, rgba(30, 80, 150, 0.28) 45%, transparent 75%);
+      filter: blur(80px);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+      animation: skyPulse 10s ease-in-out infinite alternate;
     }
-    .flights-hero-media-inner {
-      position: relative;
-      aspect-ratio: 21 / 9;
-      overflow: hidden;
-      border-radius: 2px;
-    }
-    .flights-hero-media video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .flights-hero-media-inner::after {
+
+    .flights-hero-sky::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(11,30,61,.15) 0%, rgba(11,30,61,.35) 100%);
+      background-image: 
+        radial-gradient(1px 1px at 40px 60px, rgba(201, 165, 91, 0.6), transparent),
+        radial-gradient(1.5px 1.5px at 180px 140px, rgba(253, 251, 246, 0.8), transparent),
+        radial-gradient(1.2px 1.2px at 360px 220px, rgba(201, 165, 91, 0.5), transparent),
+        radial-gradient(1.5px 1.5px at 580px 90px, rgba(253, 251, 246, 0.75), transparent),
+        radial-gradient(1px 1px at 780px 240px, rgba(201, 165, 91, 0.5), transparent),
+        radial-gradient(1.5px 1.5px at 980px 130px, rgba(253, 251, 246, 0.8), transparent);
+      background-size: 1100px 360px;
+      opacity: 0.6;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes skyPulse {
+      0% { transform: translateX(-50%) scale(0.95); opacity: 0.7; }
+      100% { transform: translateX(-50%) scale(1.15); opacity: 1; }
+    }
+
+    /* Aviation Backdrop Image */
+    .flights-sky-backdrop {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
       pointer-events: none;
     }
-    .hero-media-caption {
+    .flights-sky-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: brightness(0.42) contrast(1.1);
+      transform: scale(1.04);
+      transition: transform 12s ease;
+    }
+    .flights-sky-scrim {
       position: absolute;
-      left: 32px;
-      bottom: 32px;
-      z-index: 2;
+      inset: 0;
+      background: 
+        linear-gradient(180deg, 
+          rgba(2, 7, 18, 0.82) 0%, 
+          rgba(8, 21, 44, 0.65) 40%, 
+          rgba(2, 7, 18, 0.94) 100%),
+        radial-gradient(circle at 50% 30%, 
+          rgba(13, 39, 76, 0.3) 0%, 
+          rgba(2, 7, 18, 0.88) 100%);
+    }
+
+    /* Live Air Desk Radar Badge */
+    .air-desk-badge {
       display: inline-flex;
       align-items: center;
-      gap: 12px;
-      background: rgba(253,251,246,.94);
-      backdrop-filter: blur(10px);
-      padding: 12px 20px;
-    }
-    .hero-media-caption i { color: var(--gold); font-size: 16px; }
-    .hero-media-caption span {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 15px;
-      color: var(--navy);
-      letter-spacing: .01em;
-    }
-    @media (max-width: 767.98px) {
-      .flights-hero-media-inner { aspect-ratio: 4 / 3; }
-      .hero-media-caption { left: 16px; bottom: 16px; padding: 10px 16px; }
-      .hero-media-caption span { font-size: 13px; }
-    }
-
-    /* =======================================================
-       SEARCH PANEL
-       ======================================================= */
-    .search-wrap {
-      position: relative;
-      z-index: 5;
-      margin-top: -56px;
-      padding: 0 24px;
-    }
-    .search-card {
-      max-width: 1100px;
-      margin: 0 auto;
-      background: var(--ivory);
-      border: 1px solid var(--hairline);
-      padding: clamp(28px, 4vw, 44px);
-    }
-
-    .trip-switch {
-      display: inline-flex;
-      flex-wrap: wrap;
-      gap: 0;
-      border-bottom: 1px solid var(--hairline-soft);
-      padding: 0;
-      margin-bottom: 32px;
-    }
-    .trip-btn {
-      border: 0;
-      background: transparent;
-      border-bottom: 2px solid transparent;
-      padding: 12px 22px;
+      gap: 10px;
+      padding: 8px 20px;
+      background: rgba(253, 251, 246, 0.08);
+      border: 1px solid rgba(201, 165, 91, 0.38);
+      border-radius: 100px;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       font-family: 'DM Sans', sans-serif;
       font-size: 11px;
-      font-weight: 500;
+      font-weight: 600;
       letter-spacing: .22em;
       text-transform: uppercase;
-      color: var(--muted);
-      cursor: pointer;
-      transition: all .25s ease;
-      margin-bottom: -1px;
+      color: #e8d9b3;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
     }
-    .trip-btn:hover { color: var(--navy); }
+    .air-desk-badge .beacon {
+      width: 8px;
+      height: 8px;
+      background: #2e7d5b;
+      border-radius: 50%;
+      box-shadow: 0 0 0 3px rgba(46, 125, 91, 0.35);
+      animation: beaconPulse 2s infinite;
+    }
+    @keyframes beaconPulse {
+      0% { box-shadow: 0 0 0 0 rgba(46, 125, 91, 0.7); }
+      70% { box-shadow: 0 0 0 8px rgba(46, 125, 91, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(46, 125, 91, 0); }
+    }
+
+    /* Grand Monumental Title */
+    .flights-sky-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.6rem, 7vw, 5.8rem);
+      line-height: .98;
+      letter-spacing: -.03em;
+      font-weight: 300;
+      color: #fdfbf6;
+      margin-bottom: 22px;
+      text-wrap: balance;
+    }
+    .flights-sky-title em {
+      font-style: italic;
+      font-weight: 400;
+      background: linear-gradient(135deg, #ffffff 0%, #e8d9b3 50%, #c9a55b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .flights-sky-sub {
+      font-size: clamp(15px, 1.4vw, 17.5px);
+      color: rgba(253, 251, 246, 0.78);
+      max-width: 68ch;
+      margin: 0 auto 32px;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* Trending Route Chips */
+    .flight-chips-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .flight-chips-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: #c9a55b;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .flight-chips-scroll {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      max-width: 900px;
+    }
+    .flight-chip-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: rgba(253, 251, 246, 0.07);
+      border: 1px solid rgba(253, 251, 246, 0.16);
+      border-radius: 100px;
+      color: #fdfbf6;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: all .25s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .flight-chip-btn .chip-cities { font-weight: 500; }
+    .flight-chip-btn .chip-price {
+      background: rgba(201, 165, 91, 0.22);
+      color: #e8d9b3;
+      padding: 2px 8px;
+      border-radius: 100px;
+      font-size: 10.5px;
+      font-weight: 600;
+    }
+    .flight-chip-btn:hover {
+      background: rgba(201, 165, 91, 0.25);
+      border-color: #c9a55b;
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(201, 165, 91, 0.25);
+    }
+    .flight-chip-btn:hover .chip-price {
+      background: #c9a55b;
+      color: var(--navy-deep);
+    }
+
+    /* Floating Spotlight Cards on Sides */
+    .flight-floating-spotlight {
+      position: absolute;
+      top: 36%;
+      z-index: 3;
+      background: rgba(6, 17, 38, 0.85);
+      border: 1px solid rgba(201, 165, 91, 0.35);
+      border-radius: 16px;
+      padding: 16px 20px;
+      width: 240px;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+      cursor: pointer;
+      transition: all .3s cubic-bezier(0.2, 0.8, 0.2, 1);
+      display: none;
+    }
+    @media (min-width: 1280px) {
+      .flight-floating-spotlight { display: block; }
+    }
+    .flight-floating-spotlight.left { left: 32px; }
+    .flight-floating-spotlight.right { right: 32px; }
+    .flight-floating-spotlight:hover {
+      transform: translateY(-4px) scale(1.02);
+      border-color: #c9a55b;
+      background: rgba(11, 30, 61, 0.95);
+      box-shadow: 0 20px 50px rgba(201, 165, 91, 0.25);
+    }
+    .spotlight-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: #fdfbf6;
+      background: rgba(163, 69, 46, 0.35);
+      border: 1px solid rgba(163, 69, 46, 0.6);
+      padding: 3px 8px;
+      border-radius: 100px;
+      margin-bottom: 8px;
+    }
+    .spotlight-badge.gold {
+      background: rgba(201, 165, 91, 0.25);
+      border-color: rgba(201, 165, 91, 0.5);
+      color: #e8d9b3;
+    }
+    .spotlight-route {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #fdfbf6;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .spotlight-route i { color: #c9a55b; font-size: 14px; }
+    .spotlight-airline {
+      display: block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      color: rgba(253, 251, 246, 0.7);
+      margin-bottom: 12px;
+    }
+    .spotlight-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(253, 251, 246, 0.1);
+      padding-top: 8px;
+    }
+    .spotlight-price {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: #c9a55b;
+    }
+    .spotlight-action {
+      font-size: 10px;
+      color: #e8d9b3;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    /* Elevated Glassmorphism Flight Terminal Card */
+    .flight-terminal-card {
+      background: #fdfbf6 !important;
+      border: 1px solid rgba(201, 165, 91, 0.35) !important;
+      border-radius: 2px;
+      box-shadow: 0 24px 60px rgba(6, 17, 38, 0.28) !important;
+      padding: clamp(30px, 4vw, 46px) !important;
+      position: relative;
+    }
+    .flight-terminal-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #0b1e3d 0%, #c9a55b 50%, #0b1e3d 100%);
+    }
+
+    .terminal-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--hairline-soft);
+      padding-bottom: 16px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .terminal-card-header .trip-switch {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding: 0;
+    }
+    .trip-btn {
+      border: 1px solid transparent;
+      background: transparent;
+      padding: 10px 20px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11.5px;
+      font-weight: 500;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      border-radius: 100px;
+      cursor: pointer;
+      transition: all .2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .trip-btn:hover {
+      color: var(--navy);
+      background: rgba(11, 30, 61, 0.05);
+    }
     .trip-btn.active {
       color: var(--navy);
-      border-bottom-color: var(--gold);
+      background: rgba(201, 165, 91, 0.16);
+      border-color: rgba(201, 165, 91, 0.4);
       font-weight: 600;
     }
+
+    .terminal-guarantee-pill {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: .04em;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .terminal-guarantee-pill i { color: var(--green); font-size: 13px; }
 
     .search-form .form-label {
-      display: block;
-      font-size: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10.5px;
       font-weight: 600;
-      letter-spacing: .22em;
+      letter-spacing: .2em;
       text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 10px;
+      color: var(--navy);
+      margin-bottom: 8px;
     }
-    .search-form .field { position: relative; }
-    .search-form .field > i {
-      position: absolute;
-      left: 14px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--gold);
-      font-size: 13px;
-      pointer-events: none;
-      z-index: 2;
-    }
+
     .search-form .form-control,
     .search-form .form-select {
-      width: 100%;
-      height: 52px;
-      background: transparent;
+      background: #ffffff !important;
       border: 1px solid var(--hairline);
-      border-radius: 0;
-      padding: 0 16px 0 40px;
+      height: 54px;
       font-size: 14px;
+      font-weight: 500;
       color: var(--navy);
-      transition: border-color .25s ease, background-color .25s ease;
-      appearance: none;
-      -webkit-appearance: none;
+      transition: all .25s ease;
     }
-    .search-form .form-select {
-      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238a8378' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 12px center;
-      background-size: 12px;
-      padding-right: 36px;
-    }
-    .search-form .form-control::placeholder { color: var(--muted); }
-    .search-form .form-control:hover,
-    .search-form .form-select:hover { border-color: var(--gold-pale); }
     .search-form .form-control:focus,
-    .search-form .form-select:focus { outline: none; border-color: var(--navy); background: #fff; }
+    .search-form .form-select:focus {
+      border-color: var(--navy) !important;
+      box-shadow: 0 0 0 3px rgba(11, 30, 61, 0.1) !important;
+      background: #ffffff !important;
+    }
 
-    .swap-btn {
+    .search-card .swap-btn {
       position: absolute;
-      right: -18px;
-      top: 42px;
-      width: 36px;
-      height: 36px;
+      right: -17px;
+      top: 38px;
+      width: 34px;
+      height: 34px;
       border-radius: 50%;
-      background: var(--ivory);
-      border: 1px solid var(--hairline);
-      color: var(--navy);
+      background: var(--navy);
+      color: #c9a55b;
+      border: 2px solid #fdfbf6;
       display: none;
       align-items: center;
       justify-content: center;
+      z-index: 4;
       cursor: pointer;
-      z-index: 3;
       transition: all .25s ease;
+      box-shadow: 0 4px 10px rgba(11, 30, 61, 0.25);
     }
-    .swap-btn:hover { background: var(--navy); color: var(--ivory); border-color: var(--navy); }
-    .swap-btn i { transition: transform .3s ease; }
-    .swap-btn.spun i { transform: rotate(180deg); }
-    @media (min-width: 992px) { .swap-btn { display: inline-flex; } }
-
-    .extra-legs { margin-top: 4px; }
-    .extra-leg {
-      background: var(--cream-soft);
-      border: 1px solid var(--hairline);
-      padding: 16px;
-      margin-top: 16px;
-      position: relative;
-    }
-    .remove-leg {
-      position: absolute;
-      top: 8px; right: 10px;
-      border: 0; background: transparent;
-      color: var(--muted); font-size: 14px;
-      padding: 4px 6px; cursor: pointer;
-    }
-    .remove-leg:hover { color: var(--red); }
-
-    .add-leg-btn {
-      margin-top: 16px;
-      border: 1px solid var(--hairline);
-      background: transparent;
+    @media (min-width: 992px) { .search-card .swap-btn { display: inline-flex; } }
+    .search-card .swap-btn:hover {
+      background: var(--gold);
       color: var(--navy);
-      padding: 12px 22px;
-      font-size: 10px; font-weight: 600;
-      letter-spacing: .22em; text-transform: uppercase;
-      cursor: pointer;
-      transition: all .2s ease;
+      transform: rotate(180deg);
     }
-    .add-leg-btn:hover { border-color: var(--navy); background: var(--cream-soft); }
-    .add-leg-btn:disabled { opacity: .4; cursor: not-allowed; }
 
-    .search-footer {
-      margin-top: 32px;
-      padding-top: 24px;
+    /* Primary Search CTA Button */
+    .btn-flight-search-cta {
+      width: 100%;
+      height: 54px;
+      background: linear-gradient(135deg, var(--navy) 0%, #1e3b68 100%);
+      color: #fdfbf6;
+      border: 1px solid var(--navy);
+      border-radius: 2px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: all .3s cubic-bezier(0.2, 0.8, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-flight-search-cta:hover {
+      background: linear-gradient(135deg, #061126 0%, var(--navy) 100%);
+      box-shadow: 0 8px 24px rgba(11, 30, 61, 0.35);
+      transform: translateY(-1px);
+      color: #e8d9b3;
+    }
+    .btn-flight-search-cta i {
+      transition: transform .25s ease;
+    }
+    .btn-flight-search-cta:hover i {
+      transform: translateX(4px);
+    }
+
+    .search-guarantees {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .search-guarantees .search-note {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11.5px;
+      font-weight: 500;
+      color: var(--ink-soft);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .search-guarantees .search-note i {
+      color: var(--green);
+      font-size: 13px;
+    }
+
+    /* Partner Airlines Strip */
+    .airline-partner-strip {
+      margin-top: 28px;
+      padding-top: 22px;
       border-top: 1px solid var(--hairline-soft);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 24px;
+      gap: 16px;
       flex-wrap: wrap;
     }
-    .search-note {
+    .partner-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      flex-shrink: 0;
+    }
+    .partner-tags {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .carrier-tag {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11.5px;
+      font-weight: 500;
+      color: var(--navy);
+      background: rgba(11, 30, 61, 0.04);
+      padding: 4px 12px;
+      border-radius: 100px;
+      border: 1px solid var(--hairline-soft);
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      font-size: 12px;
-      color: var(--muted);
+      gap: 6px;
+      white-space: nowrap;
     }
-    .search-note i { color: var(--green); font-size: 13px; }
-
-    .form-status {
-      display: none;
-      margin-top: 20px;
-      padding: 16px 20px;
-      font-size: 13px;
-      line-height: 1.6;
-    }
-    .form-status.show { display: block; }
-    .form-status.error { background: rgba(163,69,46,.06); border-left: 2px solid var(--red); color: var(--red); }
-    .form-status.success { background: rgba(46,125,91,.06); border-left: 2px solid var(--green); color: var(--green); }
-
-    @media (max-width: 767.98px) {
-      .search-wrap { margin-top: -32px; }
-      .search-card { padding: 24px 20px; }
-      .search-footer { flex-direction: column; align-items: stretch; }
-      .search-footer .btn { width: 100%; }
+    .carrier-tag i {
+      color: var(--gold);
+      font-size: 11px;
     }
 
     /* =======================================================
@@ -1132,71 +1391,153 @@
 
   <main id="main">
 
-    <!-- HERO -->
-    <section class="flights-hero">
-      <div class="flights-hero-content">
-        <span class="eyebrow">Flights · Domestic &amp; international</span>
-        <h1>Find the right flight,<br />without the <em>guesswork</em>.</h1>
-        <p>
-          Compare fares across leading local and international airlines, filter by what matters
-          to you, and review every detail before you decide.
-        </p>
+        <!-- =========================================================
+         CJ TRAVELS FLIGHTS HERO — LUXURY SKY CONSOLE
+         ========================================================= -->
+    <section class="flights-hero-sky" id="flightsHero">
+      <!-- Aviation Cinematic Backdrop -->
+      <div class="flights-sky-backdrop">
+        <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=2000&q=85" alt="CJ Travels Flight Sky" class="flights-sky-img" />
+        <div class="flights-sky-scrim"></div>
       </div>
-      <div class="flights-hero-media">
-        <div class="flights-hero-media-inner">
-          <video autoplay muted loop playsinline preload="metadata"
-                 poster="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1920&q=85">
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-airplane-taking-off-from-the-runway-1593-large.mp4" type="video/mp4" />
-            <source src="https://cdn.coverr.co/videos/coverr-airplane-taking-off-1571/1080p.mp4" type="video/mp4" />
-          </video>
-          <span class="hero-media-caption">
-            <i class="bi bi-airplane"></i>
-            <span>Every journey begins <em>beautifully</em>.</span>
+
+      <!-- Floating 3D Route Cards (Desktop) -->
+      <div class="flight-floating-spotlight left" data-from="Lagos (LOS)" data-to="London (LHR)" title="Click to book Lagos to London">
+        <span class="spotlight-badge"><i class="bi bi-fire"></i> Best Seller</span>
+        <div class="spotlight-content">
+          <div class="spotlight-route">
+            <strong>LOS</strong>
+            <i class="bi bi-arrow-right"></i>
+            <strong>LHR</strong>
+          </div>
+          <span class="spotlight-airline">British Airways · Non-stop</span>
+          <div class="spotlight-bottom">
+            <span class="spotlight-price">From ₦940,000</span>
+            <span class="spotlight-action">Select <i class="bi bi-chevron-right"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flight-floating-spotlight right" data-from="Lagos (LOS)" data-to="Dubai (DXB)" title="Click to book Lagos to Dubai">
+        <span class="spotlight-badge gold"><i class="bi bi-stars"></i> Exclusive</span>
+        <div class="spotlight-content">
+          <div class="spotlight-route">
+            <strong>LOS</strong>
+            <i class="bi bi-arrow-right"></i>
+            <strong>DXB</strong>
+          </div>
+          <span class="spotlight-airline">Emirates · Direct Cabin</span>
+          <div class="spotlight-bottom">
+            <span class="spotlight-price">From ₦780,000</span>
+            <span class="spotlight-action">Select <i class="bi bi-chevron-right"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="container text-center position-relative" style="z-index: 2;">
+        <!-- Live Air Desk Radar Badge -->
+        <div class="d-inline-block">
+          <span class="air-desk-badge">
+            <span class="beacon"></span>
+            CJ Travels Air Desk · 500+ Global Airlines · Best Fare Guarantee
           </span>
+        </div>
+
+        <!-- Monumental Cormorant Garamond Title -->
+        <h1 class="flights-sky-title">
+          Where Ambition Takes Flight.<br />
+          <em>Fly Anywhere in Pure Luxury.</em>
+        </h1>
+
+        <p class="flights-sky-sub">
+          Compare live fares across British Airways, Emirates, Qatar Airways, Air Peace, Virgin Atlantic and 500+ carriers. Enjoy transparent pricing, 24/7 dedicated flight concierge, flexible travel financing, and instant e-ticket issuance.
+        </p>
+
+        <!-- Fast Route Select Chips -->
+        <div class="flight-chips-container">
+          <span class="flight-chips-label"><i class="bi bi-lightning-charge-fill"></i> Trending Flight Routes:</span>
+          <div class="flight-chips-scroll">
+            <button type="button" class="flight-chip-btn" data-from="Lagos (LOS)" data-to="London (LHR)">
+              <span class="chip-cities">Lagos → London</span>
+              <span class="chip-price">₦940k</span>
+            </button>
+            <button type="button" class="flight-chip-btn" data-from="Abuja (ABV)" data-to="London (LHR)">
+              <span class="chip-cities">Abuja → London</span>
+              <span class="chip-price">₦980k</span>
+            </button>
+            <button type="button" class="flight-chip-btn" data-from="Lagos (LOS)" data-to="Dubai (DXB)">
+              <span class="chip-cities">Lagos → Dubai</span>
+              <span class="chip-price">₦780k</span>
+            </button>
+            <button type="button" class="flight-chip-btn" data-from="Lagos (LOS)" data-to="New York (JFK)">
+              <span class="chip-cities">Lagos → New York</span>
+              <span class="chip-price">₦1.25m</span>
+            </button>
+            <button type="button" class="flight-chip-btn" data-from="Lagos (LOS)" data-to="Paris (CDG)">
+              <span class="chip-cities">Lagos → Paris</span>
+              <span class="chip-price">₦910k</span>
+            </button>
+            <button type="button" class="flight-chip-btn" data-from="Owerri (QOW)" data-to="Lagos (LOS)">
+              <span class="chip-cities">Owerri → Lagos</span>
+              <span class="chip-price">₦110k</span>
+            </button>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- SEARCH PANEL -->
-    <div class="search-wrap">
-      <div class="search-card">
+    <!-- SEARCH PANEL (Elevated Glassmorphism Flight Console) -->
+    <div class="search-wrap" id="flightSearchWrap">
+      <div class="search-card flight-terminal-card">
         <form class="search-form" id="flightSearchForm" novalidate>
-
-          <div class="trip-switch" role="group" aria-label="Trip type">
-            <button type="button" class="trip-btn" data-trip="oneway" aria-pressed="false">One-way</button>
-            <button type="button" class="trip-btn active" data-trip="round" aria-pressed="true">Round-trip</button>
-            <button type="button" class="trip-btn" data-trip="multi" aria-pressed="false">Multi-city</button>
+          <div class="terminal-card-header">
+            <!-- Trip Switch Tabs -->
+            <div class="trip-switch" role="group" aria-label="Trip type">
+              <button type="button" class="trip-btn" data-trip="oneway" aria-pressed="false">
+                <i class="bi bi-arrow-right"></i> One-way
+              </button>
+              <button type="button" class="trip-btn active" data-trip="round" aria-pressed="true">
+                <i class="bi bi-arrow-left-right"></i> Round-trip
+              </button>
+              <button type="button" class="trip-btn" data-trip="multi" aria-pressed="false">
+                <i class="bi bi-diagram-3"></i> Multi-city
+              </button>
+            </div>
+            
+            <div class="terminal-guarantee-pill d-none d-md-inline-flex">
+              <i class="bi bi-shield-check"></i> IATA &amp; ATOL Protected · Zero Hidden Charges
+            </div>
           </div>
 
           <div class="row g-3">
             <div class="col-lg-3 col-md-6 position-relative">
-              <label class="form-label" for="leg1From">From</label>
+              <label class="form-label" for="leg1From">Flying From</label>
               <div class="field">
-                <i class="bi bi-geo-alt"></i>
+                <i class="bi bi-geo-alt-fill"></i>
                 <input type="text" class="form-control" id="leg1From" list="airportList"
                        placeholder="Lagos (LOS)" autocomplete="off" value="Lagos (LOS)" />
               </div>
-              <button type="button" class="swap-btn" id="swapBtn" aria-label="Swap departure and destination">
+              <button type="button" class="swap-btn" id="swapBtn" aria-label="Swap departure and destination" title="Swap cities">
                 <i class="bi bi-arrow-left-right"></i>
               </button>
             </div>
             <div class="col-lg-3 col-md-6">
-              <label class="form-label" for="leg1To">To</label>
+              <label class="form-label" for="leg1To">Flying To</label>
               <div class="field">
-                <i class="bi bi-geo-alt"></i>
+                <i class="bi bi-geo-alt-fill"></i>
                 <input type="text" class="form-control" id="leg1To" list="airportList"
                        placeholder="London (LHR)" autocomplete="off" value="London (LHR)" />
               </div>
             </div>
             <div class="col-lg-2 col-md-6">
-              <label class="form-label" for="leg1Date">Departure</label>
+              <label class="form-label" for="leg1Date">Departure Date</label>
               <div class="field">
                 <i class="bi bi-calendar3"></i>
                 <input type="date" class="form-control" id="leg1Date" />
               </div>
             </div>
             <div class="col-lg-2 col-md-6 return-col">
-              <label class="form-label" for="leg1Return">Return</label>
+              <label class="form-label" for="leg1Return">Return Date</label>
               <div class="field">
                 <i class="bi bi-calendar3"></i>
                 <input type="date" class="form-control" id="leg1Return" />
@@ -1205,9 +1546,9 @@
             <div class="col-lg-2 col-md-6">
               <label class="form-label" for="adultsSelect">Travellers</label>
               <div class="field">
-                <i class="bi bi-people"></i>
+                <i class="bi bi-people-fill"></i>
                 <select class="form-select" id="adultsSelect">
-                  <option value="1" selected>1 adult</option>
+                  <option value="1" selected>1 adult (12+)</option>
                   <option value="2">2 adults</option>
                   <option value="3">3 adults</option>
                   <option value="4">4 adults</option>
@@ -1218,52 +1559,72 @@
 
           <div class="extra-legs d-none" id="extraLegs"></div>
           <button type="button" class="add-leg-btn d-none" id="addLegBtn">
-            <i class="bi bi-plus"></i> Add another flight
+            <i class="bi bi-plus-circle"></i> Add another flight leg
           </button>
 
-          <div class="row g-3 mt-1">
-            <div class="col-lg-2 col-md-4">
-              <label class="form-label" for="childrenSelect">Children</label>
+          <div class="row g-3 mt-1 align-items-end">
+            <div class="col-lg-3 col-md-4">
+              <label class="form-label" for="childrenSelect">Children / Infants</label>
               <div class="field">
                 <i class="bi bi-person"></i>
                 <select class="form-select" id="childrenSelect">
                   <option value="0" selected>0 children</option>
-                  <option value="1">1 child</option>
+                  <option value="1">1 child (2-11)</option>
                   <option value="2">2 children</option>
                   <option value="3">3 children</option>
                 </select>
               </div>
             </div>
             <div class="col-lg-4 col-md-4">
-              <label class="form-label" for="cabinSelect">Cabin class</label>
+              <label class="form-label" for="cabinSelect">Cabin Class</label>
               <div class="field">
-                <i class="bi bi-seat"></i>
+                <i class="bi bi-suit-heart"></i>
                 <select class="form-select" id="cabinSelect">
-                  <option value="Economy" selected>Economy</option>
+                  <option value="Economy" selected>Economy Class</option>
                   <option value="Premium Economy">Premium Economy</option>
-                  <option value="Business">Business</option>
-                  <option value="First Class">First Class</option>
+                  <option value="Business">Business Class</option>
+                  <option value="First Class">First Class Suite</option>
                 </select>
               </div>
             </div>
-            <div class="col-lg-6 d-flex align-items-end">
-              <button type="submit" class="btn btn-navy btn-block">
-                <i class="bi bi-search"></i> Search flights
+            <div class="col-lg-5 col-md-4">
+              <button type="submit" class="btn-flight-search-cta">
+                <span>Find Flights Now</span>
+                <i class="bi bi-arrow-right"></i>
               </button>
             </div>
           </div>
 
           <div class="search-footer">
-            <p class="search-note mb-0">
-              <i class="bi bi-shield-check"></i> Secure payment &middot; Transparent pricing &middot; No hidden fees
-            </p>
-            <p class="search-note mb-0">
-              <i class="bi bi-info-circle"></i> Sample results shown — fares are not real and cannot be booked.
+            <div class="search-guarantees">
+              <span class="search-note"><i class="bi bi-check-circle-fill"></i> Best Price Guarantee</span>
+              <span class="search-note"><i class="bi bi-check-circle-fill"></i> Instant E-Ticketing</span>
+              <span class="search-note"><i class="bi bi-check-circle-fill"></i> Pay Small Small Financing</span>
+              <span class="search-note"><i class="bi bi-check-circle-fill"></i> 24/7 Concierge Support</span>
+            </div>
+            <p class="search-note mb-0 text-muted" style="font-size: 11px;">
+              <i class="bi bi-shield-lock-fill"></i> 256-Bit SSL Encrypted &middot; Official CJ Travels Booking Engine
             </p>
           </div>
 
           <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
         </form>
+
+        <!-- Partner Airlines Strip -->
+        <div class="airline-partner-strip">
+          <span class="partner-label">Official Ticketing Partner For:</span>
+          <div class="partner-tags">
+            <span class="carrier-tag"><i class="bi bi-airplane"></i> British Airways</span>
+            <span class="carrier-tag"><i class="bi bi-airplane"></i> Emirates</span>
+            <span class="carrier-tag"><i class="bi bi-airplane"></i> Qatar Airways</span>
+            <span class="carrier-tag"><i class="bi bi-airplane"></i> Virgin Atlantic</span>
+            <span class="carrier-tag"><i class="bi bi-airplane"></i> Air Peace</span>
+            <span class="carrier-tag"><i class="bi bi-airplane"></i> Turkish Airlines</span>
+            <span class="carrier-tag"><i class="bi bi-airplane"></i> Delta Air Lines</span>
+            <span class="carrier-tag"><i class="bi bi-airplane"></i> Lufthansa</span>
+            <span class="carrier-tag"><i class="bi bi-airplane"></i> Ethiopian Airlines</span>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1965,6 +2326,42 @@
       els.proceedBtn.addEventListener('click', function () {
         els.reviewStatus.className = 'review-status show info';
         els.reviewStatus.textContent = 'This is a frontend demonstration. Passenger details, payment and ticketing are not available on this page yet — they will be added when the booking engine is connected.';
+      });
+
+      
+      /* =====================================================
+         CJ TRAVELS FLIGHT FAST ROUTE CHIPS & SPOTLIGHT CARDS
+         ===================================================== */
+      function setAndSearchRoute(from, to) {
+        if (els.leg1From) els.leg1From.value = from;
+        if (els.leg1To) els.leg1To.value = to;
+        var searchEl = document.getElementById('flightSearchWrap');
+        if (searchEl) {
+          searchEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        // Focus or trigger search if dates are set
+        if (els.leg1From && els.leg1To) {
+          state.search.from = from;
+          state.search.to = to;
+          updateResultsHeading();
+          renderResults();
+        }
+      }
+
+      document.querySelectorAll('.flight-chip-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var from = btn.getAttribute('data-from');
+          var to = btn.getAttribute('data-to');
+          if (from && to) setAndSearchRoute(from, to);
+        });
+      });
+
+      document.querySelectorAll('.flight-floating-spotlight').forEach(function (card) {
+        card.addEventListener('click', function () {
+          var from = card.getAttribute('data-from');
+          var to = card.getAttribute('data-to');
+          if (from && to) setAndSearchRoute(from, to);
+        });
       });
 
       var newsletterForm = document.getElementById('newsletterForm');
