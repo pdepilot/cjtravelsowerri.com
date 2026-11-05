@@ -42,5 +42,9 @@
     <i class="bi bi-box-arrow-right"></i>
     <span class="float-btn-label">Logout</span>
   </button>
+  <a class="float-btn" href="<?= route('home') ?>" aria-label="Website Home" title="Back to Website Home">
+    <i class="bi bi-house-door"></i>
+    <span class="float-btn-label">Public Website</span>
+  </a>
 </nav>
 

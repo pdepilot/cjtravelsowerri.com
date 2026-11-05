@@ -5,6 +5,7 @@
         </a>
 
     <nav class="nav-center" aria-label="Main navigation">
+      <a href="<?= route('home') ?>" class="<?= (request()->is('/') || request()->is('home')) ? 'active' : '' ?>">Home</a>
       <a href="<?= route('flights') ?>">Flights</a>
       <a href="<?= route('hotels') ?>">Hotels</a>
       <a href="<?= route('destinations') ?>">Destinations</a>
@@ -37,6 +38,7 @@
     </button>
   </div>
   <div class="mobile-nav-links">
+    <a href="<?= route('home') ?>" class="<?= (request()->is('/') || request()->is('home')) ? 'active' : '' ?>"><i class="bi bi-house-door"></i> Home</a>
     <a href="<?= route('flights') ?>"><i class="bi bi-airplane"></i> Flights</a>
     <a href="<?= route('hotels') ?>"><i class="bi bi-building"></i> Hotels</a>
     <a href="<?= route('destinations') ?>"><i class="bi bi-compass"></i> Destinations</a>

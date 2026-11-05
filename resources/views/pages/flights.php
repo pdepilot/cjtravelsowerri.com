@@ -1338,11 +1338,13 @@
           <img src="/images/logo-transparent.png" alt="CJ Travels" class="brand-logo" />
         </a>
         <nav class="nav-center" aria-label="Main navigation">
+          <a href="index.html">Home</a>
           <a href="/flights" class="active">Flights</a>
           <a href="/hotels">Hotels</a>
           <a href="/destinations">Destinations</a>
           <a href="/financing">Financing</a>
           <a href="/about">About</a>
+        
         </nav>
         <div class="nav-actions">
           <a href="/login" class="text-link">Sign in</a>
