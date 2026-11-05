@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/customer', ['title' => 'Travel Financing — Customer Dashboard — Travelbookings', 'page' => 'financing']); ?>
+<?php $this->layout('layouts/customer', ['title' => 'Travel Financing — Customer Dashboard — CJ Travels', 'page' => 'financing']); ?>
 
 <section class="view active" id="view-financing" data-view="financing" aria-labelledby="financingTitle">
           <div class="page-head">
@@ -20,7 +20,7 @@
             <i class="bi bi-shield-exclamation"></i>
             <div>
               <strong>Independent Central Bank Licensed Lending Partners</strong><br />
-              Travel Financing enquiries are assessed and administered exclusively by independent licensed financial institutions. Travelbookings acts solely as a discovery platform and does not grant loans, set interest rates, or make credit decisions.
+              Travel Financing enquiries are assessed and administered exclusively by independent licensed financial institutions. CJ Travels acts solely as a discovery platform and does not grant loans, set interest rates, or make credit decisions.
             </div>
           </div>
 

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" type="image/png" href="/images/logo-mark.png" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title><?= e($title ?? 'Travelbookings — A Quieter Way to Travel') ?></title>
+  <title><?= e($title ?? 'CJ Travels — A Quieter Way to Travel') ?></title>
   <meta name="description" content="<?= e($description ?? 'Curated flights, hotels, destination guides and travel financing.') ?>" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />

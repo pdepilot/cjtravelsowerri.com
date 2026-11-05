@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" type="image/png" href="images/logo-mark.png" />
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Create account — Travelbookings</title>
-  <meta name="description" content="Create a free Travelbookings account to save searches, manage bookings and continue travel financing enquiries." />
+  <title>Create account — CJ Travels</title>
+  <meta name="description" content="Create a free CJ Travels account to save searches, manage bookings and continue travel financing enquiries." />
 
   <!-- Fonts: Cormorant Garamond (display) + DM Sans (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -959,6 +961,25 @@
     @media (prefers-reduced-motion: reduce) {
       * { transition-duration: .01ms !important; animation: none !important; }
     }
+  
+    /* CJ Travels Brand Logo */
+    .brand-logo {
+      height: 40px;
+      width: auto;
+      max-height: 46px;
+      object-fit: contain;
+      display: inline-block;
+      vertical-align: middle;
+      transition: transform .25s ease;
+    }
+    .brand-logo:hover {
+      transform: scale(1.02);
+    }
+    .footer-brand .brand-logo,
+    .footer-logo {
+      height: 42px;
+    }
+
   </style>
 
   <script>document.documentElement.classList.add('js');</script>
@@ -973,10 +994,9 @@
          BRAND AREA
          ========================================================= -->
     <header class="brand-area">
-      <a class="brand" href="index.html" aria-label="Travelbookings home">
-        <span class="brand-mark"><i class="bi bi-airplane-engines"></i></span>
-        <span class="brand-name">Travel<em>bookings</em></span>
-      </a>
+      <a class="brand" href="index.html" aria-label="CJ Travels home">
+          <img src="images/logo-transparent.png" alt="CJ Travels" class="brand-logo" />
+        </a>
     </header>
 
     <!-- =========================================================
@@ -1178,13 +1198,13 @@
 
             <div class="divider">Or</div>
             <p class="login-prompt">
-              Already have a Travelbookings account? <a href="login.html">Sign in instead</a>
+              Already have a CJ Travels account? <a href="login.html">Sign in instead</a>
             </p>
           </form>
 
           <div class="security-note">
             <i class="bi bi-shield-check"></i>
-            <span>This is a frontend demonstration. Nothing you enter is stored, transmitted or sent anywhere. Travelbookings will never ask for your bank password or card PIN.</span>
+            <span>This is a frontend demonstration. Nothing you enter is stored, transmitted or sent anywhere. CJ Travels will never ask for your bank password or card PIN.</span>
           </div>
         </div>
 
@@ -1196,7 +1216,7 @@
 
           <div class="demo-panel">
             <strong>Demonstration only — no account has been created.</strong>
-            <span>Travelbookings has not stored your details, created a profile or sent anything to a server. Your password was never saved.</span>
+            <span>CJ Travels has not stored your details, created a profile or sent anything to a server. Your password was never saved.</span>
           </div>
 
           <ul class="summary-list" id="successSummary"></ul>
@@ -1232,7 +1252,7 @@
           <div class="author">
             <span class="author-line"></span>
             <div class="author-meta">
-              <span class="author-name">Travelbookings Concierge</span>
+              <span class="author-name">CJ Travels Concierge</span>
               <span class="author-role">Membership Benefits</span>
             </div>
           </div>
@@ -1244,7 +1264,7 @@
             <span class="dot"></span>
             <span>Membership</span>
           </div>
-          <span>Travelbookings · Concierge</span>
+          <span>CJ Travels · Concierge</span>
         </div>
 
       </div>
@@ -1254,7 +1274,7 @@
          FOOTER AREA
          ========================================================= -->
     <footer class="foot">
-      <span>&copy; <span data-year>2025</span> Travelbookings</span>
+      <span>&copy; <span data-year>2025</span> CJ Travels</span>
       <ul class="foot-links">
         <li><a href="privacy.html">Privacy</a></li>
         <li><a href="terms.html">Terms</a></li>

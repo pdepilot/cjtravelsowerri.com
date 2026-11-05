@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/admin', ['title' => 'Transactions — Travelbookings Admin', 'page' => 'transactions']); ?>
+<?php $this->layout('layouts/admin', ['title' => 'Transactions — CJ Travels Admin', 'page' => 'transactions']); ?>
 
 <section class="view active" id="view-transactions" data-view="transactions">
           <div class="page-head">

@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/admin', ['title' => 'Travel Financing & Loans — Travelbookings Admin', 'page' => 'loans']); ?>
+<?php $this->layout('layouts/admin', ['title' => 'Travel Financing & Loans — CJ Travels Admin', 'page' => 'loans']); ?>
 
 <section class="view active" id="view-loans" data-view="loans">
           <div class="page-head">
@@ -10,7 +10,7 @@
           <div class="info-note">
             <i class="bi bi-shield-exclamation"></i>
             <div>
-              <strong>Not a lending decision.</strong> Travelbookings is not a lender. Financing is
+              <strong>Not a lending decision.</strong> CJ Travels is not a lender. Financing is
               provided by independent licensed lending partners who carry out their own eligibility
               and affordability assessments. Statuses below describe the enquiry workflow only — they
               are not approvals or declines.

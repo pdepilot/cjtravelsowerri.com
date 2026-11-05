@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/customer', ['title' => 'Overview — Customer Dashboard — Travelbookings', 'page' => 'overview']); ?>
+<?php $this->layout('layouts/customer', ['title' => 'Overview — Customer Dashboard — CJ Travels', 'page' => 'overview']); ?>
 
 <section class="view active" id="view-overview" data-view="overview" aria-labelledby="overviewTitle">
           <div class="page-head">

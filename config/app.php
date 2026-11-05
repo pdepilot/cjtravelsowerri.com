@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'name' => 'Travelbookings',
+    'name' => 'CJ Travels',
     'env' => 'development',
     'debug' => true,
     'url' => 'http://127.0.0.1:8000',

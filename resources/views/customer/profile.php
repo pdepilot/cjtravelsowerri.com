@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/customer', ['title' => 'My Profile — Customer Dashboard — Travelbookings', 'page' => 'profile']); ?>
+<?php $this->layout('layouts/customer', ['title' => 'My Profile — Customer Dashboard — CJ Travels', 'page' => 'profile']); ?>
 
 <section class="view active" id="view-profile" data-view="profile" aria-labelledby="profileTitle">
           <div class="page-head">
@@ -6,7 +6,7 @@
               <h1 id="profileTitle" class="h2 mb-1">
                 My Profile <span class="demo-pill"><i class="bi bi-person-fill"></i> Account</span>
               </h1>
-              <p>Manage your contact information, passport details and Travelbookings loyalty tier.</p>
+              <p>Manage your contact information, passport details and CJ Travels loyalty tier.</p>
             </div>
           </div>
 

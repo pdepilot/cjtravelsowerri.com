@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/admin', ['title' => 'API Integrations — Travelbookings Admin', 'page' => 'api']); ?>
+<?php $this->layout('layouts/admin', ['title' => 'API Integrations — CJ Travels Admin', 'page' => 'api']); ?>
 
 <section class="view active" id="view-api" data-view="api">
           <div class="page-head">

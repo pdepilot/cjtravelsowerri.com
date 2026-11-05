@@ -1,9 +1,9 @@
 <!-- FLOATING SIDE NAV -->
 <nav class="float-nav" id="floatNav" aria-label="Customer navigation">
-  <a class="float-brand" href="<?= route('home') ?>" aria-label="Travelbookings home">
-    <i class="bi bi-airplane-engines"></i>
-    <span class="float-btn-label">Travelbookings</span>
-  </a>
+  <a class="float-brand" href="<?= route('home') ?>" aria-label="CJ Travels home">
+        <img src="/images/logo-mark.png" alt="CJ Travels" style="width:28px;height:28px;object-fit:contain;flex-shrink:0;" />
+        <span class="float-btn-label">CJ Travels</span>
+      </a>
   <div class="float-nav-divider" aria-hidden="true"></div>
   <a class="float-btn <?= (routeIs('customer.dashboard') || routeIs('customer.overview')) ? 'active' : '' ?>" href="<?= route('customer.dashboard') ?>" <?= (routeIs('customer.dashboard') || routeIs('customer.overview')) ? 'aria-current="page"' : '' ?> aria-label="Overview">
     <i class="bi bi-grid-1x2-fill"></i>

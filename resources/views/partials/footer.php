@@ -5,10 +5,9 @@
     <div class="footer-grid">
 
       <div>
-        <a class="footer-brand" href="<?= route('home') ?>">
-          <span class="brand-mark"><i class="bi bi-airplane-engines"></i></span>
-          <span class="brand-name">Travel<em>bookings</em></span>
-        </a>
+        <a class="footer-brand" href="<?= route('home') ?>" aria-label="CJ Travels home">
+            <img src="/images/logo-white.png" alt="CJ Travels" class="brand-logo footer-logo" />
+          </a>
         <p class="footer-about">
           An online travel agency serving customers in Nigeria and internationally.
           Flights, hotels, destination guides and travel financing — all in one place.
@@ -53,7 +52,7 @@
     </div>
 
     <div class="footer-bottom">
-      <p class="mb-0">&copy; <span id="year"><?= date('Y') ?></span> Travelbookings. All rights reserved.</p>
+      <p class="mb-0">&copy; <span id="year"><?= date('Y') ?></span> CJ Travels. All rights reserved.</p>
       <div class="footer-legal">
         <a href="<?= route('about') ?>">Privacy Policy</a>
         <a href="<?= route('about') ?>">Terms of Service</a>

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" type="image/png" href="/images/logo-mark.png" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>About Us — Travelbookings</title>
-  <meta name="description" content="Learn about Travelbookings — an online travel agency serving customers in Nigeria and internationally. Our story, mission, values and services." />
+  <title>About Us — CJ Travels</title>
+  <meta name="description" content="Learn about CJ Travels — an online travel agency serving customers in Nigeria and internationally. Our story, mission, values and services." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -1072,7 +1073,7 @@
       -webkit-text-fill-color: transparent;
       color: transparent;
     }
-    .footer-watermark::before { content: "Travelbookings"; }
+    .footer-watermark::before { content: "CJ Travels"; }
 
     .footer-inner { position: relative; z-index: 1; }
     .footer-grid {
@@ -1244,6 +1245,25 @@
       * { transition-duration: .01ms !important; animation: none !important; }
       html { scroll-behavior: auto; }
     }
+  
+    /* CJ Travels Brand Logo */
+    .brand-logo {
+      height: 40px;
+      width: auto;
+      max-height: 46px;
+      object-fit: contain;
+      display: inline-block;
+      vertical-align: middle;
+      transition: transform .25s ease;
+    }
+    .brand-logo:hover {
+      transform: scale(1.02);
+    }
+    .footer-brand .brand-logo,
+    .footer-logo {
+      height: 42px;
+    }
+
   </style>
 
   <script>document.documentElement.classList.add('js');</script>
@@ -1260,7 +1280,7 @@
       <div class="topbar-inner">
         <div class="topbar-left">
           <a href="tel:+2348080452890"><i class="bi bi-telephone"></i> 0808 045 2890</a>
-          <a href="mailto:info@travelbookings.ng"><i class="bi bi-envelope"></i> info@travelbookings.ng</a>
+          <a href="mailto:info@cjtravelsowerri.com"><i class="bi bi-envelope"></i> info@cjtravelsowerri.com</a>
         </div>
         <div class="topbar-right">
           <span class="topbar-badge">Concierge · Available 24/7</span>
@@ -1277,9 +1297,8 @@
     <div class="container">
       <div class="nav-inner">
 
-        <a class="brand" href="/" aria-label="Travelbookings home">
-          <span class="brand-mark"><i class="bi bi-airplane-engines"></i></span>
-          <span class="brand-name">Travel<em>bookings</em></span>
+        <a class="brand" href="/" aria-label="CJ Travels home">
+          <img src="/images/logo-transparent.png" alt="CJ Travels" class="brand-logo" />
         </a>
 
         <nav class="nav-center" aria-label="Main navigation">
@@ -1311,10 +1330,9 @@
 
   <aside class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
     <div class="mobile-nav-head">
-      <a class="brand" href="/">
-        <span class="brand-mark"><i class="bi bi-airplane-engines"></i></span>
-        <span class="brand-name">Travel<em>bookings</em></span>
-      </a>
+      <a class="brand" href="/" aria-label="CJ Travels home">
+          <img src="/images/logo-transparent.png" alt="CJ Travels" class="brand-logo" />
+        </a>
       <button class="mobile-nav-close" id="mobileClose" aria-label="Close menu">
         <i class="bi bi-x-lg"></i>
       </button>
@@ -1340,7 +1358,7 @@
     <div class="mobile-nav-footer">
       <p>Reach the concierge</p>
       <a href="tel:+2348080452890"><i class="bi bi-telephone"></i> 0808 045 2890</a>
-      <a href="mailto:info@travelbookings.ng"><i class="bi bi-envelope"></i> info@travelbookings.ng</a>
+      <a href="mailto:info@cjtravelsowerri.com"><i class="bi bi-envelope"></i> info@cjtravelsowerri.com</a>
     </div>
   </aside>
 
@@ -1352,10 +1370,10 @@
     <section class="about-hero">
       <div class="container">
         <div class="hero-content">
-          <span class="eyebrow">About Travelbookings</span>
+          <span class="eyebrow">About CJ Travels</span>
           <h1>A travel agency built<br />around the <em>traveller</em>.</h1>
           <p class="hero-sub">
-            Travelbookings is an online travel agency serving customers in Nigeria and internationally.
+            CJ Travels is an online travel agency serving customers in Nigeria and internationally.
             We bring flights, hotels, destination guidance and travel financing into one clear place —
             with real people behind it when you need them.
           </p>
@@ -1421,7 +1439,7 @@
               change every hour, and hoping the booking you just made is the one you actually wanted.
             </p>
             <p>
-              Travelbookings exists to remove that friction. We bring flight search, hotel
+              CJ Travels exists to remove that friction. We bring flight search, hotel
               reservations and practical destination guidance together in one place, and we back it
               with consultants who can step in when a trip needs a human decision rather than a
               search filter.
@@ -1536,7 +1554,7 @@
         <div class="split reveal">
           <div class="split-content">
             <span class="eyebrow">Why choose us</span>
-            <h2>Reasons travellers stay with <em>Travelbookings</em>.</h2>
+            <h2>Reasons travellers stay with <em>CJ Travels</em>.</h2>
             <p style="color: var(--ink-soft); font-size: 15px; line-height: 1.75;">
               We compete on clarity and reliability rather than on claims. Here is what that means
               in practice.
@@ -1648,7 +1666,7 @@
             Flight and hotel results on this website currently use demonstration data while our
             booking engine is being connected. Travel financing is provided by independent licensed
             lending partners and is subject to their eligibility assessment and approval.
-            Travelbookings does not lend money or guarantee approval.
+            CJ Travels does not lend money or guarantee approval.
           </div>
         </div>
       </div>
@@ -1726,7 +1744,7 @@
                 <h3 class="accordion-header">
                   <button class="accordion-button" type="button" data-bs-toggle="collapse"
                           data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">
-                    What does Travelbookings actually do?
+                    What does CJ Travels actually do?
                   </button>
                 </h3>
                 <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
@@ -1758,14 +1776,14 @@
                 <h3 class="accordion-header">
                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                           data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
-                    Is Travelbookings a lender?
+                    Is CJ Travels a lender?
                   </button>
                 </h3>
                 <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                   <div class="accordion-body">
                     No. We are a travel agency, not a lender. Travel financing is provided by
                     independent, licensed lending partners who carry out their own eligibility and
-                    affordability assessments and set their own terms. Travelbookings does not approve,
+                    affordability assessments and set their own terms. CJ Travels does not approve,
                     decline or guarantee any application.
                   </div>
                 </div>
@@ -1780,7 +1798,7 @@
                 </h3>
                 <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                   <div class="accordion-body">
-                    Never. Travelbookings will not ask for your bank password, card PIN, one-time
+                    Never. CJ Travels will not ask for your bank password, card PIN, one-time
                     password (OTP) or online banking login. If anyone requests these while claiming to
                     represent us, do not share them and contact us immediately.
                   </div>
@@ -1856,7 +1874,7 @@
             </p>
             <div class="cta-contact-list">
               <a href="tel:+2348080452890"><i class="bi bi-telephone"></i> 0808 045 2890</a>
-              <a href="mailto:info@travelbookings.ng"><i class="bi bi-envelope"></i> info@travelbookings.ng</a>
+              <a href="mailto:info@cjtravelsowerri.com"><i class="bi bi-envelope"></i> info@cjtravelsowerri.com</a>
             </div>
           </div>
           <div class="cta-actions">
@@ -1883,9 +1901,8 @@
       <div class="footer-grid">
 
         <div>
-          <a class="footer-brand" href="/">
-            <span class="brand-mark"><i class="bi bi-airplane-engines"></i></span>
-            <span class="brand-name">Travel<em>bookings</em></span>
+          <a class="footer-brand" href="/" aria-label="CJ Travels home">
+            <img src="/images/logo-white.png" alt="CJ Travels" class="brand-logo footer-logo" />
           </a>
           <p class="footer-about">
             An online travel agency serving customers in Nigeria and internationally.
@@ -1923,7 +1940,7 @@
           <h4 class="footer-heading">Get in touch</h4>
           <div class="footer-contact">
             <a href="tel:+2348080452890"><i class="bi bi-telephone"></i> 0808 045 2890</a>
-            <a href="mailto:info@travelbookings.ng"><i class="bi bi-envelope"></i> info@travelbookings.ng</a>
+            <a href="mailto:info@cjtravelsowerri.com"><i class="bi bi-envelope"></i> info@cjtravelsowerri.com</a>
           </div>
 
           <div class="footer-newsletter">
@@ -1942,7 +1959,7 @@
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; <span data-year>2025</span> Travelbookings. All rights reserved.</p>
+        <p>&copy; <span data-year>2025</span> CJ Travels. All rights reserved.</p>
         <ul class="footer-legal">
           <li><a href="privacy.html">Privacy</a></li>
           <li><a href="terms.html">Terms</a></li>

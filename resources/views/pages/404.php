@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" type="image/png" href="/images/logo-mark.png" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>404 Not Found — Travelbookings</title>
+  <title>404 Not Found — CJ Travels</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -39,6 +40,25 @@
       font-size: 12px;
     }
     .btn-home:hover { background: #1e3657; color: #fff; }
+  
+    /* CJ Travels Brand Logo */
+    .brand-logo {
+      height: 40px;
+      width: auto;
+      max-height: 46px;
+      object-fit: contain;
+      display: inline-block;
+      vertical-align: middle;
+      transition: transform .25s ease;
+    }
+    .brand-logo:hover {
+      transform: scale(1.02);
+    }
+    .footer-brand .brand-logo,
+    .footer-logo {
+      height: 42px;
+    }
+
   </style>
 </head>
 <body>

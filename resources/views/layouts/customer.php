@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" type="image/png" href="/images/logo-mark.png" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title><?= e($title ?? 'Customer Dashboard — Travelbookings') ?></title>
-  <meta name="description" content="<?= e($description ?? 'Travelbookings customer dashboard.') ?>" />
+  <title><?= e($title ?? 'Customer Dashboard — CJ Travels') ?></title>
+  <meta name="description" content="<?= e($description ?? 'CJ Travels customer dashboard.') ?>" />
   <meta name="robots" content="noindex" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -35,7 +36,7 @@
 
       <footer class="dash-footer">
         <p class="mb-0">
-          &copy; <span id="year"><?= date('Y') ?></span> Travelbookings. Demonstration dashboard — sample data only.
+          &copy; <span id="year"><?= date('Y') ?></span> CJ Travels. Demonstration dashboard — sample data only.
         </p>
         <ul>
           <li><a href="<?= route('home') ?>">Home</a></li>

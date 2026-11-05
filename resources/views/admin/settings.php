@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/admin', ['title' => 'Console Settings — Travelbookings Admin', 'page' => 'settings']); ?>
+<?php $this->layout('layouts/admin', ['title' => 'Console Settings — CJ Travels Admin', 'page' => 'settings']); ?>
 
 <section class="view active" id="view-settings" data-view="settings">
           <div class="page-head">
@@ -25,11 +25,11 @@
                   <div class="row g-3">
                     <div class="col-md-6">
                       <label class="form-label" for="setSiteName">Site name</label>
-                      <input type="text" class="form-control" id="setSiteName" value="Travelbookings" />
+                      <input type="text" class="form-control" id="setSiteName" value="CJ Travels" />
                     </div>
                     <div class="col-md-6">
                       <label class="form-label" for="setSupportEmail">Support email</label>
-                      <input type="email" class="form-control" id="setSupportEmail" value="hello@travelbookings.ng" />
+                      <input type="email" class="form-control" id="setSupportEmail" value="hello@cjtravelsowerri.com" />
                     </div>
                     <div class="col-md-6">
                       <label class="form-label" for="setSupportPhone">Support phone</label>

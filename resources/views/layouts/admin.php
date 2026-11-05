@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" type="image/png" href="/images/logo-mark.png" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title><?= e($title ?? 'Dashboard — Travelbookings Admin') ?></title>
-  <meta name="description" content="<?= e($description ?? 'Travelbookings administration dashboard.') ?>" />
+  <title><?= e($title ?? 'Dashboard — CJ Travels Admin') ?></title>
+  <meta name="description" content="<?= e($description ?? 'CJ Travels administration dashboard.') ?>" />
   <meta name="robots" content="noindex, nofollow" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -35,7 +36,7 @@
 
       <footer class="admin-footer">
         <p class="mb-0">
-          &copy; <span id="year"><?= date('Y') ?></span> Travelbookings admin console — demonstration only.
+          &copy; <span id="year"><?= date('Y') ?></span> CJ Travels admin console — demonstration only.
         </p>
         <ul>
           <li><a href="<?= route('home') ?>">Public site</a></li>

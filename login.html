@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" type="image/png" href="images/logo-mark.png" />
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sign in — Travelbookings</title>
-  <meta name="description" content="Sign in to your Travelbookings account to manage bookings, saved searches and travel financing enquiries." />
+  <title>Sign in — CJ Travels</title>
+  <meta name="description" content="Sign in to your CJ Travels account to manage bookings, saved searches and travel financing enquiries." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -714,6 +716,25 @@
     @media (prefers-reduced-motion: reduce) {
       * { transition-duration: .01ms !important; animation: none !important; }
     }
+  
+    /* CJ Travels Brand Logo */
+    .brand-logo {
+      height: 40px;
+      width: auto;
+      max-height: 46px;
+      object-fit: contain;
+      display: inline-block;
+      vertical-align: middle;
+      transition: transform .25s ease;
+    }
+    .brand-logo:hover {
+      transform: scale(1.02);
+    }
+    .footer-brand .brand-logo,
+    .footer-logo {
+      height: 42px;
+    }
+
   </style>
 </head>
 
@@ -726,10 +747,9 @@
          BRAND AREA
          ========================================================= -->
     <header class="brand-area">
-      <a class="brand" href="index.html" aria-label="Travelbookings home">
-        <span class="brand-mark"><i class="bi bi-airplane-engines"></i></span>
-        <span class="brand-name">Travel<em>bookings</em></span>
-      </a>
+      <a class="brand" href="index.html" aria-label="CJ Travels home">
+          <img src="images/logo-transparent.png" alt="CJ Travels" class="brand-logo" />
+        </a>
     </header>
 
     <!-- =========================================================
@@ -840,7 +860,7 @@
             <span class="dot"></span>
             <span>Maldives</span>
           </div>
-          <span>Travelbookings · Concierge</span>
+          <span>CJ Travels · Concierge</span>
         </div>
 
       </div>
@@ -851,7 +871,7 @@
          FOOTER AREA
          ========================================================= -->
     <footer class="foot">
-      <span>&copy; <span data-year>2025</span> Travelbookings</span>
+      <span>&copy; <span data-year>2025</span> CJ Travels</span>
       <ul class="foot-links">
         <li><a href="privacy.html">Privacy</a></li>
         <li><a href="terms.html">Terms</a></li>
@@ -959,7 +979,7 @@
           showStatus('info',
             '<strong>Demonstration only — you are not signed in.</strong>' +
             'Your details passed validation, but no account was checked and no session was created. ' +
-            'Travelbookings has not stored your password or sent your credentials anywhere. ' +
+            'CJ Travels has not stored your password or sent your credentials anywhere. ' +
             '<a href="index.html">Continue browsing</a> or <a href="register.html">create an account</a>.');
         }, 550);
       });

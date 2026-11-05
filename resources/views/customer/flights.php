@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/customer', ['title' => 'My Flights — Customer Dashboard — Travelbookings', 'page' => 'flights']); ?>
+<?php $this->layout('layouts/customer', ['title' => 'My Flights — Customer Dashboard — CJ Travels', 'page' => 'flights']); ?>
 
 <section class="view active" id="view-flights" data-view="flights" aria-labelledby="flightsTitle">
           <div class="page-head">

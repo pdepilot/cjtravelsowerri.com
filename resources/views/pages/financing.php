@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" type="image/png" href="/images/logo-mark.png" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Travel Financing — Travelbookings</title>
-  <meta name="description" content="Explore travel financing options with Travelbookings. Use our illustrative calculator and submit a financing enquiry. Subject to independent licensed lending partner eligibility assessment and approval." />
+  <title>Travel Financing — CJ Travels</title>
+  <meta name="description" content="Explore travel financing options with CJ Travels. Use our illustrative calculator and submit a financing enquiry. Subject to independent licensed lending partner eligibility assessment and approval." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -1549,7 +1550,7 @@
       -webkit-text-fill-color: transparent;
       color: transparent;
     }
-    .footer-watermark::before { content: "Travelbookings"; }
+    .footer-watermark::before { content: "CJ Travels"; }
 
     .footer-inner { position: relative; z-index: 1; }
     .footer-grid {
@@ -1725,6 +1726,25 @@
       * { transition-duration: .01ms !important; animation: none !important; }
       html { scroll-behavior: auto; }
     }
+  
+    /* CJ Travels Brand Logo */
+    .brand-logo {
+      height: 40px;
+      width: auto;
+      max-height: 46px;
+      object-fit: contain;
+      display: inline-block;
+      vertical-align: middle;
+      transition: transform .25s ease;
+    }
+    .brand-logo:hover {
+      transform: scale(1.02);
+    }
+    .footer-brand .brand-logo,
+    .footer-logo {
+      height: 42px;
+    }
+
   </style>
 
   <script>document.documentElement.classList.add('js');</script>
@@ -1741,7 +1761,7 @@
       <div class="topbar-inner">
         <div class="topbar-left">
           <a href="tel:+2348080452890"><i class="bi bi-telephone"></i> 0808 045 2890</a>
-          <a href="mailto:info@travelbookings.ng"><i class="bi bi-envelope"></i> info@travelbookings.ng</a>
+          <a href="mailto:info@cjtravelsowerri.com"><i class="bi bi-envelope"></i> info@cjtravelsowerri.com</a>
         </div>
         <div class="topbar-right">
           <span class="topbar-badge">Concierge · Available 24/7</span>
@@ -1758,9 +1778,8 @@
     <div class="container">
       <div class="nav-inner">
 
-        <a class="brand" href="/" aria-label="Travelbookings home">
-          <span class="brand-mark"><i class="bi bi-airplane-engines"></i></span>
-          <span class="brand-name">Travel<em>bookings</em></span>
+        <a class="brand" href="/" aria-label="CJ Travels home">
+          <img src="/images/logo-transparent.png" alt="CJ Travels" class="brand-logo" />
         </a>
 
         <nav class="nav-center" aria-label="Main navigation">
@@ -1792,10 +1811,9 @@
 
   <aside class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
     <div class="mobile-nav-head">
-      <a class="brand" href="/">
-        <span class="brand-mark"><i class="bi bi-airplane-engines"></i></span>
-        <span class="brand-name">Travel<em>bookings</em></span>
-      </a>
+      <a class="brand" href="/" aria-label="CJ Travels home">
+          <img src="/images/logo-transparent.png" alt="CJ Travels" class="brand-logo" />
+        </a>
       <button class="mobile-nav-close" id="mobileClose" aria-label="Close menu">
         <i class="bi bi-x-lg"></i>
       </button>
@@ -1821,7 +1839,7 @@
     <div class="mobile-nav-footer">
       <p>Reach the concierge</p>
       <a href="tel:+2348080452890"><i class="bi bi-telephone"></i> 0808 045 2890</a>
-      <a href="mailto:info@travelbookings.ng"><i class="bi bi-envelope"></i> info@travelbookings.ng</a>
+      <a href="mailto:info@cjtravelsowerri.com"><i class="bi bi-envelope"></i> info@cjtravelsowerri.com</a>
     </div>
   </aside>
 
@@ -1891,7 +1909,7 @@
           <h2>Spread the cost of <em>eligible</em> travel.</h2>
           <p>
             Travel financing lets you pay for an eligible trip over an agreed period instead of paying
-            the full amount at once. Travelbookings does not lend money itself — we connect you with
+            the full amount at once. CJ Travels does not lend money itself — we connect you with
             independent licensed lending partners who assess your eligibility and set their own terms.
           </p>
         </div>
@@ -1900,7 +1918,7 @@
           <div class="service">
             <span class="service-icon"><i class="bi bi-airplane"></i></span>
             <h3>Eligible travel costs</h3>
-            <p>Flights, hotel stays and holiday packages booked through Travelbookings may qualify, subject to the partner's criteria.</p>
+            <p>Flights, hotel stays and holiday packages booked through CJ Travels may qualify, subject to the partner's criteria.</p>
           </div>
           <div class="service">
             <span class="service-icon"><i class="bi bi-calendar3"></i></span>
@@ -2029,7 +2047,7 @@
             <p class="result-note">
               <i class="bi bi-exclamation-circle"></i>
               This is a hypothetical illustration for demonstration only. It is not a loan offer,
-              quote or approval. Travelbookings does not lend money and does not set, advertise or
+              quote or approval. CJ Travels does not lend money and does not set, advertise or
               guarantee interest rates. Actual terms are set by the independent licensed lending
               partner after its own assessment.
             </p>
@@ -2166,7 +2184,7 @@
                   <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="consentContact" />
                     <label class="form-check-label" for="consentContact">
-                      I agree to be contacted by Travelbookings about this enquiry, and understand my
+                      I agree to be contacted by CJ Travels about this enquiry, and understand my
                       enquiry may be shared with an independent licensed lending partner for assessment.
                     </label>
                     <div class="invalid-feedback">Please agree to be contacted about your enquiry.</div>
@@ -2184,7 +2202,7 @@
 
                 <p class="security-note">
                   <i class="bi bi-shield-lock"></i>
-                  Travelbookings will never ask for your bank password, card PIN, OTP or online banking
+                  CJ Travels will never ask for your bank password, card PIN, OTP or online banking
                   login. If anyone requests these, do not share them.
                 </p>
 
@@ -2227,7 +2245,7 @@
                     <span class="num">4</span>
                     <div>
                       <strong>You receive the partner's decision</strong>
-                      <span>If approved, the partner issues the loan terms directly to you. Travelbookings does not approve or decline applications.</span>
+                      <span>If approved, the partner issues the loan terms directly to you. CJ Travels does not approve or decline applications.</span>
                     </div>
                   </li>
                 </ol>
@@ -2269,7 +2287,7 @@
               <div class="demo-banner">
                 <i class="bi bi-info-circle"></i>
                 <div>
-                  <strong>Demonstration only.</strong> Travelbookings is not a lender. This enquiry
+                  <strong>Demonstration only.</strong> CJ Travels is not a lender. This enquiry
                   has not been sent anywhere, and no financing has been arranged or approved. Any
                   future application would be assessed by an independent licensed lending partner.
                 </div>
@@ -2281,7 +2299,7 @@
                   <li>A consultant would review your enquiry and contact you if anything needs clarifying.</li>
                   <li>With your consent, your enquiry would be shared with an independent licensed lending partner.</li>
                   <li>The partner would assess your eligibility and affordability using its own criteria.</li>
-                  <li>If approved, the partner would issue the loan terms to you directly — Travelbookings does not approve or decline applications.</li>
+                  <li>If approved, the partner would issue the loan terms to you directly — CJ Travels does not approve or decline applications.</li>
                 </ol>
               </div>
 
@@ -2340,7 +2358,7 @@
           <i class="bi bi-info-circle"></i>
           <div>
             Eligibility criteria, documentation requirements and affordability rules are set solely by
-            each independent licensed lending partner. Travelbookings does not decide who qualifies
+            each independent licensed lending partner. CJ Travels does not decide who qualifies
             for financing and does not guarantee that any enquiry will result in an approved loan.
           </div>
         </div>
@@ -2379,14 +2397,14 @@
             <div class="responsible-callout reveal">
               <h3>Who provides the financing?</h3>
               <p>
-                Travelbookings is a travel agency, not a lender. Financing is provided by independent,
+                CJ Travels is a travel agency, not a lender. Financing is provided by independent,
                 licensed lending partners who are solely responsible for assessing applications, setting
                 rates and fees, and issuing loan agreements. Your contract will be with the lending
-                partner, not with Travelbookings.
+                partner, not with CJ Travels.
               </p>
               <p>
                 All financing is subject to the lending partner's eligibility assessment, affordability
-                checks and approval. Travelbookings does not approve, decline or guarantee any application
+                checks and approval. CJ Travels does not approve, decline or guarantee any application
                 and does not receive or set the interest rate you are offered.
               </p>
             </div>
@@ -2437,7 +2455,7 @@
                 </h3>
                 <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                   <div class="accordion-body">
-                    Financing is provided by independent, licensed lending partners. Travelbookings does
+                    Financing is provided by independent, licensed lending partners. CJ Travels does
                     not lend money, set interest rates or make approval decisions. Your loan agreement,
                     if any, would be with the lending partner directly.
                   </div>
@@ -2454,7 +2472,7 @@
                 <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                   <div class="accordion-body">
                     Eligible travel costs typically include flights, hotel stays and holiday packages
-                    booked through Travelbookings. Whether a specific expense qualifies is decided by the
+                    booked through CJ Travels. Whether a specific expense qualifies is decided by the
                     lending partner as part of its assessment.
                   </div>
                 </div>
@@ -2470,7 +2488,7 @@
                 <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                   <div class="accordion-body">
                     No. The rate in the calculator is a hypothetical value you can adjust to explore
-                    scenarios. It is not an advertised rate and does not represent any rate Travelbookings
+                    scenarios. It is not an advertised rate and does not represent any rate CJ Travels
                     or its partners offer. Your actual rate, if approved, would be set by the lending
                     partner based on its assessment.
                   </div>
@@ -2486,7 +2504,7 @@
                 </h3>
                 <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                   <div class="accordion-body">
-                    A Travelbookings enquiry itself does not affect your credit score. If your enquiry is
+                    A CJ Travels enquiry itself does not affect your credit score. If your enquiry is
                     shared with a lending partner, that partner will explain whether and when it performs
                     a credit check, and what type of check it is, before proceeding.
                   </div>
@@ -2502,9 +2520,9 @@
                 </h3>
                 <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                   <div class="accordion-body">
-                    Never. Travelbookings will never ask for your bank password, card PIN, one-time
+                    Never. CJ Travels will never ask for your bank password, card PIN, one-time
                     password (OTP) or online banking login. If anyone requests these while claiming to
-                    represent Travelbookings, do not share them and contact us immediately.
+                    represent CJ Travels, do not share them and contact us immediately.
                   </div>
                 </div>
               </div>
@@ -2580,9 +2598,8 @@
       <div class="footer-grid">
 
         <div>
-          <a class="footer-brand" href="/">
-            <span class="brand-mark"><i class="bi bi-airplane-engines"></i></span>
-            <span class="brand-name">Travel<em>bookings</em></span>
+          <a class="footer-brand" href="/" aria-label="CJ Travels home">
+            <img src="/images/logo-white.png" alt="CJ Travels" class="brand-logo footer-logo" />
           </a>
           <p class="footer-about">
             An online travel agency serving customers in Nigeria and internationally.
@@ -2620,7 +2637,7 @@
           <h4 class="footer-heading">Get in touch</h4>
           <div class="footer-contact">
             <a href="tel:+2348080452890"><i class="bi bi-telephone"></i> 0808 045 2890</a>
-            <a href="mailto:info@travelbookings.ng"><i class="bi bi-envelope"></i> info@travelbookings.ng</a>
+            <a href="mailto:info@cjtravelsowerri.com"><i class="bi bi-envelope"></i> info@cjtravelsowerri.com</a>
           </div>
 
           <div class="footer-newsletter">
@@ -2639,7 +2656,7 @@
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; <span data-year>2025</span> Travelbookings. All rights reserved.</p>
+        <p>&copy; <span data-year>2025</span> CJ Travels. All rights reserved.</p>
         <ul class="footer-legal">
           <li><a href="privacy.html">Privacy</a></li>
           <li><a href="terms.html">Terms</a></li>

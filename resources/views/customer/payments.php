@@ -1,4 +1,4 @@
-<?php $this->layout('layouts/customer', ['title' => 'Payments — Customer Dashboard — Travelbookings', 'page' => 'payments']); ?>
+<?php $this->layout('layouts/customer', ['title' => 'Payments — Customer Dashboard — CJ Travels', 'page' => 'payments']); ?>
 
 <section class="view active" id="view-payments" data-view="payments" aria-labelledby="paymentsTitle">
           <div class="page-head">

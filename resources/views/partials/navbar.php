@@ -1,9 +1,8 @@
 <header class="site-header" id="siteHeader">
   <div class="container header-inner">
-    <a class="brand" href="<?= route('home') ?>" aria-label="Travelbookings home">
-      <span class="brand-mark"><i class="bi bi-airplane-engines"></i></span>
-      <span class="brand-name">Travel<em>bookings</em></span>
-    </a>
+    <a class="brand" href="<?= route('home') ?>" aria-label="CJ Travels home">
+          <img src="/images/logo-transparent.png" alt="CJ Travels" class="brand-logo" />
+        </a>
 
     <nav class="nav-center" aria-label="Main navigation">
       <a href="<?= route('flights') ?>">Flights</a>
@@ -30,10 +29,9 @@
 
 <aside class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
   <div class="mobile-nav-head">
-    <a class="brand" href="<?= route('home') ?>">
-      <span class="brand-mark"><i class="bi bi-airplane-engines"></i></span>
-      <span class="brand-name">Travel<em>bookings</em></span>
-    </a>
+    <a class="brand" href="<?= route('home') ?>" aria-label="CJ Travels home">
+          <img src="/images/logo-transparent.png" alt="CJ Travels" class="brand-logo" />
+        </a>
     <button class="mobile-nav-close" id="mobileClose" type="button" aria-label="Close menu">
       <i class="bi bi-x-lg"></i>
     </button>
