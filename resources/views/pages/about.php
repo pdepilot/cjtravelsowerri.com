@@ -1418,8 +1418,8 @@
       <div class="container">
         <div class="split reveal">
           <div class="split-media">
-            <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1000&q=80"
-                 alt="A travel planning team working together" loading="lazy" decoding="async"
+            <img src="/images/cj-travels.jpg"
+                 alt="CJ Travels founder and team leader" style="object-position: center 20%;" loading="lazy" decoding="async"
                  onerror="this.style.opacity=0" />
             <div class="split-badge">
               <i class="bi bi-people"></i>
